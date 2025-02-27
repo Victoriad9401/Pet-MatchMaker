@@ -1,0 +1,175 @@
+/* WelcomeScreen.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
+.welcomescreen {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.split-screen {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.leftSide, .rightSide {
+  flex: 1; /* Each side takes up 50% of the space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.leftSide {
+  background-color: white; /* Light gray background */
+  
+}
+
+
+.rightSide {
+  background-color: #B1D4EA; /* Slightly darker gray background */
+  position: relative;
+  
+}
+.rightSide::before {
+  content: "";  /* Needed for pseudo-elements */
+  position: absolute;
+  top: 50%;
+  right: 100%; /* Move it to the left side */
+  transform: translateY(-50%); /* Center it vertically */
+  width: 30%; /* Adjust width to control coverage */
+  height: 101%; /* Adjust height for proportion */
+  background: #B1D4EA; /* Match rightSide color */
+  clip-path: ellipse(60% 50% at right center); /* Flip the ellipse */
+  z-index: 1; /* Behind content */
+}
+
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin: 20px;
+  margin-left: -600px;
+  margin-top: -500px;
+}
+
+.content {
+  max-width: 80%;
+}
+.leftSide .content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: -400px;
+}
+
+.leftSide h1{
+  
+  font-family: 'Rammetto One', sans-serif;
+  font-size: 3em;
+  z-index: 1;
+  text-shadow: 2px 2px rgb(176, 174, 174);
+}
+
+.leftSide p{
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-family: 'Recursive', sans-serif;
+  font-size: 1.2em;
+  max-width: 70%;
+  font-weight: 500;
+  z-index: 1;
+  padding-left:110px ;
+  
+}
+
+
+button {
+  padding: 30px 40px;
+  margin: 10px;
+  font-size: 2em;
+  font-family: 'Poller One', cursive;
+  border: none;
+  border-radius: 45px;
+  cursor: pointer;
+  margin-left: 40px;
+  background-color:#92D7F7 ;
+  color:black ;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  gap:25px;
+  width:100%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.container button{
+  margin: 0 5px;
+}
+
+button:hover {
+  background-color: #0ba7ef;
+  color: #92D7F7;
+}
+
+.AppPuppy {
+  width: 595px;
+  max-width: 900px;
+  height: 800px;
+  margin-top: 200px;
+  margin-left:-550px ;
+  z-index: 1;
+}
+
+#paws {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.whitepaw, .lgpaw, .graypaw, .blackpaw {
+  position: relative;
+  width: 10%;
+  max-width: 50px;
+  margin: 10px;
+}
+
+/* White Paws - Diagonal from Top Right to Bottom Left */
+.whitepaw.paw1 { top: 5%; right: 10%; }
+.whitepaw.paw2 { top: 15%; right: 20%; }
+.whitepaw.paw3 { top: 25%; right: 30%; }
+.whitepaw.paw4 { top: 35%; right: 40%; }
+
+/* Light Gray Paws - Slightly Offset */
+.lgpaw.paw1 { top: 45%; right: 50%; width: 14%; }
+.lgpaw.paw2 { top: 55%; right: 60%; width: 14%; transform: rotate(15deg); }
+.lgpaw.paw3 { top: 65%; right: 70%; width: 14%; transform: rotate(-10deg); }
+.lgpaw.paw4 { top: 75%; right: 80%; width: 14%; }
+
+/* Gray Paws - More Spread Out */
+.graypaw.paw1 { top: 85%; right: 90%; transform: rotate(20deg); }
+.graypaw.paw2 { top: 95%; right: 100%; transform: rotate(30deg); }
+.graypaw.paw3 { top: 105%; right: 110%; transform: rotate(25deg); }
+.graypaw.paw4 { top: 115%; right: 120%; transform: rotate(15deg); }
+
+/* Black Paws - Bottom Half */
+.blackpaw.paw1 { top: 125%; right: 130%; transform: rotate(45deg); }
+.blackpaw.paw2 { top: 135%; right: 140%; }
+.blackpaw.paw3 { top: 145%; right: 150%; transform: rotate(-15deg); }
+.blackpaw.paw4 { top: 155%; right: 160%; transform: rotate(10deg); }

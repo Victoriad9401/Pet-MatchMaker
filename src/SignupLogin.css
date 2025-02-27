@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Body background setup */
+body {
+    background-color: #f2f3f6;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Container that holds both forms */
+.container {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+#paw-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
+ margin-top: 20px;
+}
+
+.blackpaw {
+    position: absolute;
+    width: 50px; /* Adjust the size of the paw images */
+    height: 50px;
+}
+
+.blackpaw-1 {
+    top: 0;
+    left: 0;
+    
+}
+
+.blackpaw-2 {
+    top: 0;
+    right: 0;
+    transform: rotate(270deg);
+}
+
+.blackpaw-3 {
+    bottom: 0;
+    left: 0;
+}
+
+.blackpaw-4 {
+    bottom: 0;
+    right: 0;
+    transform: rotate(270deg);
+}
+  
+.container.right-panel-active{
+    background-color: white;
+}
+
+.container h1{
+    font-family: 'Recursive', sans-serif;
+    text-shadow: 2px 2px 3px rgb(129, 138, 172);
+}
+
+/* Style for all text inside the container */
+.container p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+    font-family: 'Recursive', sans-serif;
+    
+}
+
+/* Style for links in the container */
+.container a {
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+
+
+/* Button styles for submit buttons */
+.container button {
+    background-color: #659ed8;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+}
+
+.container button.hidden {
+    background-color: white;
+    color: #6d93f1;
+    
+}
+
+/* Form styles */
+.container form {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+  
+  
+.container input {
+    background-color: #c7c7c7;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    color: white;
+    box-shadow: 0 5px 10px rgba(164, 156, 156, 0.35);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Transition styles for forms and panels */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    width: 50%;
+    margin-bottom: 70%;
+    z-index: 2;
+   
+    
+}
+
+.sign-in h1{
+ 
+     font-size: 3.5em;
+     font-family: 'Poppins', sans-serif;
+     
+    
+}
+  
+.container.right-panel-active .sign-in {
+    transform: translateX(100%);
+}
+
+.sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+
+
+
+
+/* Animation for the transition */
+@keyframes move {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* Toggle left and right panels */
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+   
+}
+
+.container.right-panel-active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background-color: #f5f8fa;
+    height: 100%;
+    background: linear-gradient(to left, #0AA4EB, #0AA4EB);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.right-panel-active .toggle {
+    transform: translateX(50%);
+}
+
+/* Style for toggle panels (left and right) */
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+    display: flex;
+    align-items:flex-start ;
+    justify-content: center;
+    
+    padding-left: 50px;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.toggle-container h1{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    margin-left: -20px;
+    z-index: 1;
+}
+.toggle-container p{
+  margin-bottom: 10%;
+  margin-left: -20px;
+  font-size: 0.8em;
+
+}
+.toggle-container button{
+
+    margin-top: 120px;
+    margin-left: 75px;
+}
+.container.right-panel-active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+.toggle-right p {
+    font-family: 'Recursive', sans-serif;
+    margin-bottom: 20px;
+
+}
+.toggle-right button{
+    margin-top: 50px;
+}
+.container.right-panel-active .toggle-right {
+    transform: translateX(200%);
+}

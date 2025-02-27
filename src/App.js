@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WelcomeScreen from "./WelcomeScreen";
+import SignupLogin from "./signuplogin";
+import ForgotPassword from './ForgotPassword'; 
+import Verification from "./Verification";
+import ChangePassword from "./ChangePassword";
+import StartQuiz from "./StartQuiz";
+import TakeQuizAgain from "./TakeQuizAgain";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+          <Routes>
+              <Route path="/" element={<WelcomeScreen />} /> {/* Use the WelcomeScreen component */}
+              <Route path="/auth" element={<SignupLogin />} />
+              <Route path="/forget-password" element={<ForgotPassword />}/>
+              <Route path="/verification" element={<Verification />}/>
+              <Route path="/changePassword" element={<ChangePassword />}/>
+              <Route path="/startQuiz" element={<StartQuiz />}/>
+              <Route path="/takeQuizAgain" element={<TakeQuizAgain/>}/>
+          </Routes>
+      </Router>
   );
 }
-
-export default App;
+    
+  export default App;
