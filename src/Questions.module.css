@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+.Questions {
+    
+    background-color: #B1D4EA; /* Blue background */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    position: fixed; /* Fixed position to fill the entire screen */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the text is above other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.Questions h1{
+    
+        color: #0AA4EB;
+        font-family: 'Poppins', sans-serif;
+        margin-left: 2%;
+        font-size: 8ex;
+        text-align: center;
+        text-shadow: 2px 2px #4484de;
+    } 
+
+   .formContainer{
+    margin-left: -300px;
+   
+   } 
+
+  .question{
+    margin: 80px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    text-align: flex-start;
+  }  
+
+
+.question p {
+    color: rgb(20, 18, 18);
+    font-family: 'Poppins', sans-serif;
+    margin-left: -100px;
+    font-size: 2.5ex;
+ 
+}
+
+.question label{
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.question input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.button{
+    position: absolute;
+}
+
+
+.exitbutton {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 20px 35px;
+    font-size: 22px;
+    font-family: 'Poppins One', cursive;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    background-color: #0AA4EB;
+    color: #f7f8fa;
+    box-shadow: 5px 5px 2px 2px #4e5a6b;
+}
+
+.exitbutton:hover{
+ background-color: #0a7beb;
+}
+
+.nextbutton {
+   position: fixed;
+    bottom: 10px;
+    right: 60px;
+    padding: 20px 30px;
+    font-size: 22px;
+    font-family: 'Poppins One', cursive;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    background-color: #0AA4EB;
+    color: #f7f8fa;
+    box-shadow: 5px 5px 2px 2px #4e5a6b;
+}
+
+.nextbutton:hover{
+ background-color: #0a7beb;
+}
+
+.container {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+.dog{
+    position: absolute;
+    width: 55px; /* Keep a larger base size */
+    height: 50px;
+    top: 4%;
+    left: 32%;
+    transform: scale(1.9);
+   
+    z-index:100 ; 
+
+} 
+
+.cat{
+    position: absolute;
+    width: 54px; /* Adjust size as needed */
+    height: 45px;
+    top: 7%;
+    left: 60%;
+    z-index: 1; 
+    transform: scale(2);
+  
+   
+} 
+
+
+
+.paws.whitepaw1 {
+    position: absolute;
+    bottom: 5%;
+    left: 1%;
+    width: 60px;
+    height: 50px;
+    transform: rotate(10deg);
+    transform: scale(1.4);
+    opacity: 0.5;
+   
+}
+
+.whitepaw2 {
+    position: absolute;
+    bottom: 1%;
+    left: 7%;
+    width: 60px;
+    height: 50px;
+    transform: rotate(-20deg);
+    transform: scale(1.4);
+    opacity: 0.5;
+    
+}
+
+.whitepaw3 {
+    position: absolute;
+    top: 22%;
+    right: 10%;
+    margin-left: 18px;
+    width: 60px;
+    height: 50px;
+    transform: rotate(-20deg);
+    transform: scale(1.6);
+    opacity: 0.5;
+}
+
+.whitepaw4 {
+    position: absolute;
+    top: 6%;
+    right: 6.5%;
+    width: 60px;
+    height: 50px;
+    transform: rotate(-20deg);
+    transform: scale(1.6);
+    opacity: 0.5;
+}
+
+.whitepaw5 {
+    position: absolute;
+    top: 15%;
+    right: 2%;
+    margin-top: 19px;
+    width: 60px;
+    height: 50px;
+    transform: rotate(-20deg);
+    transform: scale(1.6);
+    opacity: 0.5;
+}
+
+
+  
+
+.bubbleContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+}
+
+.bubble{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2) ;
+    border-radius: 50%;
+}
+
+.bubble:nth-child(1)  { top: 0%; left: 40%; width: 90px; height: 90px; }
+.bubble:nth-child(2)  { top: 5%; left: 40%; width: 70px; height: 70px; }
+.bubble:nth-child(3)  { top: 5%; left: 42%; width: 90px; height: 90px; }
+.bubble:nth-child(4)  { top: 2%; left: 38%; width: 70px; height: 70px; }
+.bubble:nth-child(5)  { top: -1%; left: 42%; width:70px; height: 70px; }
+.bubble:nth-child(6)  { top: -1%; left: 45%; width: 70px; height: 70px;}
+.bubble:nth-child(7)  { top: -1%; left: 48%; width: 90px; height: 90px; }
+.bubble:nth-child(8)  { top: -1%; left: 50%; width: 90px; height: 90px; }
+.bubble:nth-child(9)  { top: -1%; left: 53%; width:  90px; height: 90px; }
+.bubble:nth-child(10)  { top: -1%; left: 56%; width: 70px; height: 70px; }
+.bubble:nth-child(11)  { top: 2%; left: 58%; width: 70px; height: 70px; }
+.bubble:nth-child(12)  { top: 5%; left: 49%; width:90px; height: 90px; }
+.bubble:nth-child(13)  { top: 5%; left: 45%; width: 70px; height: 70px;}
+.bubble:nth-child(14)  { top: 5%; left: 55%; width: 90px; height: 90px; }
+.bubble:nth-child(15)  { top: 5%; left: 53%; width: 70px; height: 70px; }
+.bubble:nth-child(16)  { top: 0%; left:35%; width: 90px; height: 90px; }
+.bubble:nth-child(17)  { top: 4%; left: 35%; width:90px; height: 90px; }
+.bubble:nth-child(18)  { top: 8%; left: 39%; width: 90px; height: 90px;}
+.bubble:nth-child(19)  { top: 8%; left: 45%; width: 80px; height: 80px; }
+.bubble:nth-child(20)  { top: 8%; left: 53%; width: 90px; height: 90px; }
+
+
+.bubble:nth-child(20)  { top: 8%; left: 59%; width: 80px; height: 80px; }
+.bubble:nth-child(21)  { top: 0%; left: 60%; width: 90px; height: 90px; }
+.bubble:nth-child(22)  { top: 2%; left: 65%; width: 80px; height: 80px; }
+.bubble:nth-child(23)  { top: 5%; left: 63%; width: 90px; height: 90px; }
+.bubble:nth-child(24)  { top: 8%; left: 57%; width: 80px; height: 80px; }
+.bubble:nth-child(25)  { top: 8%; left: 50%; width: 90px; height: 90px; }
+.bubble:nth-child(26)  { top: 9%; left: 47%; width: 80px; height: 80px; }
+.bubble:nth-child(27)  { top: 11%; left: 43%; width: 60px; height: 60px; }
+
+.bubble:nth-child(28)  { top: 11%; left: 55%; width: 60px; height: 60px; }
+.bubble:nth-child(29)  { top: 9%; left: 36%; width: 80px; height: 80px; }
+.bubble:nth-child(30)  { top: 4%; left: 30%; width: 90px; height: 90px; }
+.bubble:nth-child(31)  { top: 9%; left: 33%; width: 80px; height: 80px; }
+.bubble:nth-child(32)  { top: 8%; left: 64%; width: 80px; height: 80px; }
+.bubble:nth-child(33)  { top: 8%; left: 62%; width: 80px; height: 80px; }

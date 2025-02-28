@@ -7,6 +7,7 @@ import Verification from "./Verification";
 import ChangePassword from "./ChangePassword";
 import StartQuiz from "./StartQuiz";
 import TakeQuizAgain from "./TakeQuizAgain";
+import Questions from "./Questions";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/changePassword" element={<ChangePassword />}/>
               <Route path="/startQuiz" element={<StartQuiz />}/>
               <Route path="/takeQuizAgain" element={<TakeQuizAgain/>}/>
+              <Route path="/questions" element={<Questions/>}/>
           </Routes>
       </Router>
   );

@@ -11,7 +11,7 @@ const StartQuiz = () =>{
         <h1>Welcome To Pet Matchmaker!!</h1>
         <h2>Quiz Time!!!!</h2>
         <p>This is a list of questions that help to gather your preferences to find you your perfect friend!!!</p>
-        <button type="button" onClick={() => navigate("/takeQuizAgain")}>Start the Quiz</button>
+        <button type="button" onClick={() => navigate("/questions")}>Start the Quiz</button>
    
 <div className={styles.container}>
      <div className={styles.dog}>
