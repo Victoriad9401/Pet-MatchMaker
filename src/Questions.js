@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Questions.module.css";
+import {LoadingContext} from "./LoadingContext";
 
 const questions =[
     {
@@ -172,12 +173,29 @@ const questions =[
 
 const Questions = () =>{
     const navigate = useNavigate();
+    const {isLoading, setIsLoading } = useContext(LoadingContext);
+
     const[currentPage, setCurrentPage] = useState(1);
     const [answers, setAnswers] = useState({
-    livingSituation: [], // For dog characteristics
-    traitsPet: [], // For pet traits
-    hobbiesPet: [], // For hobbies
-    characterCat: [],
+        petOwnership: "",
+        ChildrenUnder12: "",
+        petAloneTime: "",
+        otherPets: "",
+        numberPets: "",
+        comfortLevel: "",
+        travel: "",
+        typePet: "",
+        pottyTrain: "",
+        Active: "",
+        livingSituation: [],
+        pottyT: "",
+        budget: "",
+        timePet: "",
+        traitsPet: [],
+        hobbiesPet: [],
+        ExtraInfo: "",
+        catTime: "",
+        characterCat: [],
     });
     
 
@@ -196,7 +214,7 @@ const Questions = () =>{
             else{
                 return{
                     ...prevAnswers,
-            [name]: currentValues.filter((item) => item !== value),
+                     [name]: currentValues.filter((item) => item !== value),
             };
             
         }
@@ -232,10 +250,20 @@ const Questions = () =>{
         }
     };
 
-    const handleSubmit = () => {
-        console.log("All Answers", answers);
-        navigate('/next-page');
-    };
+    const handleSubmit = async () => {
+        setIsLoading(true);
+        try{
+            console.log("Submitting answers...", answers);
+        
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        
+        navigate("/LoadingScreen");
+    } catch (error){
+        console.error("Submission failed:", error);
+    } finally{
+        setIsLoading(false);
+    }
+};
 
     const currentPageQuestions = questions.filter(
         (q) => q.page === currentPage && (!q.branch || q.branch === answers.typePet)
@@ -245,7 +273,7 @@ const Questions = () =>{
  return (
     <div className={styles.Questions}>
         <h1>Pet Quiz</h1>
-        <button type="button" className={styles.exitbutton} onClick={() => navigate("/")}>Exit</button>
+        <button type="button" className={styles.exitbutton} onClick={() => navigate("/LeaveQuiz")}>Exit</button>
 
   {/* Progress Bar */}
   <div className={styles.progressBarContainer}>
@@ -330,9 +358,10 @@ const Questions = () =>{
                             Next
                         </button>
                     ) : (
-                        <button type="button" className={styles.submitButton} onClick={handleSubmit}>
+                    <button type="button" className={styles.submitButton} onClick={handleSubmit}>
                             Submit
                         </button>
+                        
                     )}
                 </div>
             </div>
