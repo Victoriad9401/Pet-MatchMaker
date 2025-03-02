@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kavivanar&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
-
 .UserProfile {
     background-color: #B1D4EA; /* Blue background */
     width: 100%; /* Full width of the viewport */
@@ -27,7 +26,6 @@
     text-align: center; /* Center-align text */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
 }
-
 /* Tail of the speech bubble */
 .speechbubble::after {
     content: ""; /* Required for pseudo-elements */
@@ -39,7 +37,6 @@
     border-style: solid;
     border-color: #f1f1f1 transparent transparent; /* Match bubble background */
 }
-
 .speechbubble.left-tail {
     background-color: #46A5D1;
     color: white;
@@ -48,7 +45,6 @@
     width: 200px;
     text-align: center;
 }
-
 .speechbubble.left-tail::after {
     content: "";
     position: absolute;
@@ -59,7 +55,6 @@
     border-style: solid;
     border-color: #46A5D1 transparent transparent;
 }
-
 .containers {
     position: absolute;
     bottom: 0;
@@ -78,7 +73,6 @@
     margin-bottom: 559px;  
     margin-left:  970px;
     z-index:10 ; 
-
 }
 .heart{
     position: absolute;
@@ -133,7 +127,6 @@
     margin-left:570px;
     z-index:1 ; 
 }
-
 .circlec{
     position: absolute;
     width: 50px; /* Keep a larger base size */
@@ -143,9 +136,7 @@
     margin-bottom: 690px;  
     margin-left:-900px;
     z-index:1 ; 
-
 }
-
 .container{
     background-color: #f8f2f217; 
     border-radius: 15px; /* Rounded corners */
@@ -167,7 +158,6 @@
     text-shadow: 2px 2px #adafb1;
     z-index: 1;
 } 
-
 .userProfileContainer{
     background: linear-gradient(to right, #F2CDF8,#7A9DF4 );
     border-radius: 15px; /* Rounded corners */
@@ -181,9 +171,7 @@
     /* Center-align text */
     position: absolute; /* Relative positioning */
     z-index: 1;
-
 }
-
 .navList{
     position: relative;
     list-style: none;
@@ -196,7 +184,6 @@
     display: flex;
     margin-left: 50px;
     margin-top: -20px;
-
     
 }
 .navLink {
@@ -208,21 +195,15 @@
     border-radius: 5px; /* Rounded corners */
     text-shadow: 2px 2px #6d747d;
 }
-
 .navLink1{
 
-
 }
-
 .navLink2{
  
     margin-left: 20px;
-
 }
 .navLink3{
-
     margin-left: 30px;
-
 }
 .navLink4{
     margin-bottom: 12px;
@@ -230,28 +211,38 @@
    
     margin-left: 900px;
 
-
 }
-.form{
+
+.formField{
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    margin-bottom: 20px; /* Space between fields */
-    width: 100%; /* Full width of the parent container */
-    margin-top: 0;
-    padding-top: 0; /* Add left margin to move fields to the left */
+    flex-direction: column; 
+    margin-bottom: 98px; 
+    width: 100%; 
+    margin-top: 1px;
+    padding-top: 0;
+    margin-left: -200px;
+
 }
+.formField label {
+  
+    margin-bottom: -90px;
+    font-weight: bold;
+    font-size: 3ex;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin-left: -220px;
+    margin-top: -60px;
+    text-shadow: 2px 2px #e6ecf6;
+  }
 
-
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 50%; /* Adjust the width of the input fields */
+.inputField {
+   display: flex;
+   position: relative;
+    width: 45%; /* Adjust the width of the input fields */
     padding: 10px;
-    margin: 1px;
-    margin-bottom: 70px;
-    margin-top: -10px;
-    margin-left: 10px; /* Remove left margin to align inputs to the left */
+    margin: 10px;
+    right: 30px;
+    bottom: -45px;
     border: 1px solid #ccc;
     border-radius: 20px;
     box-sizing: border-box;
@@ -262,18 +253,6 @@ input[type="password"] {
     transition: border-color 0.3s;
 }
 
-/* Labels */
-form label {
-    margin-bottom: 0px; /* Space between label and input */
-    font-weight: bold;
-    font-size: 3ex;
-    font-family: 'Poppins', sans-serif;
-    text-align: left;
-    margin-left: -420px;
-    text-shadow: 2px 2px #e6ecf6; /* Align labels to the left */
-}
-
-/* Button Container */
 .buttonContainer {
     display: flex; /* Align buttons horizontally */
     gap: 20px; /* Space between buttons */
@@ -282,12 +261,11 @@ form label {
     margin-left: 20px; /* Adjust this value to align with the form */
     margin-bottom: -200px;
 }
-
 /* Individual Buttons */
 .buttonContainer button {
     position: relative;
     padding: 10px 20px; /* Padding inside the buttons */
-    font-size: 16px; /* Font size */
+    font-size: 2.5ex; /* Font size */
     border: none; /* Remove default border */
     border-radius: 45px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
@@ -299,7 +277,6 @@ form label {
  /* Button shadow */
     transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
-
 .buttonContainer button:hover {
     background-color: #97c5f1; /* Button background color on hover */
 }

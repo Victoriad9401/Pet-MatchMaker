@@ -40,7 +40,7 @@ const handleChangePassword = () => {
 const handleLogout = () => {
     // Add logout logic, e.g., clear user session
     console.log("User logged out");
-    navigate("/login"); 
+    navigate("/"); 
 };
 
 return(
@@ -104,7 +104,7 @@ return(
       </div>
     
     <form onSubmit = {handleSave}>
-        <div>
+        <div className={styles.formField}>
             <label> First Name:</label>
             <input
             type = "text"
@@ -113,9 +113,10 @@ return(
             onChange={handleChange}
             disabled ={!isEditing}
             required
+            className={styles.inputField}
             />
         </div>
-        <div>
+        <div className={styles.formField}>
         <label> Last Name:</label>
             <input
             type = "text"
@@ -124,9 +125,10 @@ return(
             onChange={handleChange}
             disabled ={!isEditing}
             required
+            className={styles.inputField}
             />
         </div>
-        <div>
+        <div className={styles.formField}>
         <label> Email:</label>
             <input
             type = "email"
@@ -135,10 +137,11 @@ return(
             onChange={handleChange}
             disabled ={!isEditing}
             required
+            className={styles.inputField}
             />
         </div>
         {showChangePassword && (
-                <div>
+                <div className={styles.formField}>
                     <label>New Password:</label>
                     <input
                         type="password"
@@ -146,6 +149,7 @@ return(
                         value={formData.password}
                         onChange={handleChange}
                         required
+                        className={styles.inputField}
                     />
                 </div>
             )}
