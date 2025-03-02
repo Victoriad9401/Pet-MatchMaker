@@ -11,6 +11,8 @@ import Questions from "./Questions";
 import LeaveQuiz from "./LeaveQuiz";
 import LoadingScreen from "./LoadingScreen";
 import {LoadingProvider } from "./LoadingContext";
+import EndingScreen from "./EndingScreen";
+import UserProfile from "./Userprofile";
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
               <Route path="/questions" element={<Questions/>}/>
               <Route path="/LeaveQuiz" element={<LeaveQuiz/>}/>
               <Route path="/LoadingScreen" element={<LoadingScreen/>}/>
+              <Route path="/EndingScreen" element={<EndingScreen/>}/>
+              <Route path="/Userprofile" element={<UserProfile/>}/>
           </Routes>
         )}
 

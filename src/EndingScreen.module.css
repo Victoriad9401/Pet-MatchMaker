@@ -1,11 +1,11 @@
-/* StartQuiz.module.css */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
 
-.LeaveQuiz {
-    background: linear-gradient(to bottom, #5AB0DD,#8492E3 );/* Blue background */
+.EndingScreen {
+    background: linear-gradient(to bottom, #0E8ED3,#072E6D );/* Blue background */
     width: 100%; /* Full width of the viewport */
     height: 100%; /* Full height of the viewport */
     position: fixed; /* Fixed position to fill the entire screen */
@@ -20,7 +20,7 @@
 }
 
 
-.LeaveQuiz h1{
+.EndingScreen h1{
     
         color: white;
         font-family: 'Rammetto One', sans-serif;
@@ -33,7 +33,7 @@
       
        
 
-.LeaveQuiz p {
+.EndingScreen p {
     color: white;
         font-family: 'Rammetto One', sans-serif;
         margin-left: 50px;
@@ -42,9 +42,9 @@
         text-shadow: 2px 2px #4484de;
 }
 
-.LeaveQuiz button {
+.EndingScreen button {
     padding: 20px 35px;
-    margin: 50px;
+    margin: 20px;
     margin-top: 90px;
     font-size: 4ex;
     font-family: 'Poller One', cursive;
@@ -59,7 +59,7 @@
     z-index: 1000;
 }
 
-.LeaveQuiz button:hover{
+.EndingScreen button:hover{
  background-color: #97c5f1;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .container {
-    background-color: #97b1f2a1; /* Semi-transparent white background */
+    background-color: #7692da9a; /* Semi-transparent white background */
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 700px;
@@ -87,24 +87,6 @@
 }
 
 
-.dog{
-    position: absolute;
-    width: 100px; /* Adjusted size */
-    height: 100px;
-    bottom: 170px;
-    right: 420px; /* Position at the bottom */
-    /* Center horizontally */
-    transform: translateX(-50%); /* Adjust horizontal centering */
-    z-index: 9999; 
-
-} 
-
-.ldog{
-    transform: scale(1);
-    position: absolute;
-    right: 0px;
-    z-index: 2000;
-}
 
 .paw{
     position: absolute;

@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Kavivanar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+.UserProfile {
+    background-color: #B1D4EA; /* Blue background */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    position: fixed; /* Fixed position to fill the entire screen */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the text is above other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+.speechbubble {
+    position: relative; /* Required for positioning the tail */
+    background-color: #f1f1f1c1; /* Bubble background color */
+    padding: 15px; /* Padding inside the bubble */
+    border-radius: 25px; 
+    margin-bottom: 400px;
+    font-family: 'Potta One', cursive;
+    margin-right: -1190px;/* Rounded corners */
+    width: 200px; /* Width of the bubble */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+}
+
+/* Tail of the speech bubble */
+.speechbubble::after {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute; /* Position the tail relative to the bubble */
+    bottom: -10px; /* Position the tail below the bubble */
+    left: 20px; /* Center the tail horizontally */
+    /* Adjust to center the tail */
+    border-width: 15px 15px 0; /* Triangle shape */
+    border-style: solid;
+    border-color: #f1f1f1 transparent transparent; /* Match bubble background */
+}
+
+.speechbubble.left-tail {
+    background-color: #46A5D1;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.speechbubble.left-tail::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 20px; /* Tail on the left */
+    margin-left: 0;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #46A5D1 transparent transparent;
+}
+
+.containers {
+    position: absolute;
+    bottom: 0;
+    left: 0;    
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* Distribute space around children */
+    align-items: center;
+}
+.quiz{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.27);
+    bottom: 10px;
+    margin-bottom: 559px;  
+    margin-left:  970px;
+    z-index:10 ; 
+
+}
+.heart{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.29);
+    bottom: 10px;
+    margin-bottom: 569px;  
+    margin-left:  -1050px;
+    z-index:10 ; 
+    
+}
+.profile{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 560px;  
+    margin-left:  -1340px;
+    z-index:10 ; 
+    
+}
+.house{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 570px;  
+    margin-left:  -1570px;
+    z-index:10 ; 
+    
+}
+.ucat{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.9);
+    bottom: 10px;
+    margin-bottom: 350px;  
+    margin-left:  550px;
+    z-index:1 ; 
+}
+.circlep{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 690px;  
+    margin-left:570px;
+    z-index:1 ; 
+}
+
+.circlec{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 690px;  
+    margin-left:-900px;
+    z-index:1 ; 
+
+}
+
+.container{
+    background-color: #f8f2f217; 
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the container */
+    max-width: 900px;
+    margin-top: -600px;
+    height: 100px; /* Limit the width of the container */
+    text-align: center; /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+}
+.UserProfile h1{
+    
+    color: white;
+    font-family: 'Kavivanar', cursive;
+    margin-top: -10px;
+    font-size: 7ex;
+    text-align: center;
+    text-shadow: 2px 2px #adafb1;
+    z-index: 1;
+} 
+
+.userProfileContainer{
+    background: linear-gradient(to right, #F2CDF8,#7A9DF4 );
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the container */
+    max-width: 1600px;
+    width: 1700px;
+    max-height: 10px;
+    margin: 50px;
+    margin-top: -350px;
+    height: 100px; /* Limit the width of the container */
+    /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+
+}
+
+.navList{
+    position: relative;
+    list-style: none;
+    display: flex;
+    font-weight: bold;
+    gap: 20px;
+    margin: -10px;
+    padding: 10px 20px;
+    display: block;
+    display: flex;
+    margin-left: 50px;
+    margin-top: -20px;
+
+    
+}
+.navLink {
+    font-family: 'Poppins', sans-serif; /* Use the imported font */
+    color: white; /* Text color for the links */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for the links */
+    padding: 5px 10px; /* Padding inside the links */
+    border-radius: 5px; /* Rounded corners */
+    text-shadow: 2px 2px #6d747d;
+}
+
+.navLink1{
+
+
+}
+
+.navLink2{
+ 
+    margin-left: 20px;
+
+}
+.navLink3{
+
+    margin-left: 30px;
+
+}
+.navLink4{
+    margin-bottom: 12px;
+    bottom: 12px;
+   
+    margin-left: 900px;
+
+
+}
+.form{
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    margin-bottom: 20px; /* Space between fields */
+    width: 100%; /* Full width of the parent container */
+    margin-top: 0;
+    padding-top: 0; /* Add left margin to move fields to the left */
+}
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 50%; /* Adjust the width of the input fields */
+    padding: 10px;
+    margin: 1px;
+    margin-bottom: 70px;
+    margin-top: -10px;
+    margin-left: 10px; /* Remove left margin to align inputs to the left */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    text-align: left;
+    transition: border-color 0.3s;
+}
+
+/* Labels */
+form label {
+    margin-bottom: 0px; /* Space between label and input */
+    font-weight: bold;
+    font-size: 3ex;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin-left: -420px;
+    text-shadow: 2px 2px #e6ecf6; /* Align labels to the left */
+}
+
+/* Button Container */
+.buttonContainer {
+    display: flex; /* Align buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Space above the buttons */
+    justify-content: flex-start; /* Align buttons to the left */
+    margin-left: 20px; /* Adjust this value to align with the form */
+    margin-bottom: -200px;
+}
+
+/* Individual Buttons */
+.buttonContainer button {
+    position: relative;
+    padding: 10px 20px; /* Padding inside the buttons */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove default border */
+    border-radius: 45px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #46A5D1; /* Button background color */
+    color: white;
+    gap: 10px; 
+    margin: 10px;
+    margin-bottom: -30px;/* Button text color */
+ /* Button shadow */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.buttonContainer button:hover {
+    background-color: #97c5f1; /* Button background color on hover */
+}
