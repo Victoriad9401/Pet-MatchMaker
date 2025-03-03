@@ -5,18 +5,23 @@
 
 .welcomescreen {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
+  z-index: 1;/* Full viewport height */
 }
 
-.split-screen {
+.splitScreen {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  width: 1590px;
+  flex-direction:column;
+  overflow: hidden;
+
 }
 
 .leftSide, .rightSide {
   flex: 1; /* Each side takes up 50% of the space */
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -53,7 +58,7 @@
   width: 100px;
   height: auto;
   margin: 20px;
-  margin-left: -600px;
+  margin-left: -500px;
   margin-top: -500px;
 }
 
@@ -64,7 +69,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: -400px;
+  margin-bottom: -250px;
 }
 
 .leftSide h1{
@@ -99,22 +104,26 @@ button {
   margin-left: 40px;
   background-color:#92D7F7 ;
   color:black ;
+  z-index: 2;
 }
 
-.button-container{
+.buttonContainer{
   display: flex;
   justify-content: center;
   gap:25px;
   width:100%;
-  margin-top: 20px;
+  margin-top: 80px;
   position: absolute;
   bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 21%;
+  bottom: 16%;
   z-index: 2;
+  transform: translateX(-50%);
+ 
 }
 .container button{
   margin: 0 5px;
+
 }
 
 button:hover {
@@ -123,53 +132,158 @@ button:hover {
 }
 
 .AppPuppy {
+  position: relative;
   width: 595px;
   max-width: 900px;
   height: 800px;
-  margin-top: 200px;
-  margin-left:-550px ;
-  z-index: 1;
+  margin-top: 80px;
+  margin-left:-600px ;
+  z-index: 2;
 }
 
-#paws {
+.paws {
   position: absolute;
+  top: 10;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
+  z-index: 1;
+  transform: scale(0.2);
+  pointer-events: none;
 
-.whitepaw, .lgpaw, .graypaw, .blackpaw {
-  position: relative;
-  width: 10%;
-  max-width: 50px;
-  margin: 10px;
 }
-
 /* White Paws - Diagonal from Top Right to Bottom Left */
-.whitepaw.paw1 { top: 5%; right: 10%; }
-.whitepaw.paw2 { top: 15%; right: 20%; }
-.whitepaw.paw3 { top: 25%; right: 30%; }
-.whitepaw.paw4 { top: 35%; right: 40%; }
+.whitepaw1 { 
+  position: absolute;
+  top: -100%; 
+  right: -200%;
+  margin-bottom: 190px;
+  transform: rotate(-10deg);
+  
+ }
+.whitepaw2 { 
+  position: absolute;
+  top: -180%; 
+  right: -200%;
+  margin-bottom: 190px;
+  transform: rotate(-10deg);
+}
+.whitepaw3 { 
+  position: absolute;
+  top: -50%; 
+  right: -130%;
+  margin-bottom: 190px;
+  transform: rotate(-10deg);
+
+ }
+.whitepaw4 { 
+  position: absolute;
+  top: -130%; 
+  right: -130%;
+  margin-bottom: 190px;
+  transform: rotate(-10deg);
+ }
 
 /* Light Gray Paws - Slightly Offset */
-.lgpaw.paw1 { top: 45%; right: 50%; width: 14%; }
-.lgpaw.paw2 { top: 55%; right: 60%; width: 14%; transform: rotate(15deg); }
-.lgpaw.paw3 { top: 65%; right: 70%; width: 14%; transform: rotate(-10deg); }
-.lgpaw.paw4 { top: 75%; right: 80%; width: 14%; }
+.lightgray1 { 
+  position: absolute;
+  top: 0%; 
+  right: -40%;
+  margin-bottom: 190px;
+  transform: scale(0.8);
+  transform: rotate(-10deg);
+  transform: scale(0.8);
+ }
+
+.lightgray2 {
+  position: absolute;
+  top: 50%; 
+  right: 40%;
+  margin-bottom: 190px;
+  transform: scale(0.8);
+  transform: rotate(-10deg);
+  transform: scale(0.8);
+   }
+.lightgray3 {
+  position: absolute;
+  top: -85%; 
+  right: -45%;
+  margin-bottom: 190px;
+  transform: scale(0.8);   
+  transform: rotate(-10deg);
+  transform: scale(0.8); 
+}
+.lightgray4 { 
+  position: absolute;
+  top: -30%; 
+  right: 30%;
+  margin-bottom: 190px;  
+  transform: rotate(20deg);
+  transform: scale(0.8);
+
+ }
 
 /* Gray Paws - More Spread Out */
-.graypaw.paw1 { top: 85%; right: 90%; transform: rotate(20deg); }
-.graypaw.paw2 { top: 95%; right: 100%; transform: rotate(30deg); }
-.graypaw.paw3 { top: 105%; right: 110%; transform: rotate(25deg); }
-.graypaw.paw4 { top: 115%; right: 120%; transform: rotate(15deg); }
+.graypaw1 {
+  position: absolute;
+  top: 120%; 
+  right: 100%;
+  margin-bottom: 190px;
+  transform: rotate(10deg);
+   }
+.graypaw2 { 
+  position: absolute;
+  top: 190%; 
+  right: 320%;
+  margin-bottom: 190px;
+  transform: rotate(50deg);
+ }
+.graypaw3 {
+  position: absolute;
+  top: 120%; 
+  right: 370%;
+  margin-bottom: 190px;
+  transform: rotate(40deg); }
+.graypaw4 { 
+  position: absolute;
+  top: 190%; 
+  right: 440%;
+  margin-bottom: 190px;
+  transform: rotate(50deg);
+ }
 
 /* Black Paws - Bottom Half */
-.blackpaw.paw1 { top: 125%; right: 130%; transform: rotate(45deg); }
-.blackpaw.paw2 { top: 135%; right: 140%; }
-.blackpaw.paw3 { top: 145%; right: 150%; transform: rotate(-15deg); }
-.blackpaw.paw4 { top: 155%; right: 160%; transform: rotate(10deg); }
+.blackpaw1 {
+  position: absolute;
+  top: 100%; 
+  right: 495%;
+  margin-bottom: 190px;
+  transform: rotate(20deg); }
+
+.blackpaw2 { 
+  position: absolute;
+  top: 190%; 
+  right: 550%;
+  margin-bottom: 190px;
+  transform: rotate(10deg);
+ }
+.blackpaw3 {
+  position: absolute;
+  top: 100%; 
+  right: 600%;
+  margin-bottom: 190px;
+  transform: rotate(10deg);
+}
+.blackpaw4 {
+  position: absolute;
+  top: 210%; 
+  right: 670%;
+  margin-bottom: 190px;
+  transform: rotate(10deg);  
+}
+
+
+
+
