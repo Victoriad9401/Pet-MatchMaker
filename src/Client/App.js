@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import WelcomeScreen from "./WelcomeScreen";
-import SignupLogin from "./signuplogin";
-import ForgotPassword from './ForgotPassword'; 
-import Verification from "./Verification";
-import ChangePassword from "./ChangePassword";
-import StartQuiz from "./StartQuiz";
-import TakeQuizAgain from "./TakeQuizAgain";
-import Questions from "./Questions";
-import LeaveQuiz from "./LeaveQuiz";
-import LoadingScreen from "./LoadingScreen";
-import {LoadingProvider } from "./LoadingContext";
-import EndingScreen from "./EndingScreen";
-import UserProfile from "./Userprofile";
+import WelcomeScreen from "../WelcomeScreen";
+import SignupLogin from "../signuplogin";
+import ForgotPassword from '../ForgotPassword'; 
+import Verification from "../Verification";
+import ChangePassword from "../ChangePassword";
+import StartQuiz from "../StartQuiz";
+import TakeQuizAgain from "../TakeQuizAgain";
+import Questions from "../Questions";
+import LeaveQuiz from "../LeaveQuiz";
+import LoadingScreen from "../LoadingScreen";
+import {LoadingProvider } from "../LoadingContext";
+import EndingScreen from "../EndingScreen";
+import UserProfile from "../Userprofile";
+import PetBio from "../PetBio";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
               <Route path="/LoadingScreen" element={<LoadingScreen/>}/>
               <Route path="/EndingScreen" element={<EndingScreen/>}/>
               <Route path="/Userprofile" element={<UserProfile/>}/>
+              <Route path="/PetBio" element={<PetBio/>}/>
           </Routes>
         )}
 
