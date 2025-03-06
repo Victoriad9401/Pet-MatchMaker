@@ -9,23 +9,19 @@ function WelcomeScreen() {
   
     return(
       
-    
-      <div className={styles.splitScreen}> 
-
-     
-      
-         <div className= {styles.welcomescreen}>
+    <div className={styles.splitScreen}> 
+      <div className= {styles.welcomescreen}>
         <div className={styles.leftSide}>
-        <img src="/companylogo.png" alt="logo" className={styles.logo}/>
+          <img src="/companylogo.png" alt="logo" className={styles.logo}/>
           <div className={styles.content}>
-          <h1> Welcome to Pet Matchmaker</h1>
-          <p>Find your perfect furry friend with ease!  Simply take the quiz, match, and adopt—because every pet deserves a loving family.</p>
-       <div className= {styles.buttonContainer}>
-        <button onClick={() => navigate("/auth")}> Sign Up</button>
-        <button  onClick={() => navigate("/auth")}>Log In</button>
+            <h1> Welcome to Pet Matchmaker</h1>
+            <p>Find your perfect furry friend with ease!  Simply take the quiz, match, and adopt—because every pet deserves a loving family.</p>
+            <div className= {styles.buttonContainer}>
+              <button onClick={() => navigate("/auth", { state: { isSignup: true } })}>Sign Up</button>
+              <button onClick={() => navigate("/auth", { state: { isSignup: false } })}>Log In</button>
+          </div>
         </div>
-       </div>
-    </div>
+      </div>
   
         <div className={styles.rightSide}>
           <img src="/welcome dog.png" alt="Welcome Dog" className={styles.AppPuppy}/>

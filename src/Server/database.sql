@@ -2,6 +2,7 @@ CREATE DATABASE petmatchmaker;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY, 
+    name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password TEXT NOT NULL, -- Stores the HASHED password
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP --meta data that may be useful

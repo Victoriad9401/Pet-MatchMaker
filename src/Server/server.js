@@ -5,19 +5,10 @@ const pool = require('./db');
 
 //middleware
 app.use(cors())
+app.use(express.json()) //Anytime a fullstack application needs data from client, we need to use request.body obj
 
-//Anytime a fullstack application needs data from client, we need to use request.body obj
-app.use(express.json())
-
-// Test the database connection
-pool.connect()
-    .then(() => {
-        console.log("Connected to the database successfully!");
-    })
-    .catch((err) => {
-        console.error("Failed to connect to the database:", err);
-    });
-
+// Load ROUTES //
+app.use("/api/auth", require("./routes/authRoutes"));
 
 //start server, and listen to port 5000
 app.listen(5000, () =>{
