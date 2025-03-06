@@ -24,7 +24,6 @@ const SignupLogin = () => {
                 <img className="blackpaw blackpaw-4" src="/black2paw.png" alt="Black2 Paw 4" />
                     <input type="text" placeholder="Name" />
                     <input type="email" placeholder="email" />
-                    <input type="tel" placeholder="Phone Number" />
                     <input type="password" placeholder="Password" />
                     <input type="cpassword" placeholder="Confirm Password" />
                     <button type="button" onClick={() => navigate("/startQuiz")}>Sign Up</button>
