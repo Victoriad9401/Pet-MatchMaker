@@ -6,7 +6,23 @@ const cors = require("cors")
 const pool = require('./db');
 
 //middleware
-app.use(cors())
+const allowedOrigins = [
+    "http://localhost:3000",  // Local frontend
+    "https://pet-matchmaker.up.railway.app"  // Deployed frontend
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true
+}));
+
 app.use(express.json()) //Anytime a fullstack application needs data from client, we need to use request.body obj
 
 // Load ROUTES //
