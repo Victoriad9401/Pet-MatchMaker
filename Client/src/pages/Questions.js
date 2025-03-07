@@ -169,7 +169,7 @@ const questions = [
 
 const Questions = () => {
     const navigate = useNavigate();
-    const { isLoading, setIsLoading } = useContext(LoadingContext);
+    const {setIsLoading } = useContext(LoadingContext);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [answers, setAnswers] = useState({});
