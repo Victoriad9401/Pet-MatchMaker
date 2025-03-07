@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SignupLogin.css"
-import { registerUser, loginUser } from "./api/authService"; //import service functions
+import { registerUser, loginUser } from "../api/authService"; //import service functions
 
 const SignupLogin = () => {
     const location = useLocation();

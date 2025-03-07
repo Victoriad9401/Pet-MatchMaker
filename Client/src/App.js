@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import WelcomeScreen from "./WelcomeScreen";
-import SignupLogin from "./signuplogin";
-import ForgotPassword from './ForgotPassword'; 
-import Verification from "./Verification";
-import ChangePassword from "./ChangePassword";
-import StartQuiz from "./StartQuiz";
-import TakeQuizAgain from "./TakeQuizAgain";
-import Questions from "./Questions";
-import LeaveQuiz from "./LeaveQuiz";
-import LoadingScreen from "./LoadingScreen";
-import {LoadingProvider } from "./LoadingContext";
-import EndingScreen from "./EndingScreen";
-import UserProfile from "./Userprofile";
-import PetBio from "./PetBio";
+import WelcomeScreen from "./pages/WelcomeScreen";
+import SignupLogin from "./pages/signuplogin";
+import ForgotPassword from './pages/ForgotPassword'; 
+import Verification from "./pages/Verification";
+import ChangePassword from "./pages/ChangePassword";
+import StartQuiz from "./pages/StartQuiz";
+import TakeQuizAgain from "./pages/TakeQuizAgain";
+import Questions from "./pages/Questions";
+import LeaveQuiz from "./pages/LeaveQuiz";
+import LoadingScreen from "./pages/LoadingScreen";
+import {LoadingProvider } from "./pages/LoadingContext";
+import EndingScreen from "./pages/EndingScreen";
+import UserProfile from "./pages/Userprofile";
+import PetBio from "./pages/PetBio";
 
 
 function App() {
