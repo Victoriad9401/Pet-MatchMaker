@@ -26,7 +26,7 @@ CREATE TABLE pets(
     breed_primary VARCHAR(100),
     breed_secondary VARCHAR(100),
     mixed BOOLEAN,
-    colors TEXT[],
+    
 
     age VARCHAR(50), -- ex: "Young"
     gender VARCHAR(20), --ex: "Female"
@@ -41,6 +41,7 @@ CREATE TABLE pets(
     photo_full TEXT,  
 
     status VARCHAR(50),  -- ex: "adoptable"
+    
     --Attributes
     spayed_neutered BOOLEAN,  
     house_trained BOOLEAN,  
@@ -50,9 +51,11 @@ CREATE TABLE pets(
     good_with_children BOOLEAN,  
     good_with_dogs BOOLEAN,  
     good_with_cats BOOLEAN, 
-    tags TEXT[], -- ex: "Cute", "Playful", "Affectionate"
-    published_at TIMESTAMP, -- when petfinder listed the pet
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP --Last time the data was updated
+    tags JSONB, -- ex:
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Last time the data was updated
+    color_primary VARCHAR(50),
+    color_secondary VARCHAR(50)
+
 );
 
 CREATE TABLE matches(

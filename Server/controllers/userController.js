@@ -13,7 +13,7 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        // Hash the password
+        // Hash password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -38,13 +38,13 @@ const loginUser = async (req, res) => {
         // Check if user exists in db using their email
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (user.rows.length === 0) {
-            return res.status(400).json({ message: "Invalid credentials" });
+            return res.status(400).json({ message: "Invalid email" });
         }
 
         // Compare input password with the stored hashed password
         const isMatch = await bcrypt.compare(password, user.rows[0].password);
         if (!isMatch) {
-            return res.status(400).json({ message: "Invalid credentials" });
+            return res.status(400).json({ message: "Incorrect password" });
         }
 
         // Generate JWT

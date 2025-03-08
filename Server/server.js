@@ -11,6 +11,7 @@ const allowedOrigins = [
     "https://pet-matchmaker.up.railway.app"  // Deployed frontend
 ];
 
+//Check if request's origin is allowed (defined above).
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -27,6 +28,7 @@ app.use(express.json()) //Anytime a fullstack application needs data from client
 
 // Load ROUTES //
 app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/pets", require("./routes/petRoutes"));
 
 const PORT = process.env.PORT || 5000; // Use Railway's assigned port
 
