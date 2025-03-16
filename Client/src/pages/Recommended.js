@@ -2,11 +2,15 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import{FaHeart} from "react-icons/fa"; //imports hearts
 import styles from "./Recommended.module.css"
+import { Link } from "react-router-dom";
+import PetCard from "./PetCard";
 
 const Recommended = ({ userPreferences }) => {
         const[pets, setPets] = useState([]);
         const[filteredPets, setFilteredPets] = useState([]);
-        const[filter, setFilter] = useState({age: "all", size: "all", breed: "all"});
+        const[filter, setFilter] = useState({age: "all", size: "all", breed: "all", gender:"all", animalType:"all"});
+        const[favorites, setFavorites] = useState([]);
+        const[showFilterOptions, setShowFilterOptions] = useState(false);
 
         useEffect(() => {
             const fetchPets = async ()=>{
@@ -21,6 +25,10 @@ const Recommended = ({ userPreferences }) => {
             fetchPets();
             }, [userPreferences]);
 
+            const toggleFilters =() => {
+                setShowFilterOptions(prev => !prev);
+            };
+
             //Handles Filtering
             const handleFilterChange = (e) =>{
                 const{name, value} = e.target;
@@ -30,17 +38,31 @@ const Recommended = ({ userPreferences }) => {
                 useEffect(() => {
                     let filtered = pets.filter((pet) =>{
                         return (
+                            (filter.animalType === "all" || pet.animal === filter.animal) &&
                             (filter.age === "all" || pet.age === filter.age) &&
                             (filter.size === "all" || pet.size === filter.size) &&
-                            (filter.breed === "all" || pet.age === filter.breed)
+                            (filter.breed === "all" || pet.breed_primary === filter.breed)&&
+                            (filter.gender === "all" || pet.gender === filter.gender)
                         );
                     });
                     setFilteredPets(filtered);
                  }, [filter, pets]);
 
-                 const uniqueAges = [...new Set(pet.map((pet) => pet.age))];
-                 const uniqueSizes = [...new Set(pet.map((pet) => pet.size))];
-                 const uniqueBreeds = [...new Set(pet.map((pet) => pet.breed_primary))];
+                 const uniqueAges = [...new Set(pets.map((pet) => pet.age))];
+                 const uniqueSizes = [...new Set(pets.map((pet) => pet.size))];
+                 const uniqueBreeds = [...new Set(pets.map((pet) => pet.breed_primary))];
+                 const uniqueGenders = [...new Set(pets.map((pet) => pet.gender))];
+                 const uniqueAnimals = ["all", "cat", "dog"];
+
+                 const toggleFavorite =(petId) => {
+                    setFavorites((prevFavorites)=> {
+                        if(prevFavorites.includes(petId)){
+                            return prevFavorites.filter((id)=> id !== petId);
+                        }else{
+                            return[...prevFavorites, petId];
+                        }
+                    });
+                };
 
                  return(
                     
@@ -55,7 +77,7 @@ const Recommended = ({ userPreferences }) => {
                              <img src="/heart.png" alt="heart" className="heart"/>
                              </div>
                         
-                          \
+                          
                              <div className={styles.profile}>
                              <img src="/profile.png" alt="profile" className="profile"/>
                              </div>
@@ -94,31 +116,92 @@ const Recommended = ({ userPreferences }) => {
                             </ul>
                         </nav>
                           </div>
-                          
-
-                    <div className="max-w-5xl mx-auto py-10">
-                        <h2 className="text-3xl font-bold text-center mb-6"> Your Recommended Pets</h2>
+                 <div className={styles.listing}>
+                      <p>Your Recommended Pets: </p>
+                      </div>
+                      
+                      
+                      <div className={styles.filters}>
                     {/*Filter dropdowns*/}
-                    <div className="flex justify0center gap-4 mb-6">
-                            <select name="age" value={filter.age} onChange={handleFilterChange} className="border p-2 rounded-lg">
-                                <option value="all"> All Ages</option>
+                    <div className="mb-6">
+                    <div className="flex justify-center gap-4">
+                     <select
+                         name="All Filters"
+                         onClick={toggleFilters}
+                         className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} >
+                            <option value="all"> All Filters</option>
+                         </select>
+
+                            {showFilterOptions && (<>
+                                <select
+                                    name="animalType"
+                                    value={filter.animalType}
+                                    onChange={handleFilterChange}
+                                    className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`}
+                                    >
+
+                                <option value="all"> Animals</option>
+                                {uniqueAnimals.map((type) => (
+                                  <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
+                                ))}
+
+                            </select>
+
+                            <select 
+                                name="age"
+                                value={filter.age}
+                                onChange={handleFilterChange}
+                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
+                                >
+                                 <option value="all"> Ages</option>
                                 {uniqueAges.map((age) => (
                                   <option key={age} value={age}>{age}</option>
                                 ))}
                             </select>
 
-                            <select name="size" value={filter.size} onChange={handleFilterChange} className="border p-2 rounded-lg">
-                                <option value="all"> All Sizes</option>
-                                {uniqueAges.map((size) => (
+
+                            <select 
+                                name="size"
+                                value={filter.size} 
+                                onChange={handleFilterChange} 
+                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
+                                >
+
+                                <option value="all"> Sizes</option>
+                                {uniqueSizes.map((size) => (
                                   <option key={size} value={size}>{size}</option>
                                 ))}
                             </select>
-                            <select name="breed" value={filter.breed} onChange={handleFilterChange} className="border p-2 rounded-lg">
-                                <option value="all"> All Breeds</option>
-                                {uniqueAges.map((breed) => (
+
+                            <select 
+                                name="breed" 
+                                value={filter.breed} 
+                                onChange={handleFilterChange}
+                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
+                                >
+
+                                <option value="all"> Breeds</option>
+                                {uniqueBreeds.map((breed) => (
                                   <option key={breed} value={breed}>{breed}</option>
                                 ))}
                             </select>
+
+                            <select 
+                                name="gender" 
+                                value={filter.gender} 
+                                onChange={handleFilterChange}
+                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
+                                >
+
+                                <option value="all"> Genders</option>
+                                {uniqueGenders.map((gender) => (
+                                  <option key={gender} value={gender}>{gender}</option>
+                                ))}
+                            </select>
+</>
+                            )}
+                            </div>
+                    </div>
                     </div>
 
                      {/*shows pets*/}
@@ -127,61 +210,38 @@ const Recommended = ({ userPreferences }) => {
                         <div>
                              {/*top3 pets*/}
                              <div className="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {filteredPets.slice(3).map((pet, index) => (
-                                    <PetCard key = {pet.petfinder_id} pet = {pet} rank={index + 1}/>
+                                {filteredPets.slice(0, 3).map((pet, index) => (
+                                    <PetCard
+                                     key = {pet.petfinder_id}
+                                     pet ={pet} 
+                                     rank={index + 1}
+                                     isFavorite={favorites.includes(pet.petfinder_id)}
+                                     toggleFavorite={toggleFavorite}
+                                     />
                                 ))}
                             </div>
+
                             {filteredPets.length > 3 && (
                                 <div>
-                            <h3 className="text-2xl font-semibold text-center text-gray-700 mb-4"> Other Avaible Pets</h3>
-                            <div className="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div className="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredPets.slice(3).map((pet) => (
-                                    <PetCard key = {pet.petfinder_id} pet={pet}/>
+                                    <PetCard 
+                                        key = {pet.petfinder_id} 
+                                        pet={pet}
+                                        isFavorite={favorites.includes(pet.petfinder_id)}
+                                        toggleFavorite={toggleFavorite}
+                                        />
                                 ))}
                          </div>
-                         </div>
+                    </div>
                  )}
-                 </div>
+            </div>
 
                 ) : (
-                    <p className="text-center text-gray-600">No Matching Pets Found try adjusting filters</p>
+                    <p className="text-center text-gray-600">No Matching Pets Found! Try the quiz again</p>
                 )} 
                 </div>
-                </div>
-                );
-            };
-
-const PetCard = ({pet, rank}) => {
-    const[isFavorite, setIsFavorite] = useState(false);
-
-    const toggleFavorite =() => {
-        setIsFavorite(!isFavorite);
-    };
-        return(
-            <div classname = {`relative border p-4 rounded-lg shadow-md ${rank ? "border-yellow-500 bg-yellow-100" : "border-gray-300"}`}>
-
-                <button
-                    onClick={toggleFavorite}
-                    className="absolute top-2 left-2 text-2xl cursor-pointer">
-                        <FaHeart className={isFavorite ? "text-red-500": "text-gray-400"}/>
-                    </button>
-                {/* Rank badge  top 3*/} 
-                {rank && (
-                    <div className="absolute top-2 left-2 bg-yellow-500 text-white font-bold px-3 py-1 rounded-full">
-                        #{rank}
-                        </div>
-                )}
-
-                <img src = {pet.photo_medium || "https://via.placeholder.com/150"} alt = {pet.name} className="v-full h-48 object-cover rounded-mb mb-4"/>
-                <h3 className="text-xl font-semibold text-gray-900">{pet.name}</h3>
-                <p className="text-gray-700">Breed: {pet.breed_primary} {pet.breed_secondary ? `& ${pet.breed_secondary}` : ""}</p>
-                <p className="text-gray-700">Age: {pet.age}</p>
-                <p className="text-gray-700">Size: {pet.Size}</p>
-                <div className="mt-4 flex justify-between">
-                    <button classname="px-4 py-2 bg-blue-500 text-white rounded-lg">More Info</button>
-                    <button classname="px-4 py-2 bg-blue-500 text-white rounded-lg">Adopt</button>
-                </div>
-            </div>
+          
         );
     };
 

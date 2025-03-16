@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 .Favorite{
     background: linear-gradient(to right, #FFE4FD,#E9A5E4 );
     width: 100%; /* Full width of the viewport */
@@ -69,30 +70,32 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.8);
     bottom: 10px;
-    margin-bottom: 690px;  
-    margin-left:570px;
+    margin-bottom: 650px;  
+    margin-left:480px;
     z-index:1 ; 
 }
 .pawHeart2{
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.8);
     bottom: 10px;
-    margin-bottom: 690px;  
-    margin-left:-900px;
+    margin-bottom: 650px;  
+    margin-left:-700px;
     z-index:1 ; 
 }
 
 .container{
-    background-color: #f8f2f217; 
-    border-radius: 15px; /* Rounded corners */
+    background-color: #E48EEA; 
+    border-radius: 20px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 900px;
     margin-top: -600px;
-    height: 100px; /* Limit the width of the container */
+    margin-bottom: -20px; 
+    font-size: 5ex;
+    height: 120px; /* Limit the width of the container */
     text-align: center; /* Center-align text */
     position: absolute; /* Relative positioning */
     z-index: 1;
@@ -102,7 +105,6 @@
     color: white;
     font-family: 'Kavivanar', cursive;
     margin-top: -10px;
-    font-size: 7ex;
     text-align: center;
     text-shadow: 2px 2px #adafb1;
     z-index: 1;
@@ -163,15 +165,23 @@
 
 }
 .listing {
-    background-color: #f8f2f217; 
+    background-color: #e48eea97; 
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 900px;
+    margin-bottom: -400px;
+    margin-right: 1200px;
     margin-top: -600px;
-    height: 100px; /* Limit the width of the container */
+    font-size: 4ex;
+    color: white;
+    font-family: 'Irish Grover', cursive;
+    height: 80px; /* Limit the width of the container */
     text-align: center; /* Center-align text */
     position: absolute; /* Relative positioning */
     z-index: 1;
+}
+.listing p{
+    font-family: 'Irish Grover', cursive;
 }
 .container h1{
     
@@ -183,3 +193,9 @@
     text-shadow: 2px 2px #adafb1;
     z-index: 1;
 } 
+
+.noFavorites p{
+    color: white;
+    font-family: 'Irish Grover', cursive;
+    font-size: 4ex;
+}

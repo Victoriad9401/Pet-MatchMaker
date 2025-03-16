@@ -1,5 +1,5 @@
 .Recommended{
-    background: linear-gradient(to right, #FFE4FD,#E9A5E4 );
+    background: linear-gradient(to bottom, #FFFFFF,#D1DEFF );
     width: 100%; /* Full width of the viewport */
     height: 100%; /* Full height of the viewport */
     position: fixed; /* Fixed position to fill the entire screen */
@@ -69,29 +69,30 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.4);
     bottom: 10px;
-    margin-bottom: 690px;  
-    margin-left:570px;
+    margin-bottom: 720px;  
+    margin-left:610px;
     z-index:1 ; 
 }
 .blue2{
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.5);
     bottom: 10px;
-    margin-bottom: 690px;  
-    margin-left:-900px;
+    margin-bottom: 720px;  
+    margin-left:-1010px;
     z-index:1 ; 
 }
 
 .container{
-    background-color: #f8f2f217; 
+    background-color: #5582F3; 
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 900px;
     margin-top: -600px;
+    font-size: 4ex;
     height: 100px; /* Limit the width of the container */
     text-align: center; /* Center-align text */
     position: absolute; /* Relative positioning */
@@ -102,14 +103,14 @@
     color: white;
     font-family: 'Kavivanar', cursive;
     margin-top: -10px;
-    font-size: 7ex;
+    font-size: 10ex;
     text-align: center;
     text-shadow: 2px 2px #adafb1;
     z-index: 1;
 } 
 
 .RecommendedContainer{
-    background: linear-gradient(to right, #EBC7FF,#FBA0F4 );
+    background: linear-gradient(to right, #BCE5FF,#34B0FF );
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 1600px;
@@ -173,3 +174,77 @@
     text-shadow: 2px 2px #adafb1;
     z-index: 1;
 } 
+
+.listing{
+    background-color: #5582f38a; 
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px; /* Spacing inside the container */
+    max-width: 1000px;
+    margin-bottom: -400px;
+    margin-right: 1200px;
+    margin-top: -600px;
+    font-size: 3.5ex;
+    color: white;
+    font-family: 'Irish Grover', cursive;
+    height: 80px; /* Limit the width of the container */
+    text-align: center; /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+}
+
+.listing p{
+    font-family: 'Irish Grover', cursive;
+}
+
+.filters{
+    margin-right: 1400px;
+    margin-bottom: -250px;
+    max-width: 100px;
+    padding: 10px;
+    gap: 1rem;
+    font-size: 3ex;
+}
+/* Style for filter dropdowns */
+.filterDropdown {
+    border: 2px solid #D1DEFF; /* Blue border color */
+    border-radius: 10px; 
+    padding: 0.5rem 1.5rem;
+    background-color: #D1DEFF;
+    color: #6F94EE; /* Text color */
+    font-family: 'Irish Grover', cursive;
+    font-size: 1em;
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    margin-left: 10px;
+    margin-bottom: 6px;
+    background-size: 0.7em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .filterDropdown:hover {
+    
+    color: #114de7; /* Darker blue on hover */
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+  }
+  
+  .filterDropdown:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.3);
+  }
+  
+  /* Style for active filter */
+  .filterDropdown.active {
+    background-color: #e3f2fd; /* Light blue background */
+    border-color: #D1DEFF; /* Darker blue border */
+  }
+  
+  /* Style dropdown options */
+  .filterDropdown option {
+    padding: 0.5rem;
+    background-color: #D1DEFF;
+    color: #6F94EE;
+    font-family:'Irish Grover', cursive;
+  }

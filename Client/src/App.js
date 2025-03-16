@@ -14,7 +14,8 @@ import {LoadingProvider } from "./pages/LoadingContext";
 import EndingScreen from "./pages/EndingScreen";
 import UserProfile from "./pages/Userprofile";
 import PetBio from "./pages/PetBio";
-
+import Recommended from "./pages/Recommended";
+import Favorite from "./pages/Favorite";
 
 function App() {
   const[isLoading, setIsLoading] = useState(true);
@@ -47,6 +48,8 @@ function App() {
               <Route path="/EndingScreen" element={<EndingScreen/>}/>
               <Route path="/Userprofile" element={<UserProfile/>}/>
               <Route path="/PetBio" element={<PetBio/>}/>
+              <Route path="/Favorite" element={<Favorite/>}/>
+              <Route path="/Recommended" element={<Recommended/>}/>
           </Routes>
         )}
 

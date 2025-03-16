@@ -1,11 +1,26 @@
 import React, {useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Favorite.module.css"
+import PetCard from "./PetCard";
 
 const Favorite =() =>{
     //state to read favorites pets
 
     const[favorites, setFavorites] = useState([]);
+
+    const ToggleFavorite = (pet) =>{
+        if(favorites.some(favPet => favPet.id === pet.id)){
+            setFavorites(prevFavorites => prevFavorites.filter(favPet => favPet.id !== pet.id));
+
+        }
+        else{
+            setFavorites(prevFavorites => [...prevFavorites, pet]);
+        }
+    };
+    const removeFromFavorites =(petId) => {
+        setFavorites(prevFavorites => prevFavorites.filter(pet => pet.id !== petId));
+    };
+
 
 return(
 
@@ -44,7 +59,7 @@ return(
     <nav className={styles.navBar}>
         <ul className={styles.navList}>
             <li>
-                <Link to="/results" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
+            <Link to="/Recommended" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
             </li>
             <li>
                 <Link to="/Userprofile" className={`${styles.navLink} ${styles.navLink2}`}>Profile</Link>
@@ -60,19 +75,28 @@ return(
       </div>
 
        <div className={styles.listing}>
-                      <p>My Favorites</p>
+                      <p>My Favorites: </p>
+                      </div>
 
-
+     <div className={styles.favpets}>
                 {favorites.length === 0 ? (
                     <div className={styles.noFavorites}>
                         <p> No Favorite pets added yet</p>
                         </div>
                 ): (<div className={styles.favoritesList}>
+                    {favorites.map((pet)=>(
+                        <PetCard 
+                         key ={pet.id}
+                         pet={pet} 
+                         isFavorite={true}
+                         onToggleFavorite={ToggleFavorite}
+                         onRemove={removeFromFavorites}
+                          />
+                    ))}
                     </div>
                     )}
               </div>
       </div>
-
     );
 };
 

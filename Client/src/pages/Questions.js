@@ -250,7 +250,7 @@ const Questions = () => {
         try {
             console.log("Submitting answers...", answers);
             await new Promise(resolve => setTimeout(resolve, 2000));
-            navigate("/LoadingScreen");
+            navigate("/Recommended");
         } catch (error) {
             console.error("Submission failed:", error);
         } finally {
