@@ -67,9 +67,31 @@ async function fetchPetFinderPets(){
     }
 }
 
+/*
+: Note, I noticted that petfinder updates profiles by creating a new version without destroying the old. This causes duplicates in our DB
+: I have added the constraint that pets belonging to the same organization, that have the same primary_breed, cannot have the same name.
+
+: Then I updated the refreshPetData function to sort the API Data from oldest to newest. WIth it inserting the oldest first. 
+: Then I ensured that upon a conflict, the current entry's attrbutes in our DB are overwritten if the new respective attributes are not null. 
+: This ensure in the case of duplicates, the old profiles get entered first and are overwritten by the newer profile's updated info. 
+: And that if a new update comes later, the next rerfresh will update accordingly
+
+:Assumption 1: If there is a duplicate profile, the newer published profile has better data. 
+:Assumption 2: If there are duplicate profiles published at the same time, they should not have diffrent data. 
+*/
+
+
 //Function to update the pet data in database
 async function refreshPetData() {
     const petData = await fetchPetFinderPets(); // Fetches pet data from Petfinder
+
+    //Ensure that pet profiles are entered from oldest to newest (because duplicates exist within petfinder)
+    petData.sort((a, b) => new Date(a.published_at) - new Date(b.published_at));
+
+    petData.forEach((pet, index) => {
+        console.log(`[${index + 1}] ${pet.name} - Published At: ${pet.published_at}`);
+    });
+  
 
     for (const pet of petData) {
         try {
@@ -97,7 +119,7 @@ async function refreshPetData() {
                     $26, $27, $28, $29, 
                     $30, DEFAULT
                 )
-                ON CONFLICT (petfinder_id) DO UPDATE SET
+                ON CONFLICT ON CONSTRAINT unique_name_org_breed DO UPDATE SET
                     organization_id = EXCLUDED.organization_id,
                     url = EXCLUDED.url,
                     type = EXCLUDED.type,

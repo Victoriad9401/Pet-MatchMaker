@@ -15,6 +15,9 @@ CREATE TABLE user_questionnaire(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP --meta data that may be useful
 );
 
+-- Constraint: pets belonging to the same organization, that have the same primary_breed, cannot have the same name (Or they will be seen as accidental duplicates)
+--           -Issue: If a pet profile duplicate was created, but the name or primary_breed is changed, the system will have.
+--           -Solution: Angels among us should avoid creating duplicate profiles in petfinder if possible, but if they do avoid changing the duplicate's name OR breed. 
 CREATE TABLE pets(
     id SERIAL PRIMARY KEY, --unique id for the pets in our local database
     petfinder_id INTEGER UNIQUE NOT NULL, --Petfinder API's unique id. Software design princp: promote decoupling from external elements. 
@@ -55,6 +58,10 @@ CREATE TABLE pets(
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Last time the data was updated
     color_primary VARCHAR(50),
     color_secondary VARCHAR(50)
+
+
+    CONSTRAINT unique_name_org_breed UNIQUE (name, organization_id, breed_primary)
+
 
 );
 

@@ -6,7 +6,7 @@ const { fetchPetProfiles } = require("../controllers/petController")
 For testing purposes only! Dont deploy!!!!
 
 **************
-const { refreshPetData, fetchPetProfiles } = require("../controllers/petController");
+const { refreshPetData } = require("../controllers/petController");
 
 //Route to trigger fetching pet data
 router.get("/update", async (req, res) => {
