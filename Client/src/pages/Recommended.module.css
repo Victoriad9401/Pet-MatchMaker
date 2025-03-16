@@ -1,0 +1,250 @@
+.Recommended{
+    background: linear-gradient(to bottom, #FFFFFF,#D1DEFF );
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    position: fixed; /* Fixed position to fill the entire screen */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the text is above other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.containers {
+    position: absolute;
+    bottom: 0;
+    left: 0;    
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* Distribute space around children */
+    align-items: center;
+}
+.quiz{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.27);
+    bottom: 10px;
+    margin-bottom: 559px;  
+    margin-left:  970px;
+    z-index:10 ; 
+}
+.heart{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.29);
+    bottom: 10px;
+    margin-bottom: 569px;  
+    margin-left:  -1050px;
+    z-index:10 ; 
+    
+}
+.profile{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 560px;  
+    margin-left:  -1340px;
+    z-index:10 ; 
+    
+}
+.house{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.3);
+    bottom: 10px;
+    margin-bottom: 570px;  
+    margin-left:  -1570px;
+    z-index:10 ; 
+    
+}
+
+.blue{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.4);
+    bottom: 10px;
+    margin-bottom: 720px;  
+    margin-left:610px;
+    z-index:1 ; 
+}
+.blue2{
+    position: absolute;
+    width: 50px; /* Keep a larger base size */
+    height: 50px;
+    transform: scale(0.5);
+    bottom: 10px;
+    margin-bottom: 720px;  
+    margin-left:-1010px;
+    z-index:1 ; 
+}
+
+.container{
+    background-color: #5582F3; 
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the container */
+    max-width: 900px;
+    margin-top: -600px;
+    font-size: 4ex;
+    height: 100px; /* Limit the width of the container */
+    text-align: center; /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+}
+.container h1{
+    
+    color: white;
+    font-family: 'Kavivanar', cursive;
+    margin-top: -10px;
+    font-size: 10ex;
+    text-align: center;
+    text-shadow: 2px 2px #adafb1;
+    z-index: 1;
+} 
+
+.RecommendedContainer{
+    background: linear-gradient(to right, #BCE5FF,#34B0FF );
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the container */
+    max-width: 1600px;
+    width: 1700px;
+    max-height: 10px;
+    margin: 50px;
+    margin-top: -350px;
+    height: 100px; /* Limit the width of the container */
+    /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+}
+.navList{
+    position: relative;
+    list-style: none;
+    display: flex;
+    font-weight: bold;
+    gap: 20px;
+    margin: -10px;
+    padding: 10px 20px;
+    display: block;
+    display: flex;
+    margin-left: 50px;
+    margin-top: -20px;
+    
+}
+.navLink {
+    font-family: 'Poppins', sans-serif; /* Use the imported font */
+    color: white; /* Text color for the links */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for the links */
+    padding: 5px 10px; /* Padding inside the links */
+    border-radius: 5px; /* Rounded corners */
+    text-shadow: 2px 2px #6d747d;
+}
+.navLink1{
+
+}
+.navLink2{
+ 
+    margin-left: 20px;
+}
+.navLink3{
+    margin-left: 30px;
+}
+.navLink4{
+    margin-bottom: 12px;
+    bottom: 12px;
+   
+    margin-left: 900px;
+
+}
+
+.container h1{
+    
+    color: white;
+    font-family: 'Kavivanar', cursive;
+    margin-top: -10px;
+    font-size: 4ex;
+    text-align: center;
+    text-shadow: 2px 2px #adafb1;
+    z-index: 1;
+} 
+
+.listing{
+    background-color: #5582f38a; 
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px; /* Spacing inside the container */
+    max-width: 1000px;
+    margin-bottom: -400px;
+    margin-right: 1200px;
+    margin-top: -600px;
+    font-size: 3.5ex;
+    color: white;
+    font-family: 'Irish Grover', cursive;
+    height: 80px; /* Limit the width of the container */
+    text-align: center; /* Center-align text */
+    position: absolute; /* Relative positioning */
+    z-index: 1;
+}
+
+.listing p{
+    font-family: 'Irish Grover', cursive;
+}
+
+.filters{
+    margin-right: 1400px;
+    margin-bottom: -250px;
+    max-width: 100px;
+    padding: 10px;
+    gap: 1rem;
+    font-size: 3ex;
+}
+/* Style for filter dropdowns */
+.filterDropdown {
+    border: 2px solid #D1DEFF; /* Blue border color */
+    border-radius: 10px; 
+    padding: 0.5rem 1.5rem;
+    background-color: #D1DEFF;
+    color: #6F94EE; /* Text color */
+    font-family: 'Irish Grover', cursive;
+    font-size: 1em;
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    margin-left: 10px;
+    margin-bottom: 6px;
+    background-size: 0.7em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .filterDropdown:hover {
+    
+    color: #114de7; /* Darker blue on hover */
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+  }
+  
+  .filterDropdown:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.3);
+  }
+  
+  /* Style for active filter */
+  .filterDropdown.active {
+    background-color: #e3f2fd; /* Light blue background */
+    border-color: #D1DEFF; /* Darker blue border */
+  }
+  
+  /* Style dropdown options */
+  .filterDropdown option {
+    padding: 0.5rem;
+    background-color: #D1DEFF;
+    color: #6F94EE;
+    font-family:'Irish Grover', cursive;
+  }
