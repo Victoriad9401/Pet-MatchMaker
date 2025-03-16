@@ -28,7 +28,7 @@ router.get("/petProfiles", async (req, res) => {
         res.json(petProfiles);
         
     } catch (error) {
-        console.error("Error getting pet data:", error);
+        console.error("Error fetching pet data:", error);
         res.status(500).json({ error: "Failed to fetch pet profiles" });
     }
 });
