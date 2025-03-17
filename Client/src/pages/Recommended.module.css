@@ -196,14 +196,22 @@
     font-family: 'Irish Grover', cursive;
 }
 
-.filters{
-    margin-right: 1400px;
-    margin-bottom: -250px;
-    max-width: 100px;
-    padding: 10px;
+.filters {
+    position: absolute;
+    top: 250px; /* Adjust based on your layout */
+    right: 50px;
+    z-index: 10; /* Ensure it's above other elements */
+  }
+  
+  .filterRow {
+    display: flex;
     gap: 1rem;
-    font-size: 3ex;
-}
+    align-items: center;
+
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+  
+  }
 /* Style for filter dropdowns */
 .filterDropdown {
     border: 2px solid #D1DEFF; /* Blue border color */
@@ -217,11 +225,11 @@
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.5rem center;
-    margin-left: 10px;
-    margin-bottom: 6px;
     background-size: 0.7em;
     cursor: pointer;
     transition: all 0.2s ease;
+    flex-shrink: 0;
+    min-width: 150px;
   }
   
   .filterDropdown:hover {

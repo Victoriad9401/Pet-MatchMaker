@@ -1,4 +1,5 @@
 import {FaHeart} from "react-icons/fa"
+import styles from './PetCard.module.css';
 
 const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
     const handleToggleFavorite = () =>{
@@ -13,34 +14,39 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
 
     return(
 
-            <div classname = {`relative border p-4 rounded-lg shadow-md ${rank ? "border-yellow-500 bg-yellow-100" : "border-gray-300"}`}>
+            <div className = {`{styles.pet-card} ${rank ? styles.ranked : ''}`}>
                 {/*Favorite Button*/}
 
                 <button
                     onClick={ handleToggleFavorite}
-                    className="absolute top-2 left-2 text-2xl cursor-pointer">
-
-                        <FaHeart className={isFavorite ? "text-red-500": "text-gray-400"}/>
+                    className={styles.favoriteBtn}
+                    >
+                        <FaHeart className={isFavorite ? styles.favoriteActive : styles.favoriteInactive}/>
                     </button>
 
                 {/* Rank badge  top 3*/} 
                 {rank && (
-                    <div className="absolute top-2 left-2 bg-yellow-500 text-white font-bold px-3 py-1 rounded-full">
+                    <div className= {styles.rankBadge}>
                         #{rank}
                     </div>
                 )}
 
                 {/*Pet Image */} 
-                <img src = {pet.photo_medium || "https://via.placeholder.com/150"} alt={pet.name} className="v-full h-48 object-cover rounded-mb mb-4"/>
+                <img 
+                    src = {pet.photo_medium || "https://via.placeholder.com/150"}
+                    alt={pet.name}
+                    className={styles.petImage}
+                    />
 
                 {/* Pet info */} 
-                <h3 className="text-xl font-semibold text-gray-900">{pet.name}</h3>
-                <p className="text-gray-700">Breed: {pet.breed_primary} {pet.breed_secondary ? `& ${pet.breed_secondary}` : ""}</p>
+                <h3 className={styles.petName}>{pet.name}</h3>
+                <p className={styles.petBreed}>
+                    Breed: {pet.breed_primary} {pet.breed_secondary ? `& ${pet.breed_secondary}` : ""}</p>
                 
                   {/* Buttons */} 
-                <div className="mt-4 flex justify-between">
-                    <button onClick={() => onMoreInfo(pet)} className="px-4 py-2 bg-blue-500 text-white rounded-lg">More Info</button>
-                    <button onClick={() => onAdopt(pet)} className="px-4 py-2 bg-blue-500 text-white rounded-lg">Adopt</button>
+                <div className={styles.buttonGroup}>
+                    <button onClick={() => onMoreInfo(pet)} className={styles.infoBtn}>More Info</button>
+                    <button onClick={() => onAdopt(pet)} className={styles.adoptBtn}>Adopt</button>
                 </div>
             </div>
         );

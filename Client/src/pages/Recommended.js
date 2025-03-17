@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import{FaHeart} from "react-icons/fa"; //imports hearts
 import styles from "./Recommended.module.css"
 import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
@@ -16,6 +15,7 @@ const Recommended = ({ userPreferences }) => {
             const fetchPets = async ()=>{
                 try{
                     const response = await axios.post("/api/pets/match", userPreferences);
+                    console.log("Fetched pets:", response.data.pets);
                     setPets(response.data.pets);
                     setFilteredPets(response.data.pets);
                  }catch(error){
@@ -29,16 +29,17 @@ const Recommended = ({ userPreferences }) => {
                 setShowFilterOptions(prev => !prev);
             };
 
+
             //Handles Filtering
             const handleFilterChange = (e) =>{
-                const{name, value} = e.target;
+                const{ name, value } = e.target;
                 setFilter((prev) => ({ ...prev, [name]: value}));
                 };
 
                 useEffect(() => {
                     let filtered = pets.filter((pet) =>{
                         return (
-                            (filter.animalType === "all" || pet.animal === filter.animal) &&
+                            (filter.animalType === "all" || pet.animalType === filter.animalType) &&
                             (filter.age === "all" || pet.age === filter.age) &&
                             (filter.size === "all" || pet.size === filter.size) &&
                             (filter.breed === "all" || pet.breed_primary === filter.breed)&&
@@ -54,7 +55,7 @@ const Recommended = ({ userPreferences }) => {
                  const uniqueGenders = [...new Set(pets.map((pet) => pet.gender))];
                  const uniqueAnimals = ["all", "cat", "dog"];
 
-                 const toggleFavorite =(petId) => {
+                 const toggleFavorite = (petId) => {
                     setFavorites((prevFavorites)=> {
                         if(prevFavorites.includes(petId)){
                             return prevFavorites.filter((id)=> id !== petId);
@@ -96,7 +97,8 @@ const Recommended = ({ userPreferences }) => {
                     </div>
                     
                         <div className={styles.container}>
-                        <h1> Recommended Pets</h1></div>
+                        <h1> Recommended Pets</h1>
+                        </div>
                         <div className={styles.RecommendedContainer}>
                         {/* Navigation Bar */}
                         <nav className={styles.navBar}>
@@ -120,10 +122,10 @@ const Recommended = ({ userPreferences }) => {
                       <p>Your Recommended Pets: </p>
                       </div>
                       
-                      
                       <div className={styles.filters}>
+                      <div className={styles.filterRow}>
                     {/*Filter dropdowns*/}
-                    <div className="mb-6">
+                    <div className="relative mb-6">
                     <div className="flex justify-center gap-4">
                      <select
                          name="All Filters"
@@ -201,6 +203,7 @@ const Recommended = ({ userPreferences }) => {
 </>
                             )}
                             </div>
+                    </div>
                     </div>
                     </div>
 
