@@ -1,7 +1,10 @@
 import {FaHeart} from "react-icons/fa"
 import styles from './PetCard.module.css';
+import { useNavigate} from "react-router-dom";
 
 const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
+    const navigate=useNavigate();
+
     const handleToggleFavorite = () =>{
         if(isFavorite){
             onRemove(pet.id);
@@ -14,7 +17,7 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
 
     return(
 
-            <div className = {`{styles.pet-card} ${rank ? styles.ranked : ''}`}>
+            <div className = {`{styles.petCard} ${rank ? styles.ranked : ''}`}>
                 {/*Favorite Button*/}
 
                 <button
@@ -45,8 +48,8 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
                 
                   {/* Buttons */} 
                 <div className={styles.buttonGroup}>
-                    <button onClick={() => onMoreInfo(pet)} className={styles.infoBtn}>More Info</button>
-                    <button onClick={() => onAdopt(pet)} className={styles.adoptBtn}>Adopt</button>
+                    <button onClick={() => navigate('/')} className={styles.infoBtn}>More Info</button>
+                    <button onClick={() => navigate('/EndingScreen')} className={styles.adoptBtn}>Adopt</button>
                 </div>
             </div>
         );

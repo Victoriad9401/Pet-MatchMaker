@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import styles from "./Recommended.module.css"
 import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
+import { fetchPetProfiles } from "../api/petService";
+
 
 const Recommended = ({ userPreferences }) => {
         const[pets, setPets] = useState([]);
@@ -10,16 +11,21 @@ const Recommended = ({ userPreferences }) => {
         const[filter, setFilter] = useState({age: "all", size: "all", breed: "all", gender:"all", animalType:"all"});
         const[favorites, setFavorites] = useState([]);
         const[showFilterOptions, setShowFilterOptions] = useState(false);
+        const [loading, setLoading] = useState(true);
 
+        //Handles api
         useEffect(() => {
             const fetchPets = async ()=>{
                 try{
-                    const response = await axios.post("/api/pets/match", userPreferences);
-                    console.log("Fetched pets:", response.data.pets);
-                    setPets(response.data.pets);
-                    setFilteredPets(response.data.pets);
+                    setLoading(true);
+                    const petsData = await fetchPetProfiles(userPreferences);
+                    console.log(petsData);
+                    setPets(petsData);
+                    setFilteredPets(petsData);
                  }catch(error){
-                    console.error("Error fetching matched pets", error);
+                    console.error("Error Fetching Pets: ", error);
+                 }finally{
+                    setLoading(false);
                  }
             };
             fetchPets();
@@ -121,10 +127,11 @@ const Recommended = ({ userPreferences }) => {
                  <div className={styles.listing}>
                       <p>Your Recommended Pets: </p>
                       </div>
-                      
+
+
+                        {/*Filter dropdowns*/}
                       <div className={styles.filters}>
                       <div className={styles.filterRow}>
-                    {/*Filter dropdowns*/}
                     <div className="relative mb-6">
                     <div className="flex justify-center gap-4">
                      <select
@@ -207,12 +214,21 @@ const Recommended = ({ userPreferences }) => {
                     </div>
                     </div>
 
+
+                      {/*Loading*/}
+                     {loading ? (
+                        <div className={styles.loading}>
+                            <p>Loading Recommended pets...</p>
+                            </div>
+                     ):(
+                        <> 
+
                      {/*shows pets*/}
 
                      {filteredPets.length > 0 ?(
                         <div>
-                             {/*top3 pets*/}
-                             <div className="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             {/*top 3 pets*/}
+                             <div className={styles.petcontainers}>
                                 {filteredPets.slice(0, 3).map((pet, index) => (
                                     <PetCard
                                      key = {pet.petfinder_id}
@@ -226,7 +242,7 @@ const Recommended = ({ userPreferences }) => {
 
                             {filteredPets.length > 3 && (
                                 <div>
-                             <div className="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div className={styles.petcontainer}>
                                 {filteredPets.slice(3).map((pet) => (
                                     <PetCard 
                                         key = {pet.petfinder_id} 
@@ -243,8 +259,11 @@ const Recommended = ({ userPreferences }) => {
                 ) : (
                     <p className="text-center text-gray-600">No Matching Pets Found! Try the quiz again</p>
                 )} 
+                 </>
+            )}
+            
                 </div>
-          
+           
         );
     };
 

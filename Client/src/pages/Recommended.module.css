@@ -1,7 +1,7 @@
 .Recommended{
     background: linear-gradient(to bottom, #FFFFFF,#D1DEFF );
     width: 100%; /* Full width of the viewport */
-    height: 100%; /* Full height of the viewport */
+    height: 100vh; /* Full height of the viewport */
     position: fixed; /* Fixed position to fill the entire screen */
     top: 0;
     left: 0;
@@ -10,6 +10,8 @@
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .containers {
@@ -27,7 +29,7 @@
     height: 50px;
     transform: scale(0.27);
     bottom: 10px;
-    margin-bottom: 559px;  
+    margin-bottom: 550px;  
     margin-left:  970px;
     z-index:10 ; 
 }
@@ -37,7 +39,7 @@
     height: 50px;
     transform: scale(0.29);
     bottom: 10px;
-    margin-bottom: 569px;  
+    margin-bottom: 560px;  
     margin-left:  -1050px;
     z-index:10 ; 
     
@@ -48,7 +50,7 @@
     height: 50px;
     transform: scale(0.3);
     bottom: 10px;
-    margin-bottom: 560px;  
+    margin-bottom: 555px;  
     margin-left:  -1340px;
     z-index:10 ; 
     
@@ -59,7 +61,7 @@
     height: 50px;
     transform: scale(0.3);
     bottom: 10px;
-    margin-bottom: 570px;  
+    margin-bottom: 560px;  
     margin-left:  -1570px;
     z-index:10 ; 
     
@@ -71,7 +73,7 @@
     height: 50px;
     transform: scale(0.4);
     bottom: 10px;
-    margin-bottom: 720px;  
+    margin-bottom: 690px;  
     margin-left:610px;
     z-index:1 ; 
 }
@@ -81,7 +83,7 @@
     height: 50px;
     transform: scale(0.5);
     bottom: 10px;
-    margin-bottom: 720px;  
+    margin-bottom: 690px;  
     margin-left:-1010px;
     z-index:1 ; 
 }
@@ -91,7 +93,7 @@
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Spacing inside the container */
     max-width: 900px;
-    margin-top: -600px;
+    margin-top: -550px;
     font-size: 4ex;
     height: 100px; /* Limit the width of the container */
     text-align: center; /* Center-align text */
@@ -255,4 +257,40 @@
     background-color: #D1DEFF;
     color: #6F94EE;
     font-family:'Irish Grover', cursive;
+  }
+
+ .petcontainer {
+    display: flex;
+    gap: 2rem;
+    overflow-x: hidden; /* Allows horizontal scrolling if needed */
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    margin-top: 50px;
+ 
+  }
+  
+  /* Optional: Add scroll snap for better mobile experience */
+  .petcontainer {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .petcontainers {
+    display: flex;
+    gap: 2rem;
+    overflow-x: hidden; /* Allows horizontal scrolling if needed */
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    margin-top: 850px;
+ 
+  }
+  
+  /* Optional: Add scroll snap for better mobile experience */
+  .petcontainers {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
