@@ -42,12 +42,12 @@
 
 
 .pcontainer{
-    background-color: #C1E4F9;
+    background-color: #b0c3f3;
     width: 30%;
     height: 70%;
     bottom: 200px;
     right: 530px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 10px 5px #929292a3;
     position: absolute;
 
@@ -55,20 +55,20 @@
 }
 .pcontainer h3{
     font-family: 'poppins', sans-serif;
-    color: #0AA4EB;
+    color: #4679fa;
     font-size: 4ex;
-    margin-left: 100px;
-    text-shadow: 5px 5px #A7D3E7;
+    margin-left: 120px;
+    text-shadow: 2px 4px #9cabd0;
 
   
 
 }
 .pcontainer p{
     font-family: 'Pompiere', sans-serif;
-    color: #0AA4EB;
-    font-size:3ex;
-    margin-left: 160px;
-    text-shadow: 0px 2px #A7D3E7;  
+    color: #6181d2;
+    font-size:3.5ex;
+    margin-left: 180px;
+    text-shadow: 0px 2px #9eade9;  
 
 }
 .petImage{
@@ -95,7 +95,7 @@
 
 .acontainer{
 
-    background: linear-gradient(to right, #3880fd,#6c9ff8 );
+    background: linear-gradient(to right, #4678f8,#628aee );
     width:3%;
     height: 30%;
     bottom: 230px;
@@ -114,15 +114,15 @@
   }
 .acontainer p{
     font-family:'Purple Purse', cursive ;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.5ex;
     margin-left: 40px;
     margin-top: 20px;
-    text-shadow: 0px 0px #000000;
+    
     
 }
 .sexcontainer{
-    background: linear-gradient(to right, #6c9ff8,#71BCFE );
+    background: linear-gradient(to right, #628aee,#87a6f5 );
     width:3%;
     height: 30%;
     bottom: 230px;
@@ -144,16 +144,16 @@
 
   .sexcontainer p{
     font-family:'Purple Purse', cursive ;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 2.5ex;
-      margin-left: 40px;
+      margin-left: 45px;
       margin-top: 15px;
-      text-shadow: 0px 0px #00000041;
+    
       
   }
 
 .scontainer{
-    background: linear-gradient(to right, #71BCFE,#acd8ff );
+    background: linear-gradient(to right, #8ca6e9,#c4d2f6 );
     width:3%;
     height: 30%;
     bottom: 230px;
@@ -174,16 +174,16 @@
   }
   .scontainer p{
     font-family:'Purple Purse', cursive ;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 2.5ex;
-      margin-left: 30px;
+      margin-left: 40px;
       margin-top: 20px;
-      text-shadow: 0px 0px #00000041;
+    
       
   }
 
 .percontainer{
-    background: linear-gradient(to right, #8AC8FF,#bde2ff );
+    background: linear-gradient(to right, #c4d2f6,#e8ecf5 );
     width:3%;
     height: 30%;
     bottom: 230px;
@@ -212,7 +212,7 @@
   }
 
 .infocontainer{
-    background-color: #d9e4eb6a;
+    background-color: #e8ecf5;
     width:20%;
     height: 45%;
     bottom: 30px;
@@ -224,8 +224,8 @@
 
 }
 .infocontainer h3{
-    color: #0E8ED3;
-    text-shadow: 0px 2px #8FCCF2;
+    color: #4679fa;
+    text-shadow: 0px 2px #c5cbda;
     font-family:'Prata', serif ;
     font-weight: 100;
       font-size: 3ex;
@@ -243,6 +243,7 @@
       
   }
   .adoptButton{
+    background-color: #628df9;
     position: relative;
     font-size: 3ex;
     border-radius: 80px;
@@ -257,6 +258,7 @@
   }
 
   .favoriteButton{
+    background-color: #628df9;
     position: relative;
     right: -1100px;
     bottom:240px;
@@ -267,8 +269,9 @@
     
   }
   .favoritebutton:hover{
-
-  }
+    color: #628df9;
+}
+  
 
 
 
@@ -280,15 +283,18 @@
     margin-left: -290px;
     z-index: 10;
     cursor: pointer;
-    color: #76B9E3;
+    color: #628df9;
+    
     
     
 }
 .bbutton:hover{
-    color: #178fdb;
+    color: #628df9;
 }
 
 .bbutton svg{
+    
     display: block;
     color: white;
+    
 }
