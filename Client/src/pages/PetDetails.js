@@ -1,9 +1,9 @@
 import {FaHeart} from "react-icons/fa"
 import styles from './PetDetails.module.css';
-import { useNavigate} from "react-router-dom";
 
-const PetDetails = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
-    const navigate=useNavigate();
+
+const PetDetails = ({pet, rank, isFavorite, onToggleFavorite,onRemove}) => {
+
 
     const handleToggleFavorite = () =>{
         if(isFavorite){
@@ -14,9 +14,7 @@ const PetDetails = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorit
              }
     };
 
-    const handleMoreInfo =() =>{
-        navigate('/PetBio', {state: {pet}});
-    }
+  
   
 
     return(
