@@ -159,7 +159,7 @@ const questions = [
         options: ["Hiking", "Running", "Cuddling", "Napping", "Other"],
     },
     {
-        page: 7,
+        page: 8,
         question: "Is there anything else you’d like us to know about your home, lifestyle, or expectations for your future pet?",
         name: "additionalInfo",
         type: "textarea",

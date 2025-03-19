@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pompiere&family=Purple+Purse&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+.petBio{
+  
+  
+ 
+}
+.container{
+    position: relative;
+  background-color: #94ceef;
+    width: 100%;
+    height: 90%;
+    margin-right: 1000px;
+    z-index: 1;
+
+}
+
+.paw{
+    
+    position: absolute;
+    width: 100%;
+    display: flex;
+    left: -460px;
+    top:-60px;
+    transform: scale(0.5);
+    padding: 20px;
+    
+}
+
+.paw2{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    right: -1200px;
+    top:218px;
+    transform: rotate(30deg);
+    transform: scale(1);
+
+}
+
+
+
+.pcontainer{
+    background-color: #C1E4F9;
+    width: 30%;
+    height: 70%;
+    bottom: 200px;
+    right: 530px;
+    border-radius: 20px;
+    box-shadow: 10px 5px #929292a3;
+    position: absolute;
+
+   
+}
+.pcontainer h3{
+    font-family: 'poppins', sans-serif;
+    color: #0AA4EB;
+    font-size: 4ex;
+    margin-left: 100px;
+    text-shadow: 5px 5px #A7D3E7;
+
+  
+
+}
+.pcontainer p{
+    font-family: 'Pompiere', sans-serif;
+    color: #0AA4EB;
+    font-size:3ex;
+    margin-left: 160px;
+    text-shadow: 0px 2px #A7D3E7;  
+
+}
+.petImage{
+    width: 40%;
+    height: 300px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    margin-left: 140px;
+
+
+}
+
+.bcontainer{
+    background-color: #F9FFFF;
+    width: 300%;
+    height: 50%;
+    right: -10px;
+    bottom: -30px;
+    border-radius: 40px;
+    position: absolute;
+    box-shadow: 10px 5px #929292a3;
+    z-index: 10;
+}
+
+.acontainer{
+
+    background: linear-gradient(to right, #3880fd,#6c9ff8 );
+    width:3%;
+    height: 30%;
+    bottom: 230px;
+    right:1350px ;
+    border-radius: 10px;
+    box-shadow: 10px 5px #00000041;
+    position: absolute;
+    z-index: 10;
+
+}
+.acontainer h3{
+    font-family:'Prata', serif ;
+    font-weight: 100;
+      font-size: 2.5ex;
+      margin-left: 48px;
+  }
+.acontainer p{
+    font-family:'Purple Purse', cursive ;
+    font-weight: 600;
+    font-size: 2.5ex;
+    margin-left: 40px;
+    margin-top: 20px;
+    text-shadow: 0px 0px #000000;
+    
+}
+.sexcontainer{
+    background: linear-gradient(to right, #6c9ff8,#71BCFE );
+    width:3%;
+    height: 30%;
+    bottom: 230px;
+    right:1150px ;
+    border-radius: 10px;
+    box-shadow: 10px 5px #00000041;
+    position: absolute;
+    z-index: 10;
+
+}
+
+.sexcontainer h3{
+    font-family:'Prata', serif ;
+    font-weight: 100;
+      font-size: 2.5ex;
+      margin-left: 48px;
+      padding: 1%;
+  }
+
+  .sexcontainer p{
+    font-family:'Purple Purse', cursive ;
+      font-weight: 600;
+      font-size: 2.5ex;
+      margin-left: 40px;
+      margin-top: 15px;
+      text-shadow: 0px 0px #00000041;
+      
+  }
+
+.scontainer{
+    background: linear-gradient(to right, #71BCFE,#acd8ff );
+    width:3%;
+    height: 30%;
+    bottom: 230px;
+    right:950px ;
+    border-radius: 10px;
+    box-shadow: 10px 5px #00000029;
+    position: absolute;
+    z-index: 10;
+
+
+}
+
+.scontainer h3{
+    font-family:'Prata', serif ;
+      font-weight: 100;
+      font-size: 2.5ex;
+      margin-left: 48px;
+  }
+  .scontainer p{
+    font-family:'Purple Purse', cursive ;
+      font-weight: 600;
+      font-size: 2.5ex;
+      margin-left: 30px;
+      margin-top: 20px;
+      text-shadow: 0px 0px #00000041;
+      
+  }
+
+.percontainer{
+    background: linear-gradient(to right, #8AC8FF,#bde2ff );
+    width:3%;
+    height: 30%;
+    bottom: 230px;
+    right:750px ;
+    border-radius: 10px;
+    box-shadow: 10px 5px #00000041;
+    position: absolute;
+    z-index: 10;
+}
+
+.percontainer h3{
+    font-family:'Prata', serif ;
+    font-weight: 100;
+      font-size: 2.3ex;
+      margin-top: 1px;
+      margin-left: 16px;
+  }
+  .percontainer p{
+    font-family:'Purple Purse', cursive ;
+      font-weight: 600;
+      font-size: 2.5ex;
+      margin-left: 40px;
+      margin-top: 9px;
+      text-shadow: 0px 0px #00000041;
+      
+  }
+
+.infocontainer{
+    background-color: #d9e4eb6a;
+    width:20%;
+    height: 45%;
+    bottom: 30px;
+    right:600px ;
+    border-radius: 10px;
+    box-shadow: 10px 5px #00000041;
+    position: absolute;
+    z-index: 10;
+
+}
+.infocontainer h3{
+    color: #0E8ED3;
+    text-shadow: 0px 2px #8FCCF2;
+    font-family:'Prata', serif ;
+    font-weight: 100;
+      font-size: 3ex;
+      margin-top: -30px;
+      margin-left: 16px;
+  }
+
+.infocontainer p{
+    font-family:'Preahvihear', sans-serif ;
+      font-weight: 600;
+      font-size: 2ex;
+      margin-left: 40px;
+      margin-top: 9px;
+      text-shadow: 0px 0px #00000041;
+      
+  }
+  .adoptButton{
+    position: relative;
+    font-size: 3ex;
+    border-radius: 80px;
+    width: 20%;
+    font-family: 'Preahvihear', sans-serif;
+    font-weight: 600;
+   right: -1250px;
+   bottom: 30px;
+   color: white;
+   box-shadow: 6px 5px #929292a3;
+
+  }
+
+  .favoriteButton{
+    position: relative;
+    right: -1100px;
+    bottom:240px;
+    border-radius: 50px;
+    font-size: 0.5ex;
+    box-shadow: 6px 3px #929292a3;
+   
+    
+  }
+  .favoritebutton:hover{
+
+  }
+
+
+
+.bbutton{
+    position: absolute;
+    top: 10px;
+    font-size: 0.1ex;
+    border-radius: 100px;
+    margin-left: -290px;
+    z-index: 10;
+    cursor: pointer;
+    color: #76B9E3;
+    
+    
+}
+.bbutton:hover{
+    color: #178fdb;
+}
+
+.bbutton svg{
+    display: block;
+    color: white;
+}

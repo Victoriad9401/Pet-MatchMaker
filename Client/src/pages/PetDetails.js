@@ -1,8 +1,8 @@
 import {FaHeart} from "react-icons/fa"
-import styles from './PetCard.module.css';
+import styles from './PetDetails.module.css';
 import { useNavigate} from "react-router-dom";
 
-const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
+const PetDetails = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
     const navigate=useNavigate();
 
     const handleToggleFavorite = () =>{
@@ -17,10 +17,6 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
     const handleMoreInfo =() =>{
         navigate('/PetBio', {state: {pet}});
     }
-
-    const handleAdopt = () => {
-        navigate("/EndingScreen", {state: {petType: pet.species}})
-    };
   
 
     return(
@@ -50,18 +46,9 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
                     className={styles.petImage}
                     />
 
-                {/* Pet info */} 
-                <h3 className={styles.petName}>{pet.name}</h3>
-                <p className={styles.petBreed}>
-                     {pet.breed_primary} {pet.breed_secondary ? `& ${pet.breed_secondary}` : ""}</p>
-                
-                  {/* Buttons */} 
-                <div className={styles.buttonGroup}>
-                    <button onClick={handleMoreInfo} className={styles.infoBtn}>More Info</button>
-                    <button onClick={handleAdopt} className={styles.adoptBtn}>Adopt</button>
-                </div>
+               
             </div>
         );
     };
 
-    export default PetCard;
+    export default PetDetails;

@@ -8,8 +8,8 @@ const EndingScreen = () =>{
     const petType = location.state?.petType || "default";
 
 const adoptionLinks = {
-    dog: "https://angelsrescue.org/adoption-form-dog/",
-    cat: "https://angelsrescue.org/adoption-form-cat/"
+    Dog: "https://angelsrescue.org/adoption-form-dog/",
+    Cat: "https://angelsrescue.org/adoption-form-cat/"
 };
 
 
@@ -44,7 +44,7 @@ const adoptionLinks = {
         <p>Continue the adoption process by clicking "Continue" Or keep looking for new Friends!</p>
         
     <div className={styles.buttonContainer}>
-        <button type="button" onClick={() => navigate("/")}>Go back</button>
+        <button type="button" onClick={() => navigate("/Recommended")}>Go back</button>
         <button type="button" onClick={handleContinue}> Continue</button>
         </div>
         

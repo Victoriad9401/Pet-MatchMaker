@@ -147,6 +147,9 @@
     padding: 5px 10px; /* Padding inside the links */
     border-radius: 5px; /* Rounded corners */
     text-shadow: 2px 2px #6d747d;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 .navLink1{
 
@@ -154,14 +157,15 @@
 .navLink2{
  
     margin-left: 20px;
+    position: relative;
+    z-index: 2;
 }
 .navLink3{
     margin-left: 30px;
 }
 .navLink4{
     margin-bottom: 12px;
-    bottom: 12px;
-   
+    bottom: 1px;
     margin-left: 900px;
 
 }

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import styles from "./Recommended.module.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PetCard from "./PetCard";
 import { fetchPetProfiles } from "../api/petService";
+
 
 
 const Recommended = ({ userPreferences }) => {
@@ -12,6 +13,12 @@ const Recommended = ({ userPreferences }) => {
         const[favorites, setFavorites] = useState([]);
         const[showFilterOptions, setShowFilterOptions] = useState(false);
         const [loading, setLoading] = useState(true);
+
+        const navigate = useNavigate();
+        const handleMoreInfo = (pet) =>{
+            navigate("/PetBio", {state: {pet} });
+        };
+
 
         //Handles api
         useEffect(() => {
@@ -110,7 +117,7 @@ const Recommended = ({ userPreferences }) => {
                         <nav className={styles.navBar}>
                             <ul className={styles.navList}>
                                 <li>
-                                    <Link to="/results" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
+                                    <Link to="/Recommended" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
                                 </li>
                                 <li>
                                     <Link to="/Userprofile" className={`${styles.navLink} ${styles.navLink2}`}>Profile</Link>
@@ -236,6 +243,7 @@ const Recommended = ({ userPreferences }) => {
                                      rank={index + 1}
                                      isFavorite={favorites.includes(pet.petfinder_id)}
                                      toggleFavorite={toggleFavorite}
+                                     onMoreInfo={handleMoreInfo}
                                      />
                                 ))}
                             </div>
@@ -249,12 +257,14 @@ const Recommended = ({ userPreferences }) => {
                                         pet={pet}
                                         isFavorite={favorites.includes(pet.petfinder_id)}
                                         toggleFavorite={toggleFavorite}
+                                        onMoreInfo={handleMoreInfo}
                                         />
                                 ))}
                          </div>
                     </div>
                  )}
             </div>
+            
 
                 ) : (
                     <p className="text-center text-gray-600">No Matching Pets Found! Try the quiz again</p>

@@ -50,6 +50,7 @@ function App() {
               <Route path="/PetBio" element={<PetBio/>}/>
               <Route path="/Favorite" element={<Favorite/>}/>
               <Route path="/Recommended" element={<Recommended/>}/>
+            
           </Routes>
         )}
 

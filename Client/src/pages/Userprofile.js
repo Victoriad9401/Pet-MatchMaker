@@ -88,7 +88,7 @@ return(
     <nav className={styles.navBar}>
         <ul className={styles.navList}>
             <li>
-                <Link to="/results" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
+                <Link to="/Recommended" className={`${styles.navLink} ${styles.navLink1}`}>Home</Link>
             </li>
             <li>
                 <Link to="/Userprofile" className={`${styles.navLink} ${styles.navLink2}`}>Profile</Link>

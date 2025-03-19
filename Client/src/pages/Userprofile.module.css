@@ -194,8 +194,11 @@
     padding: 5px 10px; /* Padding inside the links */
     border-radius: 5px; /* Rounded corners */
     text-shadow: 2px 2px #6d747d;
+    z-index: 1000;
+    pointer-events: auto;
 }
 .navLink1{
+    z-index: 1000;
 
 }
 .navLink2{
