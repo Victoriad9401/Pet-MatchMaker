@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PetBio.module.css";
-import { fetchPetProfiles } from "../api/petService";
 import { useLocation } from "react-router-dom";
 import PetDetails from "./PetDetails";
 
