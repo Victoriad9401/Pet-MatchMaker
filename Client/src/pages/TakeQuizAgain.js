@@ -11,7 +11,7 @@ const TakeQuizAgain = () =>{
         <h1>Quiz Time!!!!</h1>
         <p>You have already took the quiz! Would you like to take it again?</p>
     <div className={styles.buttonContainer}>
-        <button type="button" onClick={() => navigate("/")}>Go back to Results</button>
+        <button type="button" onClick={() => navigate("/Recommended")}>Go back to Results</button>
         <button type="button" onClick={() => navigate("/questions")}>Start the Quiz</button>
         </div>
 <div className={styles.container}>

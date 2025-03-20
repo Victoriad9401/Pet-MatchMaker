@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pompiere&family=Purple+Purse&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 .petBio{
   
   
@@ -82,7 +83,7 @@
 }
 
 .bcontainer{
-    background-color: #F9FFFF;
+    background-color: #f2f4f9;
     width: 300%;
     height: 50%;
     right: -10px;
