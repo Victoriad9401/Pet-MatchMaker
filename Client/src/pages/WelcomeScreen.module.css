@@ -305,7 +305,7 @@ button:hover {
 @media (min-width: 2000px) {
   .leftSide h1 {
     font-size: 6vw; /* Fluid typography */
-    left: -3vw;
+    left: -7vw;
   }
   .leftSide p {
     font-size: 2vw;
