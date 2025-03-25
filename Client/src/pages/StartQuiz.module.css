@@ -199,12 +199,7 @@
       font-size: 7ex;
       
     }
-    .upper {
-        top: 50px;
-      }
-      .upper2 {
-        top: 50px;
-      }
+   
   }
   
   @media (min-width: 2001px) {
@@ -212,5 +207,9 @@
       font-size: 7ex;
      
     }
+    .upper {
+        margin-bottom: 80vh;
+        margin-right: 60vw;
+      }
    
   }
