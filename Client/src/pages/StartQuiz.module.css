@@ -200,10 +200,10 @@
       
     }
     .upper {
-        margin-bottom: calc(1580px * 0.6); /* Move up 40% */
+        top: 50px;
       }
       .upper2 {
-        margin-bottom: calc(1760px * 0.6);
+        top: 50px;
       }
   }
   
@@ -216,6 +216,7 @@
         top: 50px;
       }
       .upper2 {
+        top: 50px;
       
       }
   }
