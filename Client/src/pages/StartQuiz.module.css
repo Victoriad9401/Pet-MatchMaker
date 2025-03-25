@@ -188,55 +188,33 @@
 
   /* For larger screens - PUSH CONTENT UPWARD */
   @media (min-width: 1601px) {
-    .StartQuiz {
-      justify-content: flex-start; /* Align to top */
-      padding-top: 5%; /* Reduce top spacing */
-    }
     .StartQuiz h1 {
-      margin-top: -200px; /* Pull header up further */
+      font-size: calc(7ex * 2.0);
+      margin-top: calc(-300px * 2.0);
     }
-    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-        transform: scale(0.8); /* Reset to original size */
-      }
-    
+    .dog, .cat {
+      transform: scale(1.6);
+    }
   }
   
+  /* 2001px-2500px: 2.5x zoom */
   @media (min-width: 2001px) {
-    .StartQuiz {
-      padding-top: 3%; /* Even less top spacing */
-    }
     .StartQuiz h1 {
-      margin-top: -250px;
+      font-size: calc(7ex * 2.5);
+      margin-top: calc(-300px * 2.5);
     }
-    .dog {
-        margin-bottom: calc(700px * 1.8);
-        margin-left: calc(990px * 1.8);
-      }
-      .cat {
-        margin-bottom: calc(870px * 1.8);
-        margin-right: calc(940px * 1.8);
-      }
-      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-        transform: scale(0.8); /* Reset to original size */
-      }
+    .StartQuiz button {
+      padding: calc(35px * 2.5) calc(80px * 2.5);
+    }
   }
   
+  /* 2501px+: 3.0x zoom (extreme) */
   @media (min-width: 2501px) {
-    .StartQuiz {
-      padding-top: 1%; /* Minimal top spacing */
-    }
     .StartQuiz h1 {
-      margin-top: -300px;
+      font-size: calc(7ex * 3.0);
+      margin-top: calc(-300px * 3.0);
     }
-    .dog {
-        margin-bottom: calc(700px * 2.2);
-        margin-left: calc(990px * 2.2);
-      }
-      .cat {
-        margin-bottom: calc(870px * 2.2);
-        margin-right: calc(940px * 2.2);
-      }
-      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-        transform: scale(0.8); /* Reset to original size */
-      }
+    .dog, .cat {
+      transform: scale(2.4);
+    }
   }
