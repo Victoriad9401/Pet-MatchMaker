@@ -184,58 +184,55 @@
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
 
 
-/* Base styles (mobile-first) - UNCHANGED */
-.StartQuiz h1 {
-    font-size: 7ex;
-    margin-top: -300px;
+/* Base Styles (unchanged) */
+.StartQuiz {
+    /* Keep all your existing styles */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
   
-  /* 1201px-1600px: 1.5x zoom (text only) */
-  @media (min-width: 1201px) {
-    .StartQuiz h1 {
-      font-size: calc(7ex * 1.5);
-      margin-top: calc(-300px * 1.5);
-    }
-    .StartQuiz button {
-      padding: calc(35px * 1.5) calc(80px * 1.5);
-    }
-    /* Images remain original size */
-    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-      transform: scale(1); /* Lock to original size */
-    }
+  /* Move everything up by reducing top padding/margins */
+  .StartQuiz h1 {
+    margin-top: -150px; /* Already set in your original, adjust this value */
   }
   
-  /* 1601px-2000px: 2.0x zoom (text only) */
-  @media (min-width: 1601px) {
-    .StartQuiz h1 {
-      font-size: calc(7ex * 2.0);
-      margin-top: calc(-300px * 2.0);
+  /* For larger screens - PUSH CONTENT UPWARD */
+  @media (min-width: 1600px) {
+    .StartQuiz {
+      justify-content: flex-start; /* Align to top */
+      padding-top: 5%; /* Reduce top spacing */
     }
-    /* Images STAY original size */
-    .dog, .cat {
-      transform: scale(1); /* Override previous 1.6x */
+    .StartQuiz h1 {
+      margin-top: -200px; /* Pull header up further */
     }
   }
   
-  /* 2001px-2500px: 2.5x zoom (text only) */
-  @media (min-width: 2001px) {
-    .StartQuiz h1 {
-      font-size: calc(7ex * 2.5);
-      margin-top: calc(-300px * 2.5);
+  @media (min-width: 2000px) {
+    .StartQuiz {
+      padding-top: 3%; /* Even less top spacing */
     }
-    .StartQuiz button {
-      padding: calc(35px * 2.5) calc(80px * 2.5);
+    .StartQuiz h1 {
+      margin-top: -250px;
     }
   }
   
-  /* 2501px+: 3.0x zoom (text only) */
-  @media (min-width: 2501px) {
+  @media (min-width: 2500px) {
+    .StartQuiz {
+      padding-top: 1%; /* Minimal top spacing */
+    }
     .StartQuiz h1 {
-      font-size: calc(7ex * 3.0);
-      margin-top: calc(-300px * 3.0);
+      margin-top: -300px;
     }
-    /* Images REMAIN original size */
-    .dog, .cat {
-      transform: scale(1); /* Override previous 2.4x */
-    }
+  }
+  
+  /* Keep decorative elements at their original size */
+  .dog, .cat, .pflower, .yflower {
+    transform: scale(1); /* Reset to original size */
+    /* Adjust only their vertical positions */
+  }
+  .dog {
+    margin-bottom: 700px; /* Original value - adjust as needed */
   }
