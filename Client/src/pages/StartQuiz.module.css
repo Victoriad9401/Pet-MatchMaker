@@ -211,8 +211,13 @@
      
     }
     .upper {
-        bottom: 300px;
-   
+        margin-bottom: 2000px;
+        margin-right: 2100px;
+        /* Slightly larger */
+      }
+      .upper2 {
+        margin-bottom: 2100px;
+        margin-right: -1600px;
       }
    
   }
