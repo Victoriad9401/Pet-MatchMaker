@@ -190,7 +190,7 @@
   @media (min-width: 1201px) {
     .StartQuiz h1 {
       font-size: 8ex;
-      margin-top: 70px;
+     
     }
   }
   
@@ -199,6 +199,12 @@
       font-size: 7ex;
       
     }
+    .upper {
+        margin-bottom: calc(1580px * 0.6); /* Move up 40% */
+      }
+      .upper2 {
+        margin-bottom: calc(1760px * 0.6);
+      }
   }
   
   @media (min-width: 2001px) {
@@ -206,4 +212,10 @@
       font-size: 7ex;
      
     }
+    .upper {
+        margin-bottom: calc(1580px * 0.4); /* Move up 60% */
+      }
+      .upper2 {
+        margin-bottom: calc(1760px * 0.4);
+      }
   }
