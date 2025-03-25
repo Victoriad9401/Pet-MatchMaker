@@ -187,7 +187,7 @@
 
 
   /* For larger screens - PUSH CONTENT UPWARD */
-  @media (min-width: 1600px) {
+  @media (min-width: 1601px) {
     .StartQuiz {
       justify-content: flex-start; /* Align to top */
       padding-top: 5%; /* Reduce top spacing */
@@ -195,22 +195,13 @@
     .StartQuiz h1 {
       margin-top: -200px; /* Pull header up further */
     }
-    .dog {
-        margin-bottom: calc(700px * 1.5);
-        margin-left: calc(990px * 1.5);
-      }
-      .cat {
-        margin-bottom: calc(870px * 1.5);
-        margin-right: calc(940px * 1.5);
-      }
-      /* Maintain original scale */
-      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
+    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
         transform: scale(0.8); /* Reset to original size */
       }
     
   }
   
-  @media (min-width: 2000px) {
+  @media (min-width: 2001px) {
     .StartQuiz {
       padding-top: 3%; /* Even less top spacing */
     }
@@ -230,7 +221,7 @@
       }
   }
   
-  @media (min-width: 2500px) {
+  @media (min-width: 2501px) {
     .StartQuiz {
       padding-top: 1%; /* Minimal top spacing */
     }
