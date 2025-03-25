@@ -292,57 +292,42 @@ button:hover {
 
 /* Original styles remain here */
 
-/* Mega-screen scaling */
-@media (min-width: 2500px) {
-  .splitScreen {
-    zoom: 2;
-  }
-  
+/* WelcomeScreen.module.css */
+
+/* Base scaling */
+.splitScreen {
+  width: 100vw;
+  height: 100vh;
+  min-width: 1600px; /* Minimum base size */
+}
+
+/* Progressive scaling */
+@media (min-width: 2000px) {
   .leftSide h1 {
-    font-size: 6rem;
-    margin-bottom: 3rem;
+    font-size: 5vw; /* Fluid typography */
   }
-  
   .leftSide p {
-    font-size: 2.5rem;
-    line-height: 1.8;
-    max-width: 80%;
+    font-size: 2vw;
   }
-  
-  .buttonContainer {
-    margin-top: 5rem;
-  }
-  
   button {
-    padding: 2rem 4rem;
-    font-size: 2.5rem;
-    min-width: 350px;
-    border-radius: 60px;
-  }
-  
-  .AppPuppy {
-    width: 1200px;
-    right: 10%;
-  }
-  
-  .logo {
-    width: 200px;
-    top: 8%;
-    left: 8%;
+    font-size: 2vw;
+    padding: 2vh 4vw;
   }
 }
 
-/* Additional scaling tier for 8K screens */
-@media (min-width: 3800px) {
-  .splitScreen {
-    zoom: 2.5;
-  }
-  
+@media (min-width: 3000px) {
   .leftSide h1 {
-    font-size: 8rem;
+    font-size: 6vw;
   }
-  
   .AppPuppy {
-    width: 1600px;
+    width: 60vw;
   }
+}
+
+/* Force maximum scaling */
+.force-scale {
+  transform: scale(var(--scale-factor));
+  transform-origin: top left;
+  width: calc(100% / var(--scale-factor));
+  height: calc(100% / var(--scale-factor));
 }
