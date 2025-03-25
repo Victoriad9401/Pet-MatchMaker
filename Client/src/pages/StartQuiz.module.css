@@ -195,6 +195,19 @@
     .StartQuiz h1 {
       margin-top: -200px; /* Pull header up further */
     }
+    .dog {
+        margin-bottom: calc(700px * 1.5);
+        margin-left: calc(990px * 1.5);
+      }
+      .cat {
+        margin-bottom: calc(870px * 1.5);
+        margin-right: calc(940px * 1.5);
+      }
+      /* Maintain original scale */
+      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
+        transform: scale(0.8); /* Reset to original size */
+      }
+    
   }
   
   @media (min-width: 2000px) {
@@ -204,6 +217,17 @@
     .StartQuiz h1 {
       margin-top: -250px;
     }
+    .dog {
+        margin-bottom: calc(700px * 1.8);
+        margin-left: calc(990px * 1.8);
+      }
+      .cat {
+        margin-bottom: calc(870px * 1.8);
+        margin-right: calc(940px * 1.8);
+      }
+      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
+        transform: scale(0.8); /* Reset to original size */
+      }
   }
   
   @media (min-width: 2500px) {
@@ -213,4 +237,15 @@
     .StartQuiz h1 {
       margin-top: -300px;
     }
+    .dog {
+        margin-bottom: calc(700px * 2.2);
+        margin-left: calc(990px * 2.2);
+      }
+      .cat {
+        margin-bottom: calc(870px * 2.2);
+        margin-right: calc(940px * 2.2);
+      }
+      .dog, .cat, .pflower, .yflower, .upper, .upper2 {
+        transform: scale(0.8); /* Reset to original size */
+      }
   }
