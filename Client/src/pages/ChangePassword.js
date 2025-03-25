@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ChangePassword.module.css"
 
 
 const ChangePassword = () =>{
     const navigate = useNavigate();
+
+     useEffect(() => {
+          const setViewportForLargeScreens = () => {
+            const width = window.innerWidth;
+            const meta = document.querySelector('meta[name="viewport"]') || 
+                        document.createElement('meta');
+            meta.name = "viewport";
+        
+            if (width > 2500) {
+              meta.content = `width=${width}, initial-scale=1.8`; // Extreme scaling
+            } else if (width > 2000) {
+              meta.content = `width=${width}, initial-scale=1.5`;
+            } else if (width > 1600) {
+              meta.content = "width=1600, initial-scale=1.2";
+            } else {
+              meta.content = "width=device-width, initial-scale=1";
+            }
+        
+            document.head.appendChild(meta);
+          };
+        
+          setViewportForLargeScreens();
+          window.addEventListener('resize', setViewportForLargeScreens);
+          
+          return () => window.removeEventListener('resize', setViewportForLargeScreens);
+        }, []);
+        
 
  return (
         
