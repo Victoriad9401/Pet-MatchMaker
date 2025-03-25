@@ -292,18 +292,6 @@ button:hover {
 
 /* Original styles remain here */
 
-/* WelcomeScreen.module.css */
-
-/* Base scaling */
-.splitScreen {
-  width: 100vw;
-  height: 100vh;
-  min-width: 1600px; /* Minimum base size */
-}
-/* WelcomeScreen.module.css */
-
-/* Original styles remain here */
-
 /* Mega-screen scaling */
 @media (min-width: 2500px) {
   .splitScreen {
@@ -312,12 +300,12 @@ button:hover {
   
   .leftSide h1 {
     font-size: 6rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
   
   .leftSide p {
     font-size: 2.5rem;
-    line-height: 1.4;
+    line-height: 1.8;
     max-width: 80%;
   }
   
