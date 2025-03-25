@@ -29,6 +29,7 @@ function App() {
   }, []);
 
   return (
+    
     <LoadingProvider>
       <Router>
         {isLoading ? (
@@ -56,6 +57,7 @@ function App() {
 
       </Router>
       </LoadingProvider>
+   
   );
 }
     

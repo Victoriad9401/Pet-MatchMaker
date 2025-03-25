@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import styles from './WelcomeScreen.module.css';
-import { Helmet } from "react-helmet";
+
 
 function WelcomeScreen() {
     const navigate = useNavigate();
@@ -11,9 +11,7 @@ function WelcomeScreen() {
     return(
       
     <div className={styles.splitScreen}> 
-    <Helmet>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Helmet>
+
       <div className= {styles.welcomescreen}>
         <div className={styles.leftSide}>
           <img src="/companylogo.png" alt="logo" className={styles.logo}/>
