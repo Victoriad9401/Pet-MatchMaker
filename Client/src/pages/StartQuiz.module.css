@@ -184,13 +184,13 @@
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
 
 
-/* Base styles (mobile-first) */
+/* Base styles (mobile-first) - UNCHANGED */
 .StartQuiz h1 {
     font-size: 7ex;
     margin-top: -300px;
   }
   
-  /* 1201px-1600px: 1.5x zoom */
+  /* 1201px-1600px: 1.5x zoom (text only) */
   @media (min-width: 1201px) {
     .StartQuiz h1 {
       font-size: calc(7ex * 1.5);
@@ -199,20 +199,25 @@
     .StartQuiz button {
       padding: calc(35px * 1.5) calc(80px * 1.5);
     }
+    /* Images remain original size */
+    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
+      transform: scale(1); /* Lock to original size */
+    }
   }
   
-  /* 1601px-2000px: 2.0x zoom */
+  /* 1601px-2000px: 2.0x zoom (text only) */
   @media (min-width: 1601px) {
     .StartQuiz h1 {
       font-size: calc(7ex * 2.0);
       margin-top: calc(-300px * 2.0);
     }
+    /* Images STAY original size */
     .dog, .cat {
-      transform: scale(1.6);
+      transform: scale(1); /* Override previous 1.6x */
     }
   }
   
-  /* 2001px-2500px: 2.5x zoom */
+  /* 2001px-2500px: 2.5x zoom (text only) */
   @media (min-width: 2001px) {
     .StartQuiz h1 {
       font-size: calc(7ex * 2.5);
@@ -223,13 +228,14 @@
     }
   }
   
-  /* 2501px+: 3.0x zoom (extreme) */
+  /* 2501px+: 3.0x zoom (text only) */
   @media (min-width: 2501px) {
     .StartQuiz h1 {
       font-size: calc(7ex * 3.0);
       margin-top: calc(-300px * 3.0);
     }
+    /* Images REMAIN original size */
     .dog, .cat {
-      transform: scale(2.4);
+      transform: scale(1); /* Override previous 2.4x */
     }
   }
