@@ -30,6 +30,11 @@ const StartQuiz = () =>{
       window.addEventListener('resize', setViewportForLargeScreens);
       return () => window.removeEventListener('resize', setViewportForLargeScreens);
     }, []);
+    
+    // In your React component
+useEffect(() => {
+  console.log(document.querySelectorAll('.upper, .upper2'));
+}, []);
 
  return (
     <div className={styles.StartQuiz}>
