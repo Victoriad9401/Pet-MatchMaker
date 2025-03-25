@@ -7,20 +7,39 @@ function WelcomeScreen() {
     const navigate = useNavigate();
   
     useEffect(() => {
-      // Create a meta tag element for viewport
-      const metaViewport = document.createElement('meta');
-      metaViewport.name = "viewport";
-      metaViewport.content = "width=device-width, initial-scale=1.0";
-
-      // Append the meta tag to the head of the document
-      document.head.appendChild(metaViewport);
-
-      // Clean up the meta tag when the component is unmounted
-      return () => {
-          document.head.removeChild(metaViewport);
+      // Create or update the viewport meta tag
+      let metaViewport = document.querySelector('meta[name="viewport"]');
+      
+      if (!metaViewport) {
+        metaViewport = document.createElement('meta');
+        metaViewport.name = "viewport";
+        document.head.appendChild(metaViewport);
+      }
+    
+      // Set content based on screen size
+      if (window.innerWidth >= 1200) {
+        metaViewport.content = "width=1200, initial-scale=1.0";
+      } else {
+        metaViewport.content = "width=device-width, initial-scale=1.0";
+      }
+    
+      // Add resize listener to update on screen changes
+      const handleResize = () => {
+        if (window.innerWidth >= 1200) {
+          metaViewport.content = "width=1200, initial-scale=1.0";
+        } else {
+          metaViewport.content = "width=device-width, initial-scale=1.0";
+        }
       };
-  }, []);
-
+    
+      window.addEventListener('resize', handleResize);
+    
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        // Don't remove the meta tag completely as other components might need it
+        metaViewport.content = "width=device-width, initial-scale=1.0";
+      };
+    }, []);
 
     
   
