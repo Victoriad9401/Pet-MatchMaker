@@ -16,9 +16,9 @@ function WelcomeScreen() {
           document.head.appendChild(metaViewport);
         }
     
-        if (window.innerWidth >= 1600) {
+        if (window.innerWidth >= 1900) {
           // For very large screens
-          metaViewport.content = "width=1600, initial-scale=1.5";
+          metaViewport.content = "width=1600, initial-scale=2 ";
         } else if (window.innerWidth >= 1200) {
           // For standard large screens
           metaViewport.content = "width=1200, initial-scale=1.2";
