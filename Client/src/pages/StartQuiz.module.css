@@ -213,11 +213,11 @@
      
     }
     .upper {
-        margin-bottom: calc(1580px * 1.2);
+        margin-bottom: calc(1580px * 1);
       
       }
       .upper2 {
-        margin-bottom: calc(1760px * 1.2);
+        margin-bottom: calc(1760px * 1);
        
       }
   }
