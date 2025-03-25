@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ChangePassword.module.css"
+import { Helmet } from "react-helmet";
 
 const ChangePassword = () =>{
     const navigate = useNavigate();
@@ -8,6 +9,9 @@ const ChangePassword = () =>{
  return (
         
         <div className={styles.ChangePasswordContainer}> {/* Use CSS Module class */}
+        <Helmet>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </Helmet>
             <div className={styles.centeredContainer}> {/* Use CSS Module class */}
                 <div className={styles.formContainer}> {/* Use CSS Module class */}
                     <form>
