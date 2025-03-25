@@ -288,34 +288,59 @@ button:hover {
 
 /* WelcomeScreen.module.css */
 
-/* Original styles remain unchanged */
+/* Original styles remain here */
 
-/* Large screen enhancements */
-@media (min-width: 1600px) {
+/* Mega-screen scaling */
+@media (min-width: 2500px) {
   .splitScreen {
-    zoom: 1.2; /* Simple proportional scaling */
-  }
-}
-
-@media (min-width: 2000px) {
-  .splitScreen {
-    zoom: 1.5;
+    zoom: 2;
   }
   
   .leftSide h1 {
-    font-size: 4.5rem;
+    font-size: 6rem;
+    margin-bottom: 3rem;
   }
   
   .leftSide p {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
+    line-height: 1.8;
+    max-width: 80%;
+  }
+  
+  .buttonContainer {
+    margin-top: 5rem;
   }
   
   button {
-    padding: 1.8rem 3.5rem;
-    font-size: 1.8rem;
+    padding: 2rem 4rem;
+    font-size: 2.5rem;
+    min-width: 350px;
+    border-radius: 60px;
   }
   
   .AppPuppy {
-    width: 750px;
+    width: 1200px;
+    right: 10%;
+  }
+  
+  .logo {
+    width: 200px;
+    top: 8%;
+    left: 8%;
+  }
+}
+
+/* Additional scaling tier for 8K screens */
+@media (min-width: 3800px) {
+  .splitScreen {
+    zoom: 2.5;
+  }
+  
+  .leftSide h1 {
+    font-size: 8rem;
+  }
+  
+  .AppPuppy {
+    width: 1600px;
   }
 }
