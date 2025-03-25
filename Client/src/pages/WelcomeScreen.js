@@ -7,42 +7,29 @@ function WelcomeScreen() {
     const navigate = useNavigate();
   
     useEffect(() => {
-      // Store original viewport
-      const originalViewport = document.querySelector('meta[name="viewport"]')?.content || 
-                             'width=device-width, initial-scale=1';
-    
-      const updateViewport = () => {
+      const setViewportForLargeScreens = () => {
         const width = window.innerWidth;
-        let meta = document.querySelector('meta[name="viewport"]') || 
-                   document.createElement('meta');
+        const meta = document.querySelector('meta[name="viewport"]') || 
+                    document.createElement('meta');
         meta.name = "viewport";
     
-        if (width > 3000) {
-          meta.content = `width=${width}, initial-scale=2.2`; // Ultra scaling
-        } else if (width > 2500) {
-          meta.content = `width=${width}, initial-scale=1.8`;
+        if (width > 2500) {
+          meta.content = `width=${width}, initial-scale=1.8`; // Extreme scaling
         } else if (width > 2000) {
           meta.content = `width=${width}, initial-scale=1.5`;
         } else if (width > 1600) {
-          meta.content = `width=1600, initial-scale=${width/1600}`;
+          meta.content = "width=1600, initial-scale=1.2";
         } else {
-          meta.content = originalViewport;
+          meta.content = "width=device-width, initial-scale=1";
         }
     
-        if (!meta.parentNode) {
-          document.head.appendChild(meta);
-        }
+        document.head.appendChild(meta);
       };
     
-      updateViewport();
-      const resizeHandler = () => updateViewport();
-      window.addEventListener('resize', resizeHandler);
-    
-      return () => {
-        window.removeEventListener('resize', resizeHandler);
-        const meta = document.querySelector('meta[name="viewport"]');
-        if (meta) meta.content = originalViewport;
-      };
+      setViewportForLargeScreens();
+      window.addEventListener('resize', setViewportForLargeScreens);
+      
+      return () => window.removeEventListener('resize', setViewportForLargeScreens);
     }, []);
     
   
