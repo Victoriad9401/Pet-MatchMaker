@@ -4,6 +4,32 @@ import styles from "./StartQuiz.module.css"
 
 const StartQuiz = () =>{
     const navigate = useNavigate();
+    useEffect(() => {
+      const setViewportForLargeScreens = () => {
+        const width = window.innerWidth;
+        const meta = document.querySelector('meta[name="viewport"]') || 
+                    document.createElement('meta');
+        meta.name = "viewport";
+    
+        if (width > 2500) {
+          meta.content = `width=${width}, initial-scale=3.0`; // Extreme zoom
+        } else if (width > 2000) {
+          meta.content = `width=${width}, initial-scale=2.5`;
+        } else if (width > 1600) {
+          meta.content = "width=1600, initial-scale=2.0";
+        } else if (width > 1200) {
+          meta.content = "width=1200, initial-scale=1.5";
+        } else {
+          meta.content = "width=device-width, initial-scale=1";
+        }
+    
+        document.head.appendChild(meta);
+      };
+    
+      setViewportForLargeScreens();
+      window.addEventListener('resize', setViewportForLargeScreens);
+      return () => window.removeEventListener('resize', setViewportForLargeScreens);
+    }, []);
 
  return (
     <div className={styles.StartQuiz}>

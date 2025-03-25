@@ -184,67 +184,52 @@
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
 
 
-
+/* Base styles (mobile-first) */
+.StartQuiz h1 {
+    font-size: 7ex;
+    margin-top: -300px;
+  }
   
-  /* Scale: 1.2x (1601px - 2000px) */
+  /* 1201px-1600px: 1.5x zoom */
+  @media (min-width: 1201px) {
+    .StartQuiz h1 {
+      font-size: calc(7ex * 1.5);
+      margin-top: calc(-300px * 1.5);
+    }
+    .StartQuiz button {
+      padding: calc(35px * 1.5) calc(80px * 1.5);
+    }
+  }
+  
+  /* 1601px-2000px: 2.0x zoom */
   @media (min-width: 1601px) {
     .StartQuiz h1 {
-      font-size: calc(7ex * 1.2); /* 8.4ex */
-      margin-top: calc(-300px * 1.2); /* -360px */
+      font-size: calc(7ex * 2.0);
+      margin-top: calc(-300px * 2.0);
     }
-  
-    .StartQuiz button {
-      padding: calc(35px * 1.2) calc(80px * 1.2); /* 42px 96px */
-      font-size: calc(20px * 1.2); /* 24px */
-    }
-  
-    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-      transform: scale(calc(0.8 * 1.2)); /* scale(0.96) */
+    .dog, .cat {
+      transform: scale(1.6);
     }
   }
   
-  /* Scale: 1.5x (2001px - 2500px) */
+  /* 2001px-2500px: 2.5x zoom */
   @media (min-width: 2001px) {
     .StartQuiz h1 {
-      font-size: calc(7ex * 1.5); /* 10.5ex */
-      margin-top: calc(-300px * 1.5); /* -450px */
+      font-size: calc(7ex * 2.5);
+      margin-top: calc(-300px * 2.5);
     }
-  
     .StartQuiz button {
-      padding: calc(35px * 1.5) calc(80px * 1.5); /* 52.5px 120px */
-      font-size: calc(20px * 1.5); /* 30px */
-    }
-  
-    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-      transform: scale(calc(0.8 * 1.5)); /* scale(1.2) */
+      padding: calc(35px * 2.5) calc(80px * 2.5);
     }
   }
   
-  /* Scale: 1.8x (2501px+) */
+  /* 2501px+: 3.0x zoom (extreme) */
   @media (min-width: 2501px) {
     .StartQuiz h1 {
-      font-size: calc(7ex * 1.8); /* 12.6ex */
-      margin-top: calc(-300px * 1.8); /* -540px */
+      font-size: calc(7ex * 3.0);
+      margin-top: calc(-300px * 3.0);
     }
-  
-    .StartQuiz button {
-      padding: calc(35px * 1.8) calc(80px * 1.8); /* 63px 144px */
-      font-size: calc(20px * 1.8); /* 36px */
-    }
-  
-    .dog, .cat, .pflower, .yflower, .upper, .upper2 {
-      transform: scale(calc(0.8 * 1.8)); /* scale(1.44) */
-    }
-  }
-  
-  /* Mobile (optional) */
-  @media (max-width: 768px) {
-    .StartQuiz h1 {
-      font-size: 5ex;
-      margin-top: -200px;
-    }
-    
-    .StartQuiz button {
-      padding: 25px 60px;
+    .dog, .cat {
+      transform: scale(2.4);
     }
   }
