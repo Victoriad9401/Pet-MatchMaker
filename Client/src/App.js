@@ -20,6 +20,35 @@ import Favorite from "./pages/Favorite";
 function App() {
   const[isLoading, setIsLoading] = useState(true);
 
+    // Viewport scaling logic (runs once on mount and on window resize)
+    useEffect(() => {
+      const setViewportForLargeScreens = () => {
+        const width = window.innerWidth;
+        const meta = document.querySelector('meta[name="viewport"]') || 
+                    document.createElement('meta');
+        meta.name = "viewport";
+  
+        if (width > 2500) {
+          meta.content = `width=${width}, initial-scale=1.8`;
+        } else if (width > 2000) {
+          meta.content = `width=${width}, initial-scale=1.5`;
+        } else if (width > 1600) {
+          meta.content = "width=1600, initial-scale=1.2";
+        } else {
+          meta.content = "width=device-width, initial-scale=1";
+        }
+  
+        document.head.appendChild(meta);
+      };
+  
+      setViewportForLargeScreens(); // Set initial viewport
+      window.addEventListener('resize', setViewportForLargeScreens); // Update on resize
+  
+      return () => {
+        window.removeEventListener('resize', setViewportForLargeScreens); // Cleanup
+      };
+    }, []);
+
   useEffect(() => {
 
     const timer = setTimeout(() => {
