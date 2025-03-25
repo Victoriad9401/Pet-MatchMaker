@@ -7,38 +7,29 @@ function WelcomeScreen() {
     const navigate = useNavigate();
   
     useEffect(() => {
-      const updateViewport = () => {
-        let metaViewport = document.querySelector('meta[name="viewport"]');
+      const setOptimalViewport = () => {
+        const screenWidth = window.innerWidth;
+        const metaTag = document.querySelector('meta[name="viewport"]') || 
+                       document.createElement('meta');
         
-        if (!metaViewport) {
-          metaViewport = document.createElement('meta');
-          metaViewport.name = "viewport";
-          document.head.appendChild(metaViewport);
+        metaTag.name = "viewport";
+        
+        if (screenWidth > 1920) { // For 2K+ screens
+          metaTag.content = `width=${screenWidth}, initial-scale=1`;
+        } else if (screenWidth > 1600) { // For large desktop
+          metaTag.content = "width=1600, initial-scale=1";
+        } else { // Original screen size
+          metaTag.content = "width=device-width, initial-scale=1";
         }
-    
-        if (window.innerWidth >= 1900) {
-          // For very large screens
-          metaViewport.content = "width=1600, initial-scale=2 ";
-        } else if (window.innerWidth >= 1200) {
-          // For standard large screens
-          metaViewport.content = "width=1200, initial-scale=1.2";
-        } else {
-          // Default behavior
-          metaViewport.content = "width=device-width, initial-scale=1.0";
-        }
+        
+        document.head.appendChild(metaTag);
       };
     
-      // Set initial viewport
-      updateViewport();
-    
-      // Add resize listener
-      window.addEventListener('resize', updateViewport);
-    
-      return () => {
-        window.removeEventListener('resize', updateViewport);
-      };
+      setOptimalViewport();
+      window.addEventListener('resize', setOptimalViewport);
+      
+      return () => window.removeEventListener('resize', setOptimalViewport);
     }, []);
-
     
   
     return(

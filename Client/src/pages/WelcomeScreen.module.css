@@ -286,56 +286,36 @@ button:hover {
 
 /* devices change width for larger devices*/
 
+/* WelcomeScreen.module.css */
 
-/*@media (max-width: 768px) {
-   Mobile screens 
-  .welcomescreen {
-    flex-direction: column;
-  }
+/* Original styles remain unchanged */
 
+/* Large screen enhancements */
+@media (min-width: 1600px) {
   .splitScreen {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .leftSide, .rightSide {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .logo {
-    margin-left: -100px;
-    margin-top: -200px;
-  }
-
-  .leftSide h1 {
-    font-size: 2em;
-  }
-
-  .leftSide p {
-    font-size: 1.1em;
-    padding-left: 20px;
-  }
-
-  button {
-    font-size: 1.2em;
-    padding: 15px 20px;
-  }
-
-  .buttonContainer {
-    position: relative;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 10px;
-  }
-
-  .AppPuppy {
-    width: 100%;
-    margin-left: 0;
+    zoom: 1.2; /* Simple proportional scaling */
   }
 }
-*/
 
-
-
+@media (min-width: 2000px) {
+  .splitScreen {
+    zoom: 1.5;
+  }
+  
+  .leftSide h1 {
+    font-size: 4.5rem;
+  }
+  
+  .leftSide p {
+    font-size: 1.8rem;
+  }
+  
+  button {
+    padding: 1.8rem 3.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .AppPuppy {
+    width: 750px;
+  }
+}
