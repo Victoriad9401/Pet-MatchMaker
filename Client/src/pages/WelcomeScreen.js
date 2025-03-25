@@ -6,7 +6,23 @@ import styles from './WelcomeScreen.module.css';
 function WelcomeScreen() {
     const navigate = useNavigate();
   
+    useEffect(() => {
+      // Create a meta tag element for viewport
+      const metaViewport = document.createElement('meta');
+      metaViewport.name = "viewport";
+      metaViewport.content = "width=device-width, initial-scale=1.0";
 
+      // Append the meta tag to the head of the document
+      document.head.appendChild(metaViewport);
+
+      // Clean up the meta tag when the component is unmounted
+      return () => {
+          document.head.removeChild(metaViewport);
+      };
+  }, []);
+
+
+    
   
     return(
       
