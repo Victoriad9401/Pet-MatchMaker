@@ -319,6 +319,7 @@ button:hover {
 @media (min-width: 3000px) {
   .leftSide h1 {
     font-size: 9vw;
+    margin-right: 10px;
   }
   .AppPuppy {
     width: 60vw;
