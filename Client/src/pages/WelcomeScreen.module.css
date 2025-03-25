@@ -304,8 +304,8 @@ button:hover {
 /* Progressive scaling */
 @media (min-width: 2000px) {
   .leftSide h1 {
-    font-size: 6vw; /* Fluid typography */
-    left: -7vw;
+    font-size: 5vw; /* Fluid typography */
+    
   }
   .leftSide p {
     font-size: 2vw;
@@ -318,7 +318,7 @@ button:hover {
 
 @media (min-width: 3000px) {
   .leftSide h1 {
-    font-size: 6vw;
+    font-size: 9vw;
   }
   .AppPuppy {
     width: 60vw;
