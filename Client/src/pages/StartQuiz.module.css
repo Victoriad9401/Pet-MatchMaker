@@ -196,14 +196,14 @@
   
   @media (min-width: 1601px) {
     .StartQuiz h1 {
-      font-size: 9ex;
-      margin-top: 90px;
+      font-size: 7ex;
+      margin-top: 70px;
     }
   }
   
   @media (min-width: 2001px) {
     .StartQuiz h1 {
-      font-size: 10ex;
-      margin-top: 110px;
+      font-size: 7ex;
+      margin-top: 70px;
     }
   }
