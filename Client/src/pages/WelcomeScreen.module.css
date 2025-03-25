@@ -292,6 +292,12 @@ button:hover {
 
 /* Original styles remain here */
 
+.splitScreen {
+  width: 100vw;
+  height: 100vh;
+  min-width: 1600px; /* Minimum base size */
+}
+
 /* Mega-screen scaling */
 @media (min-width: 2500px) {
   .splitScreen {
