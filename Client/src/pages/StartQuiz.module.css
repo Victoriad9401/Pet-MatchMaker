@@ -183,7 +183,7 @@
 .bubble:nth-child(13)  { top: 35%; left: 72%; width: 30px; height: 30px; }
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
 
-/* Add this to ensure clouds appear above other elements */
+/* Add this to ensure clouds appear above other elements  recode everything*/
 .upper, .upper2 {
     z-index: 9999 !important; /* Temporary debug value */
   }

@@ -42,41 +42,26 @@ const Recommended = ({ userPreferences }) => {
                 setShowFilterOptions(prev => !prev);
             };
 
+            //handles favorite
 
-            //Handles Filtering
-            const handleFilterChange = (e) =>{
-                const{ name, value } = e.target;
-                setFilter((prev) => ({ ...prev, [name]: value}));
-                };
+            useEffect(() => {
+                const savedFavorites = JSON.parse(localStorage.getItem("favoritePets")) || [];
+                setFavorites(savedFavorites);
+            }, []);
+        
+            const toggleFavorite = (pet) => {
+                let updatedFavorites;
+                if (favorites.some((fav) => fav.petfinder_id === pet.petfinder_id)) {
+                    updatedFavorites = favorites.filter((fav) => fav.petfinder_id !== pet.petfinder_id);
+                } else {
+                    updatedFavorites = [...favorites, pet];
+                }
+                setFavorites(updatedFavorites);
+                localStorage.setItem("favoritePets", JSON.stringify(updatedFavorites));
+            };
 
-                useEffect(() => {
-                    let filtered = pets.filter((pet) =>{
-                        return (
-                            (filter.animalType === "all" || pet.animalType === filter.animalType) &&
-                            (filter.age === "all" || pet.age === filter.age) &&
-                            (filter.size === "all" || pet.size === filter.size) &&
-                            (filter.breed === "all" || pet.breed_primary === filter.breed)&&
-                            (filter.gender === "all" || pet.gender === filter.gender)
-                        );
-                    });
-                    setFilteredPets(filtered);
-                 }, [filter, pets]);
 
-                 const uniqueAges = [...new Set(pets.map((pet) => pet.age))];
-                 const uniqueSizes = [...new Set(pets.map((pet) => pet.size))];
-                 const uniqueBreeds = [...new Set(pets.map((pet) => pet.breed_primary))];
-                 const uniqueGenders = [...new Set(pets.map((pet) => pet.gender))];
-                 const uniqueAnimals = ["all", "cat", "dog"];
-
-                 const toggleFavorite = (petId) => {
-                    setFavorites((prevFavorites)=> {
-                        if(prevFavorites.includes(petId)){
-                            return prevFavorites.filter((id)=> id !== petId);
-                        }else{
-                            return[...prevFavorites, petId];
-                        }
-                    });
-                };
+    
 
                  return(
                     
@@ -135,93 +120,6 @@ const Recommended = ({ userPreferences }) => {
                       <p>Your Recommended Pets: </p>
                       </div>
 
-
-                        {/*Filter dropdowns*/}
-                      <div className={styles.filters}>
-                      <div className={styles.filterRow}>
-                    <div className="relative mb-6">
-                    <div className="flex justify-center gap-4">
-                     <select
-                         name="All Filters"
-                         onClick={toggleFilters}
-                         className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} >
-                            <option value="all"> All Filters</option>
-                         </select>
-
-                            {showFilterOptions && (<>
-                                <select
-                                    name="animalType"
-                                    value={filter.animalType}
-                                    onChange={handleFilterChange}
-                                    className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`}
-                                    >
-
-                                <option value="all"> Animals</option>
-                                {uniqueAnimals.map((type) => (
-                                  <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
-                                ))}
-
-                            </select>
-
-                            <select 
-                                name="age"
-                                value={filter.age}
-                                onChange={handleFilterChange}
-                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
-                                >
-                                 <option value="all"> Ages</option>
-                                {uniqueAges.map((age) => (
-                                  <option key={age} value={age}>{age}</option>
-                                ))}
-                            </select>
-
-
-                            <select 
-                                name="size"
-                                value={filter.size} 
-                                onChange={handleFilterChange} 
-                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
-                                >
-
-                                <option value="all"> Sizes</option>
-                                {uniqueSizes.map((size) => (
-                                  <option key={size} value={size}>{size}</option>
-                                ))}
-                            </select>
-
-                            <select 
-                                name="breed" 
-                                value={filter.breed} 
-                                onChange={handleFilterChange}
-                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
-                                >
-
-                                <option value="all"> Breeds</option>
-                                {uniqueBreeds.map((breed) => (
-                                  <option key={breed} value={breed}>{breed}</option>
-                                ))}
-                            </select>
-
-                            <select 
-                                name="gender" 
-                                value={filter.gender} 
-                                onChange={handleFilterChange}
-                                className={`${styles.filterDropdown} ${filter.animalType !== 'all' ? styles.active : ''}`} 
-                                >
-
-                                <option value="all"> Genders</option>
-                                {uniqueGenders.map((gender) => (
-                                  <option key={gender} value={gender}>{gender}</option>
-                                ))}
-                            </select>
-</>
-                            )}
-                            </div>
-                    </div>
-                    </div>
-                    </div>
-
-
                       {/*Loading*/}
                      {loading ? (
                         <div className={styles.loading}>
@@ -241,7 +139,7 @@ const Recommended = ({ userPreferences }) => {
                                      key = {pet.petfinder_id}
                                      pet ={pet} 
                                      rank={index + 1}
-                                     isFavorite={favorites.includes(pet.petfinder_id)}
+                                     isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id)}
                                      toggleFavorite={toggleFavorite}
                                      onMoreInfo={handleMoreInfo}
                                      />
@@ -255,8 +153,9 @@ const Recommended = ({ userPreferences }) => {
                                     <PetCard 
                                         key = {pet.petfinder_id} 
                                         pet={pet}
-                                        isFavorite={favorites.includes(pet.petfinder_id)}
-                                        toggleFavorite={toggleFavorite}
+                                        isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id )}
+                                        onToggleFavorite={toggleFavorite}
+                                        onRemove={(petId) => toggleFavorite({id:petId})}
                                         onMoreInfo={handleMoreInfo}
                                         />
                                 ))}

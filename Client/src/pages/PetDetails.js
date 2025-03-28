@@ -1,25 +1,28 @@
 import {FaHeart} from "react-icons/fa"
+import { useState, useEffect } from "react";
 import styles from './PetDetails.module.css';
 
 
-const PetDetails = ({pet, rank, isFavorite, onToggleFavorite,onRemove}) => {
+const PetDetails = ({pet, rank, isFavorite, onToggleFavorite}) => {
 
+    const [localIsFavorite, setLocalIsFavorite] = useState(isFavorite);
 
-    const handleToggleFavorite = () =>{
-        if(isFavorite){
-            onRemove(pet.id);
-             }
-             else{
-                onToggleFavorite(pet);
-             }
+    // Sync with parent component's isFavorite state
+    useEffect(() => {
+        setLocalIsFavorite(isFavorite);
+    }, [isFavorite]);
+
+    const handleToggleFavorite = () => {
+        const newFavoriteState = !localIsFavorite;
+        setLocalIsFavorite(newFavoriteState);
+        onToggleFavorite(pet.petfinder_id, newFavoriteState);
     };
-
   
   
 
     return(
 
-            <div className ={`{styles.petCard} ${rank ? styles.ranked : ''}`}>
+            <div className ={`{styles.petdetail} ${rank ? styles.ranked : ''}`}>
                 {/*Favorite Button*/}
 
                 <button
@@ -30,12 +33,7 @@ const PetDetails = ({pet, rank, isFavorite, onToggleFavorite,onRemove}) => {
                         <FaHeart className={isFavorite ? styles.favoriteActive : styles.favoriteInactive}/>
                     </button>
 
-                {/* Rank badge  top 3*/} 
-                {rank && (
-                    <div className= {styles.rankBadge}>
-                        #{rank}
-                    </div>
-                )}
+             
 
                 {/*Pet Image */} 
                 <img 

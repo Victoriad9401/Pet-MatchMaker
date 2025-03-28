@@ -1,25 +1,31 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { json, Link } from "react-router-dom";
 import styles from "./Favorite.module.css"
 import PetCard from "./PetCard";
-
+import PetDetails from "./PetDetails";
 const Favorite =() =>{
     //state to read favorites pets
 
-    const[favorites, setFavorites] = useState([]);
+    const [favoritePets, setFavoritePets] = useState([]);
 
-    const ToggleFavorite = (pet) =>{
-        if(favorites.some(favPet => favPet.id === pet.id)){
-            setFavorites(prevFavorites => prevFavorites.filter(favPet => favPet.id !== pet.id));
 
-        }
-        else{
-            setFavorites(prevFavorites => [...prevFavorites, pet]);
-        }
+//for the petcard saved pets
+    useEffect(() => {
+        const savedFavorites = JSON.parse(localStorage.getItem('favoritePets')) || [];
+        setFavoritePets(savedFavorites);
+    }, []);
+
+    const removeFavorite = (petId) => {
+        const updatedFavorites = favoritePets.filter((pet) => pet.petfinder_id !== pet.petfinder_id);
+        setFavoritePets(updatedFavorites);
+        localStorage.setItem('favoritePets', JSON.stringify(updatedFavorites));
     };
-    const removeFromFavorites =(petId) => {
-        setFavorites(prevFavorites => prevFavorites.filter(pet => pet.id !== petId));
-    };
+    
+// gets petdetail saved pets
+    useEffect (() => {
+        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        setFavoritePets(storedFavorites);
+    }, []);
 
 
 return(
@@ -79,18 +85,18 @@ return(
                       </div>
 
      <div className={styles.favpets}>
-                {favorites.length === 0 ? (
+                {favoritePets.length === 0 ? (
                     <div className={styles.noFavorites}>
                         <p> No Favorite pets added yet</p>
                         </div>
                 ): (<div className={styles.favoritesList}>
-                    {favorites.map((pet)=>(
+                    {favoritePets.map((pet)=>(
                         <PetCard 
-                         key ={pet.id}
+                         key ={pet.petfinder_id}
                          pet={pet} 
                          isFavorite={true}
-                         onToggleFavorite={ToggleFavorite}
-                         onRemove={removeFromFavorites}
+                         onRemove={removeFavorite}
+                         
                           />
                     ))}
                     </div>

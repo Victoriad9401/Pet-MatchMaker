@@ -1,23 +1,46 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PetBio.module.css";
 import { useLocation } from "react-router-dom";
 import PetDetails from "./PetDetails";
 
 
+
 const PetBio = () => {
          const navigate = useNavigate();
          const{ state } = useLocation();
          const[favorites, setFavorites] = useState([]);
+         const[isLoading, setIsloading] = useState(true);
 
+         useEffect(() => {
 
-         //handle direct access
-         if(!state?.pet){
-            navigate ("/Recommended");
+            if(!state?.pet){
+                navigate ("/Recommended");
+            }
+            else{
+                setIsloading(false);
+            }  
+        }, [state,navigate]);
+         
+
+         //load faviortes from localstorage
+         useEffect(()=> {
+            const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+            setFavorites(storedFavorites);
+         }, []);
+
+         useEffect(() => {
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+         }, [favorites]);
+
+         if(!state?.pet|| isLoading){
             return null;
-         }  
+         }
 
          const {pet} = state;
+
+       
+        
 
 
       const handleAdopt = () =>  navigate("/EndingScreen", {state: {petType: pet.species}});
@@ -122,8 +145,10 @@ return(
             <button className={styles.adoptButton} onClick={handleAdopt}>
                     Adopt
                 </button>
+
+                {/*favorite button*/}
             <button className={styles.favoriteButton} onClick={() => toggleFavorite (pet)}>
-                {favorites.some((favPet) => favPet.id ===pet.id)?(
+                {favorites.some((favPet) => favPet.id === pet.id)?(
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
