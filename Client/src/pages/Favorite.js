@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import { json, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Favorite.module.css"
 import PetCard from "./PetCard";
-import PetDetails from "./PetDetails";
+
 const Favorite =() =>{
     //state to read favorites pets
 
@@ -20,7 +20,7 @@ const Favorite =() =>{
         setFavoritePets(updatedFavorites);
         localStorage.setItem('favoritePets', JSON.stringify(updatedFavorites));
     };
-    
+
 // gets petdetail saved pets
     useEffect (() => {
         const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
