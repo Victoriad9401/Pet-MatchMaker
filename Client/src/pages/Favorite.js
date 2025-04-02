@@ -10,10 +10,10 @@ const Favorite =() =>{
 
 
 //for the petcard saved pets
-    useEffect(() => {
-        const savedFavorites = JSON.parse(localStorage.getItem('favoritePets')) || [];
-        setFavoritePets(savedFavorites);
-    }, []);
+    // useEffect(() => {
+    //     const savedFavorites = JSON.parse(localStorage.getItem('favoritePets')) || [];
+    //     setFavoritePets(savedFavorites);
+    // }, []);
 
     const removeFavorite = (petId) => {
         const updatedFavorites = favoritePets.filter((pet) => pet.petfinder_id !== pet.petfinder_id);

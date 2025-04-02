@@ -27,20 +27,20 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.27);
+    transform: scale(0.24);
     bottom: 10px;
-    margin-bottom: 550px;  
-    margin-left:  970px;
+    margin-bottom: 546px;  
+    margin-left:  990px;
     z-index:10 ; 
 }
 .heart{
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.29);
+    transform: scale(0.24);
     bottom: 10px;
-    margin-bottom: 560px;  
-    margin-left:  -1050px;
+    margin-bottom: 553px;  
+    margin-left:  -1020px;
     z-index:10 ; 
     
 }
@@ -48,21 +48,21 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
-    bottom: 10px;
-    margin-bottom: 555px;  
-    margin-left:  -1340px;
-    z-index:10 ; 
+    transform: scale(0.25);
+    bottom: 5px;
+    margin-bottom: 552px;  
+    margin-left:  -1320px;
+    z-index:7; 
     
 }
 .house{
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.26);
     bottom: 10px;
-    margin-bottom: 560px;  
-    margin-left:  -1570px;
+    margin-bottom: 555px;  
+    margin-left:  -1540px;
     z-index:10 ; 
     
 }
@@ -151,17 +151,21 @@
     position: relative;
     z-index: 1;
 }
+
 .navLink1{
+  top: -2px;
 
 }
 .navLink2{
- 
-    margin-left: 20px;
+    top: -2px;
+    margin-left: 30px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
+  
 }
 .navLink3{
     margin-left: 30px;
+    top: -2px;
 }
 .navLink4{
     margin-bottom: 12px;

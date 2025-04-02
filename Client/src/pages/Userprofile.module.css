@@ -78,10 +78,10 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.29);
+    transform: scale(0.25);
     bottom: 10px;
-    margin-bottom: 569px;  
-    margin-left:  -1050px;
+    margin-bottom: 565px;  
+    margin-left:  -1030px;
     z-index:10 ; 
     
 }
@@ -89,21 +89,19 @@
     position: absolute;
     width: 50px; /* Keep a larger base size */
     height: 50px;
-    transform: scale(0.3);
+    transform: scale(0.24);
     bottom: 10px;
-    margin-bottom: 560px;  
-    margin-left:  -1340px;
+    margin-bottom: 555px;  
+    margin-left:  -1310px;
     z-index:10 ; 
     
 }
 .house{
-    position: absolute;
-    width: 50px; /* Keep a larger base size */
-    height: 50px;
-    transform: scale(0.3);
+    position: absolute; 
+    transform: scale(0.24);
     bottom: 10px;
-    margin-bottom: 570px;  
-    margin-left:  -1570px;
+    margin-bottom: 340px;  
+    margin-left:  -1450px;
     z-index:10 ; 
     
 }
@@ -198,14 +196,23 @@
     pointer-events: auto;
 }
 .navLink1{
-    z-index: 1000;
+    top: -2px;
+    margin-left: 4px;
+    position: relative;
+    z-index: 1;
 
 }
 .navLink2{
- 
+    top: -2px;
     margin-left: 20px;
+    margin-bottom: 5px;
+    position: relative;
+
 }
 .navLink3{
+    
+    margin-bottom: 10px;
+    position: relative;
     margin-left: 30px;
 }
 .navLink4{

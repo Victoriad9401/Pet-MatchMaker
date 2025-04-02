@@ -146,6 +146,20 @@
     position: absolute;
 }
 
+.clearButton{
+    position: fixed;
+    top: 10px;
+    right: 30px;
+    padding: 20px 35px;
+    font-size: 22px;
+    font-family: 'Poppins One', cursive;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    background-color: #0AA4EB;
+    color: #f7f8fa;
+    box-shadow: 5px 5px 2px 2px #4e5a6b;
+}
 
 .exitbutton {
     position: fixed;

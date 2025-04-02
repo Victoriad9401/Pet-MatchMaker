@@ -26,15 +26,6 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
     return(
 
             <div className ={`{styles.petCard} ${rank ? styles.ranked : ''}`}>
-                {/*Favorite Button*/}
-
-                <button
-                    onClick={ handleToggleFavorite}
-                    className={styles.favoriteBtn}
-                    aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                    >
-                        <FaHeart className={isFavorite ? styles.favoriteActive : styles.favoriteInactive}/>
-                    </button>
 
                 {/* Rank badge  top 3*/} 
                 {rank && (

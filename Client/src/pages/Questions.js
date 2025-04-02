@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Questions.module.css";
 import {LoadingContext} from "./LoadingContext";
@@ -103,13 +103,14 @@ const questions = [
         options: ["Yes", "No"],
         dependsOn: { name: "pottyTrain", value: ["Some experience, but not fully comfortable", "No experience"] },
     },
-    //DOG BRANCH QUESTIONS 2 (Major Branch Section)
+    
+    // DOG BRANCH QUESTIONS 2 (Major Branch Section)
     {
         page: 6,
         question: "Are there any characteristics that your ideal dog should have?",
         name: "dogTraits",
         type: "checkbox",
-        options: ["Spayed/Neutered", "Current Vaccinations", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
+        options: ["Current Vaccinations", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
         dependsOn: { name: "typePet", value: "Dog" },
     },
 
@@ -139,9 +140,9 @@ const questions = [
     },
     {
         page: 6,
-        question: "How much time are you comfortable spending on pet-related cleaning?",
+        question: "How much pet Hair are you able to handle?",
         name: "cleaningTime",
-        options: ["Minimum", "Moderate", "Good Amount"],
+        options: ["Minimum", "Moderate", "Alot of Hair"],
     },
     {
         page: 7,
@@ -160,7 +161,7 @@ const questions = [
     },
     {
         page: 8,
-        question: "Is there anything else you’d like us to know about your home, lifestyle, or expectations for your future pet?",
+        question: "Is there anything else you’d like us to know about your future pet?",
         name: "additionalInfo",
         type: "textarea",
     },
@@ -173,6 +174,22 @@ const Questions = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [answers, setAnswers] = useState({});
+    const [hasLoadedSavedAnswers, setHasLoadedSavedAnswers] = useState(false);
+
+
+    useEffect(() => {
+        const savedAnswers = localStorage.getItem('petQuizAnswers');
+        if(savedAnswers && !hasLoadedSavedAnswers){
+            setAnswers(JSON.parse(savedAnswers));
+            setHasLoadedSavedAnswers(true);
+        }
+    }, [hasLoadedSavedAnswers]);
+
+    useEffect(() => {
+        if(Object.keys(answers).length > 0){
+            localStorage.setItem('petQuizAnswers', JSON.stringify(answers));
+        }
+    }, [answers]);
 
     // Helper function to filter questions based on dependencies
     const getVisibleQuestions = () => {
@@ -225,6 +242,12 @@ const Questions = () => {
         });
     };
     
+    const clearSavedAnswers = () =>{
+        localStorage.removeItem('petQuizAnswers');
+        setAnswers({});
+        setHasLoadedSavedAnswers(false);
+        setCurrentPage(1);
+    };
 
     const handleTextareaChange = (e) => {
         const { name, value } = e.target;
@@ -262,6 +285,15 @@ const Questions = () => {
         <div className={styles.Questions}>
             <h1>Pet Quiz</h1>
             <button type="button" className={styles.exitbutton} onClick={() => navigate("/LeaveQuiz")}>Exit</button>
+            {hasLoadedSavedAnswers && (
+                <button
+                type="button"
+                className={styles.clearButton}
+                onClick={clearSavedAnswers}
+                >
+                    Clear
+                </button>
+            )}
 
             {/* Progress Bar and Progress Text Container */}
             <div className={styles.progressContainer}>
@@ -281,6 +313,9 @@ const Questions = () => {
                     {currentPageQuestions.map((q, index) => (
                         <div key={index} className={styles.question}>
                             <p>{q.question}</p>
+                            {hasLoadedSavedAnswers && answers[q.name] && (
+                                <div className={styles.savedIndicator}> Previously Answered</div>
+                            )}
                             {q.type === "checkbox" ? (
                                 q.options.map((option, i) => (
                                     <label key={i} style={{ display: "flex", alignItems: "center", gap: "5px", marginRight: "15px" }}>

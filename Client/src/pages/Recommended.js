@@ -139,8 +139,6 @@ const Recommended = ({ userPreferences }) => {
                                      key = {pet.petfinder_id}
                                      pet ={pet} 
                                      rank={index + 1}
-                                     isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id)}
-                                     toggleFavorite={toggleFavorite}
                                      onMoreInfo={handleMoreInfo}
                                      />
                                 ))}
@@ -154,8 +152,6 @@ const Recommended = ({ userPreferences }) => {
                                         key = {pet.petfinder_id} 
                                         pet={pet}
                                         isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id )}
-                                        onToggleFavorite={toggleFavorite}
-                                        onRemove={(petId) => toggleFavorite({id:petId})}
                                         onMoreInfo={handleMoreInfo}
                                         />
                                 ))}

@@ -83,7 +83,7 @@
 }
 
 .bcontainer{
-    background-color: #f2f4f9;
+    background-color: #eef2f9;
     width: 300%;
     height: 50%;
     right: -10px;
@@ -147,7 +147,7 @@
     font-family:'Purple Purse', cursive ;
       font-weight: 400;
       font-size: 2.5ex;
-      margin-left: 45px;
+      margin-left: 35px;
       margin-top: 15px;
     
       
@@ -177,7 +177,7 @@
     font-family:'Purple Purse', cursive ;
       font-weight: 400;
       font-size: 2.5ex;
-      margin-left: 40px;
+      margin-left: 30px;
       margin-top: 20px;
     
       
@@ -200,16 +200,14 @@
     font-weight: 100;
       font-size: 2.3ex;
       margin-top: 1px;
-      margin-left: 16px;
+      margin-left: 20px;
   }
   .percontainer p{
     font-family:'Purple Purse', cursive ;
-      font-weight: 600;
-      font-size: 2.5ex;
-      margin-left: 40px;
-      margin-top: 9px;
-      text-shadow: 0px 0px #00000041;
-      
+    font-weight: 400;
+    font-size: 2.5ex;
+    margin-left: 25px;
+    margin-top: 20px;
   }
 
 .infocontainer{
