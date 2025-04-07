@@ -4,148 +4,101 @@ import styles from "./Questions.module.css";
 import {LoadingContext} from "./LoadingContext";
 
 const questions = [
-    // ALL QUESTIONS (First Section)
+    // Filter QUESTIONS 
     {
         page: 1,
-        question: "Do you have prior or current pet ownership experience?",
-        name: "petOwnership",
-        options: ["Yes", "No"],
-    },
-    {
-        page: 1,
-        question: "Do you have any children under 12 in your household?",
-        name: "childrenUnder12",
-        options: ["Yes", "No"],
-    },
-    {
-        page: 1,
-        question: "How often will your pet be alone at home?",
-        name: "petAloneTime",
-        options: ["Rarely", "Part of the Day", "Most of the Day"],
-    },
-
-    // PET EXPERIENCE BRANCH (Optional Section)
-    {
-        page: 2,
-        question: "Do you currently have any other pets (Cats or Dogs)?",
-        name: "otherPets",
-        options: ["Yes", "No"],
-        dependsOn: { name: "petOwnership", value: "Yes" },
-    },
-    {
-        page: 2,
-        question: "Please indicate your comfort level with pet-related behavioral challenges:",
-        name: "comfortLevel",
-        options: ["Unfamiliar", "Some Experience", "Advanced"],
-        dependsOn: { name: "petOwnership", value: "Yes" },
-    },
-
-    // OTHER PETS BRANCH (Optional Section)
-    {
-        page: 3,
-        question: "How many other pets do you have?",
-        name: "numberPets",
-        options: ["1", "2", "3", "4+"],
-        dependsOn: { name: "otherPets", value: "Yes" },
-    },
-    {
-        page: 3,
-        question: "What type of pets do you have?",
-        name: "typePets",
-        options: ["Cat(s)", "Dog(s)"],
-        dependsOn: { name: "otherPets", value: "Yes" },
-    },
-
-    // ALL QUESTIONS (Second Section)
-    {
-        page: 4,
-        question: "What role do you want your pet to play in your life?",
-        name: "petRole",
-        type: "checkbox",
-        options: ["Companion", "Protector", "Family Pet", "Emotional Support", "Other"],
-        hasOtherOption: true,
-    },
-    {
-        page: 4,
         question: "What type of pet are you looking for?",
         name: "typePet",
         options: ["Dog", "Cat"],
     },
-
-    // DOG BRANCH QUESTIONS (Major Branch Section)
     {
-        page: 5,
-        question: "Do you have any experience potty training dogs?",
-        name: "pottyTrain",
-        options: ["Yes, I’ve done it before", "Some experience, but not fully comfortable", "No experience"],
-        dependsOn: { name: "typePet", value: "Dog" },
+        page: 1,
+        question: "Do you have an age preference for your future pet?",
+        name: "age",
+        options: ["No Preference", "Baby", "Young", "Adult", "Senior"],
     },
     {
-        page: 5,
-        question: "Which best describes how active you are?",
-        name: "activityLevel",
-        options: ["I Prefer Staying Indoors", "I Like Casual Strolls", "I Love To Adventure Outdoors!"],
-        dependsOn: { name: "typePet", value: "Dog" },
-    },
-    {
-        page: 5,
-        question: "Which best reflects your living situation?",
-        name: "livingSituation",
-        options: ["House with Fenced Yard", "House without Fenced Yard", "Apartment with Shared Outdoor Space", "Apartment With No Outdoor Access"],
-        dependsOn: { name: "typePet", value: "Dog" },
+        page: 1,
+        question: "Do you have a gender preference for your future pet?",
+        name: "gender",
+        options: ["No Preference", "Male", "Female"],
     },
 
-    // DOG WILLINGNESS BRANCH
+    //Need dynamic update
     {
-        page: 6,
-        question: "Are you willing to potty train your dog?",
-        name: "willingnessPottyTrain",
-        options: ["Yes", "No"],
-        dependsOn: { name: "pottyTrain", value: ["Some experience, but not fully comfortable", "No experience"] },
+        page: 2,
+        question: "Do you have a Breed preference for your pet?",
+        name: "breed",
+        options: [
+            "No Preference",
+            "Cockapoo",
+            "Bloodhound",
+            "Pomeranian",
+            "Poodle",
+            "Boxer",
+            "Husky",
+            "Terrier",
+            "French Bulldog",
+            "Chihuahua",
+            "English Bulldog",
+            "Labrador Retriever",
+            "Spaniel",
+            "American Bulldog",
+            "Doberman Pinscher",
+            "Retriever",
+            "Australian Cattle Dog / Blue Heeler",
+            "Beagle",
+            "Cattle Dog",
+            "Shih Tzu",
+            "Miniature Pinscher",
+            "Pit Bull Terrier",
+            "Golden Retriever",
+            "Corgi",
+            "Treeing Walker Coonhound",
+            "Basset Hound",
+            "Great Dane",
+            "Chocolate Labrador Retriever",
+            "Jack Russell Terrier",
+            "Shar-Pei",
+            "Shepherd",
+            "Hound"
+        ],
+        type: "checkbox",
+        dependsOn: { name: "typePet", value: ["Dog"] },
     },
-    
-    // DOG BRANCH QUESTIONS 2 (Major Branch Section)
+    //Temp hard code
     {
-        page: 6,
+        page: 2,
+        question: "Do you have a Breed preference for your pet?",
+        name: "breed",
+        options: ["No Preference", "Domestic Shorthair", "Domestic Medium Hair"],
+        type: "checkbox",
+        dependsOn: { name: "typePet", value: ["Cat"] },
+    },
+
+    // DOG BRANCH QUESTIONS
+    {
+        page: 2,
         question: "Are there any characteristics that your ideal dog should have?",
         name: "dogTraits",
         type: "checkbox",
-        options: ["Current Vaccinations", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
+        options: ["No Preference", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
         dependsOn: { name: "typePet", value: "Dog" },
     },
 
     // CAT BRANCH QUESTIONS
     {
-        page: 5,
-        question: "How much do you want your cat to need attention from you?",
-        name: "catAttention",
-        options: ["Very affectionate", "Balanced", "Independent"],
-        dependsOn: { name: "typePet", value: "Cat" },
-    },
-    {
-        page: 5,
+        page: 2,
         question: "Are there any characteristics that your ideal cat should have?",
         name: "catTraits",
         type: "checkbox",
-        options: ["Spayed/Neutered", "Current Vaccinations", "Litter Box Trained", "Hypoallergenic"],
+        options: ["No Preference", "House-Trained", "Hypoallergenic"],
         dependsOn: { name: "typePet", value: "Cat" },
     },
 
-    // ALL QUESTIONS (Final Section)
+    // AI Context Questions
     {
-        page: 6,
-        question: "What is your estimated monthly budget for pet care?",
-        name: "budget",
-        options: ["$50", "$100", "$150"],
-    },
-    {
-        page: 6,
-        question: "How much pet Hair are you able to handle?",
-        name: "cleaningTime",
-        options: ["Minimum", "Moderate", "Alot of Hair"],
-    },
-    {
-        page: 7,
+        page: 3,
         question: "In one word, what kind of traits are you looking for in a pet?",
         name: "petTraits",
         type: "checkbox",
@@ -153,14 +106,14 @@ const questions = [
         hasOtherOption: true,
     },
     {
-        page: 7,
+        page: 3,
         question: "Are there activities or hobbies that you would like to share with your pet?",
         name: "petHobbies",
         type: "checkbox",
         options: ["Hiking", "Running", "Cuddling", "Napping", "Other"],
     },
     {
-        page: 8,
+        page: 3,
         question: "Is there anything else you’d like us to know about your future pet?",
         name: "additionalInfo",
         type: "textarea",
@@ -208,7 +161,6 @@ const Questions = () => {
         });
     };
     
-
     // Dynamically get all valid pages with questions
     const visiblePages = [...new Set(getVisibleQuestions().map(q => q.page))].sort((a, b) => a - b);
 
@@ -344,6 +296,7 @@ const Questions = () => {
                                         )}
                                     </label>
                                 ))
+
                             ) : q.type === "textarea" ? (
                                 <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." />
                             ) : (
