@@ -225,7 +225,7 @@ const Questions = () => {
         try {
             console.log("Submitting answers...", answers);
             await new Promise(resolve => setTimeout(resolve, 2000));
-            navigate("/Recommended");
+            navigate("/Recommended", {state: {userPreferences: answers} }); //passes the asnwer here
         } catch (error) {
             console.error("Submission failed:", error);
         } finally {

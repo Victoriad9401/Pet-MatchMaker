@@ -57,11 +57,10 @@
 }
 .house{
     position: absolute;
-   
     transform: scale(0.23);
     bottom: 10px;
     margin-bottom: 339px;
-    margin-left:  -1452px;
+    margin-left:  -1455px;
     z-index:10 ; 
     
 }
@@ -148,25 +147,26 @@
     text-shadow: 2px 2px #6d747d;
 }
 .navLink1{
-    top: -2px;
-    margin-left:-2px;
+    top: -3px;
+   
     position: relative;
     z-index: 1;
 }
 .navLink2{
-    top: -2px;
+    top: -3px;
     margin-left: 30px;
     position: relative;
     z-index: 1;
 }
 .navLink3{
+    top: -3px;
+    position: relative;
     margin-left: 30px;
     margin-bottom: -10px;
 }
 .navLink4{
     margin-bottom: 12px;
     bottom: 12px;
-   
     margin-left: 900px;
 
 }
