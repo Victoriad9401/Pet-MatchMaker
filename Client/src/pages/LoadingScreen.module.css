@@ -116,3 +116,39 @@
    transform: rotate(50deg);
    opacity: 0.2;
  }
+ @media screen and (min-width: 1200px) {
+    .whitepaw{
+  
+        position: absolute;
+        bottom: 90px;
+        margin-bottom: 310px;
+        margin-left: 1200px;
+        transform: rotate(60deg);
+        opacity: 0.2;
+     }
+     .whitepaw2{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: 100px;
+         margin-left: -1600px;
+        transform: rotate(150deg);
+        opacity: 0.2;
+      }
+     
+      .catpaw{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: -10px;
+         margin-left: 1200px;
+        transform: rotate(-40deg);
+        opacity: 0.2;
+      }
+      .catpaw2{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: 1100px;
+         margin-left: -1650px;
+        transform: rotate(50deg);
+        opacity: 0.2;
+      }
+ }
