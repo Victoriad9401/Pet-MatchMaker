@@ -4,6 +4,7 @@ const express = require("express");
 const app = express() //runs express library
 const cors = require("cors")
 const pool = require('./db');
+const { updatePetData } = require("../Server/scripts/update"); //Databse update function
 
 //middleware
 const allowedOrigins = [
@@ -31,6 +32,13 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/pets", require("./routes/petRoutes"));
 
 const PORT = process.env.PORT || 5000; // Use Railway's assigned port
+
+// Daily update the database data
+setInterval(() =>{
+    console.log("Daily Scheduled Database Pet Data Refresh")
+    updatePetData();
+}, 1000 * 60 * 60 * 24) // Update Daily
+
 
 //start server, and listen to port 5000
 app.listen(PORT, () =>{

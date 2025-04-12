@@ -11,6 +11,4 @@ async function updatePetData(){
     }
 }
 
-
-// Run the function
-updatePetData();
+module.exports = {updatePetData};

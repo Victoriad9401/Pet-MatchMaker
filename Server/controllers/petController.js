@@ -119,7 +119,7 @@ async function refreshPetData() {
                     $26, $27, $28, $29, 
                     $30, DEFAULT
                 )
-                ON CONFLICT ON CONSTRAINT unique_name_org_breed DO UPDATE SET
+                ON CONFLICT (petfinder_id) DO UPDATE SET
                     organization_id = EXCLUDED.organization_id,
                     url = EXCLUDED.url,
                     type = EXCLUDED.type,
@@ -162,8 +162,13 @@ async function refreshPetData() {
                 ]
             );    
         } catch (error) {
-            console.error("Error inserting data into pets database ", error);
-        }
+            // Catch duplicate name org breed profiles that have a differnt petfinder Id. 
+            if (error.code === '23505' && error.constraint === 'unique_name_org_breed') {
+              console.warn(`Based on name-org-breed constraint, detected and skipped a duplicate profile: ${pet.name}`); 
+            } else {
+              console.error("Error inserting data into pets database ", error);
+            }
+          }
     }
     await removeExpiredData();
 }
