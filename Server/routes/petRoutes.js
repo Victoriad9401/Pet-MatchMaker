@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { fetchPetProfiles, queryPetProfiles } = require("../controllers/petController")
 const { rankProfiles } = require("../controllers/AzureopenAI_Controller")
-const {shuffle} = require("../utils/shuffle")
+const { shuffle } = require("../utils/shuffle")
 
 /* The update route is not safe. Could allow anyone to spam updates.
 For testing purposes only! Dont deploy!!!!
