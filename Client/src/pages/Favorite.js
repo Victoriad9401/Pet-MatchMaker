@@ -1,3 +1,6 @@
+/* eslint-disable no-self-compare */
+//Remove above after dev
+
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import styles from "./Favorite.module.css"
@@ -14,6 +17,7 @@ const Favorite =() =>{
     //     const savedFavorites = JSON.parse(localStorage.getItem('favoritePets')) || [];
     //     setFavoritePets(savedFavorites);
     // }, []);
+
 
     const removeFavorite = (petId) => {
         const updatedFavorites = favoritePets.filter((pet) => pet.petfinder_id !== pet.petfinder_id);

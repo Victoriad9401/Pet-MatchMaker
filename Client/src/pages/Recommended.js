@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+//Remove above after dev
+
 import React, {useState, useEffect} from "react";
 import styles from "./Recommended.module.css"
 import { Link, useNavigate } from "react-router-dom";
