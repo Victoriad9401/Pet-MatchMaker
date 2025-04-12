@@ -79,7 +79,7 @@ const questions = [
     //
     {
         page: 2,
-        question: "Are there any characteristics that your ideal dog should have?",
+        question: "Are there any characteristics that your ideal pet should have?",
         name: "characteristics",
         type: "checkbox",
         options: ["No Preference", "House-Trained", "Good with Children", "Good with Dogs", "Good with Cats", "Hypoallergenic"],
