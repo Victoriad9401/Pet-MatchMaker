@@ -82,7 +82,7 @@ const questions = [
         question: "Are there any characteristics that your ideal pet should have?",
         name: "characteristics",
         type: "checkbox",
-        options: ["No Preference", "House-Trained", "Good with Children", "Good with Dogs", "Good with Cats", "Hypoallergenic"],
+        options: ["No Preference", "House-Trained", "Good with Children", "Good with Dogs", "Good with Cats"],
     },
 
 
@@ -195,7 +195,7 @@ const Questions = () => {
         const { name, value } = e.target;
 
         //Add character limit
-        const maxLength = 300;
+        const maxLength = 275;
         if(value.length <= maxLength){
             setAnswers(prev => ({ ...prev, [name]: value }));
         }
@@ -272,7 +272,7 @@ const Questions = () => {
                                         {option}
                                         {option === "Other" && answers[q.name]?.includes("Other") && (
                                             <input
-                                                type="text" name={q.name + "Other"} value={answers[q.name + "Other"] || ""} onChange={handleTextareaChange} placeholder="Enter Response Here..." maxLength={50}
+                                                type="text" name={q.name + "Other"} value={answers[q.name + "Other"] || ""} onChange={handleTextareaChange} placeholder="Enter Response Here..." maxLength={25}
                                                 style={{
                                                     marginLeft: "5px",
                                                     padding: "5px",
@@ -285,7 +285,7 @@ const Questions = () => {
                                 ))
 
                             ) : q.type === "textarea" ? (
-                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." maxLength={300}/>
+                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." maxLength={275}/>
                             ) : (
                                 q.options.map((option, i) => (
                                     <label key={i}>
