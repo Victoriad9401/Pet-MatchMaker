@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import styles from "./Recommended.module.css"
 import { Link, useNavigate } from "react-router-dom";
 import PetCard from "./PetCard";
-import { fetchPetProfiles } from "../api/petService";
+import { fetchRankedPetProfiles } from "../api/petService";
 import { useLocation } from "react-router-dom";
 
 
@@ -22,15 +22,13 @@ const Recommended = () => {
 
         console.log("Current User preferences:", userPreferences);
         
-
-       
         //Handles api
         useEffect(() => {
             const fetchPets = async ()=>{
                 try{
                     setLoading(true);
                     console.log("Fetching Pets with preferences:", userPreferences);
-                    const petsData = await fetchPetProfiles(userPreferences);
+                    const petsData = await fetchRankedPetProfiles(userPreferences);
                     console.log(petsData);
                     if(!petsData || petsData.length === 0){
                         console.warn("API returned empty results");

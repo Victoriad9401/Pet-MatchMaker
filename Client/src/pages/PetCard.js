@@ -1,10 +1,13 @@
+/************* CURRENTLY UNUSED (Unused variables cause build problems)
 import {FaHeart} from "react-icons/fa"
+*/
 import styles from './PetCard.module.css';
 import { useNavigate} from "react-router-dom";
 
 const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,onRemove}) => {
     const navigate=useNavigate();
 
+/************* CURRENTLY UNUSED (Unused variables cause build problems)
     const handleToggleFavorite = () =>{
         if(isFavorite){
             onRemove(pet.id);
@@ -13,7 +16,7 @@ const PetCard = ({pet, rank, onMoreInfo, onAdopt, isFavorite, onToggleFavorite,o
                 onToggleFavorite(pet);
              }
     };
-
+    */
     const handleMoreInfo =() =>{
         navigate('/PetBio', {state: {pet}});
     }

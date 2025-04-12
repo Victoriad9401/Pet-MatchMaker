@@ -12,3 +12,15 @@ export const fetchPetProfiles = async () => {
         throw error;
     }
 };
+
+
+// Send Quiz Results to backend and recieve ranked pet profiles
+export const fetchRankedPetProfiles = async (userPreferences) =>{
+    try {
+        const response = await axios.post(`${API_BASE_URL}/rankPets`, {userPreferences});
+        return response.data.rankedPetProfiles;
+    } catch (error) {
+        console.error("Error fetching Ranked pet data:", error);
+        throw error;
+    }
+};

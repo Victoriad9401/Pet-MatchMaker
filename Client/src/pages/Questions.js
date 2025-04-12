@@ -27,7 +27,7 @@ const questions = [
     //Need dynamic update
     {
         page: 2,
-        question: "Do you have a Breed preference for your pet?",
+        question: "Do you have a Breed preference for your future dog?",
         name: "breed",
         options: [
             "No Preference",
@@ -69,32 +69,22 @@ const questions = [
     //Temp hard code
     {
         page: 2,
-        question: "Do you have a Breed preference for your pet?",
+        question: "Do you have a Breed preference for your future cat?",
         name: "breed",
-        options: ["No Preference", "Domestic Shorthair", "Domestic Medium Hair"],
+        options: ["No Preference", "Domestic Short Hair", "Domestic Medium Hair"],
         type: "checkbox",
         dependsOn: { name: "typePet", value: ["Cat"] },
     },
 
-    // DOG BRANCH QUESTIONS
+    //
     {
         page: 2,
         question: "Are there any characteristics that your ideal dog should have?",
-        name: "dogTraits",
+        name: "characteristics",
         type: "checkbox",
-        options: ["No Preference", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
-        dependsOn: { name: "typePet", value: "Dog" },
+        options: ["No Preference", "House-Trained", "Good with Children", "Good with Dogs", "Good with Cats", "Hypoallergenic"],
     },
 
-    // CAT BRANCH QUESTIONS
-    {
-        page: 2,
-        question: "Are there any characteristics that your ideal cat should have?",
-        name: "catTraits",
-        type: "checkbox",
-        options: ["No Preference", "House-Trained", "Hypoallergenic"],
-        dependsOn: { name: "typePet", value: "Cat" },
-    },
 
     // AI Context Questions
     {
