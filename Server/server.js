@@ -4,7 +4,7 @@ const express = require("express");
 const app = express() //runs express library
 const cors = require("cors")
 const pool = require('./db');
-const { updatePetData } = require("../Server/scripts/update"); //Databse update function
+const { updatePetData } = require("./scripts/update"); //Databse update function
 
 //middleware
 const allowedOrigins = [
