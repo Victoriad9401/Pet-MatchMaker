@@ -193,7 +193,12 @@ const Questions = () => {
 
     const handleTextareaChange = (e) => {
         const { name, value } = e.target;
-        setAnswers(prev => ({ ...prev, [name]: value }));
+
+        //Add character limit
+        const maxLength = 300;
+        if(value.length <= maxLength){
+            setAnswers(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleNext = () => {
@@ -262,20 +267,12 @@ const Questions = () => {
                                 q.options.map((option, i) => (
                                     <label key={i} style={{ display: "flex", alignItems: "center", gap: "5px", marginRight: "15px" }}>
                                         <input
-                                            type="checkbox"
-                                            name={q.name}
-                                            value={option}
-                                            checked={answers[q.name]?.includes(option) || false}
-                                            onChange={handleAnswerChange}
+                                            type="checkbox" name={q.name} value={option} checked={answers[q.name]?.includes(option) || false} onChange={handleAnswerChange}
                                         />
                                         {option}
                                         {option === "Other" && answers[q.name]?.includes("Other") && (
                                             <input
-                                                type="text"
-                                                name={q.name + "Other"}
-                                                value={answers[q.name + "Other"] || ""}
-                                                onChange={handleTextareaChange}
-                                                placeholder="Enter Response Here..."
+                                                type="text" name={q.name + "Other"} value={answers[q.name + "Other"] || ""} onChange={handleTextareaChange} placeholder="Enter Response Here..." maxLength={50}
                                                 style={{
                                                     marginLeft: "5px",
                                                     padding: "5px",
@@ -288,7 +285,7 @@ const Questions = () => {
                                 ))
 
                             ) : q.type === "textarea" ? (
-                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." />
+                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." maxLength={300}/>
                             ) : (
                                 q.options.map((option, i) => (
                                     <label key={i}>
