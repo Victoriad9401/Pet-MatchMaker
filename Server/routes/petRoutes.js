@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { fetchPetProfiles } = require("../controllers/petController")
+const { fetchPetProfiles, queryPetProfiles } = require("../controllers/petController")
+const { rankProfiles } = require("../controllers/AzureopenAI_Controller")
 
 /* The update route is not safe. Could allow anyone to spam updates.
 For testing purposes only! Dont deploy!!!!
@@ -32,6 +33,31 @@ router.get("/petProfiles", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch pet profiles" });
     }
 });
+
+// Post Route to allow frontend to send profiles and receive ranked profiles
+router.post("/rankPets", async(req,res) =>{
+    try {
+        
+        //Input (Query Parameters)
+        const {userPreferences} = req.body;
+        const {typePet, age, gender, characteristics, breed, petTraits, petHobbies, additionalInfo} = userPreferences;
+
+        //Call petController(Input: QuizResponse, Output: Filtered Petprofiles)
+        const filteredPetProfiles = await queryPetProfiles(typePet, age, gender, characteristics, breed);
+
+        //Call AzureOpenAI (Input: FilteredPetprofiles, petContext)
+        const rankedPetProfiles = await rankProfiles(filteredPetProfiles, petTraits, petHobbies, additionalInfo);
+
+        //Output: Ranked PetProfiles
+        res.json({rankedPetProfiles});
+
+    } catch (error) {
+        console.error("Error ranking pet profiles:", error);
+        res.status(500).json({ error: "Failed to rank pet profiles" });
+    }
+
+});
+
 
 
 module.exports = router;
