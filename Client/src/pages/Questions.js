@@ -110,6 +110,20 @@ const questions = [
     },
 ];
 
+const getRankedProfiles = async(quizAnswers) => {
+    const response = await fetch('/api/rankProfiles',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({answers:quizAnswers})
+    });
+    if(!response.ok){
+        throw new Error('Failed to fetch ranked profiles');
+    }
+    const data = await response.json();
+    return data.rankedProfiles;
+};
 
 const Questions = () => {
     const navigate = useNavigate();
@@ -186,6 +200,7 @@ const Questions = () => {
     
     const clearSavedAnswers = () =>{
         localStorage.removeItem('petQuizAnswers');
+        localStorage.removeItem('rankedProfiles'); //added removal for the ranked profiles to redo
         setAnswers({});
         setHasLoadedSavedAnswers(false);
         setCurrentPage(1);
@@ -220,6 +235,12 @@ const Questions = () => {
         try {
             console.log("Submitting answers...", answers);
             await new Promise(resolve => setTimeout(resolve, 2000));
+
+            //fetch ranked results from backend
+            const rankedResults = await getRankedProfiles(answers); 
+            //save the ranked results within the localstorage
+            localStorage.setItem('rankedProfiles', JSON.stringify(rankedResults)); 
+
             navigate("/Recommended", {state: {userPreferences: answers} }); //passes the asnwer here
         } catch (error) {
             console.error("Submission failed:", error);

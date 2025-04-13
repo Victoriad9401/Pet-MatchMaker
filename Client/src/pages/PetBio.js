@@ -52,11 +52,22 @@ const PetBio = () => {
         }, [state,navigate]);
          
 
-         //load faviortes from localstorage
+         //load favorites from localstorage
          useEffect(()=> {
-            const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            setFavorites(storedFavorites);
+            const storedFavorites = localStorage.getItem("favorites");
+            if(storedFavorites){
+                try{
+                    const parsedFavorites = JSON.parse(storedFavorites);
+                    if(Array.isArray(parsedFavorites)){
+                        setFavorites(parsedFavorites);
+                    }
+                 } catch(error){
+                    console.error("Failed to load favorites from localStorage", error);
+                 }
+            }
          }, []);
+
+         //save favorites to localstorage whenever it changes
 
          useEffect(() => {
             localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -167,6 +178,17 @@ return(
            {cleanDescription.split('\n').map((paragraph, i)=> (
             <p key={i}>{paragraph}</p>
            ))}
+
+            {/* More Info link (after description) */}
+            {pet.url && (
+                <a 
+                href={pet.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.moreinfolink}
+            > More Info</a>     
+             )}
+   
             <button className={styles.adoptButton} onClick={handleAdopt}>
                     Adopt
                 </button>

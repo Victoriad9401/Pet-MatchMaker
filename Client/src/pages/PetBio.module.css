@@ -241,6 +241,15 @@
       text-shadow: 0px 0px #00000041;
       
   }
+  .moreinfolink{
+    position: absolute;
+    font-family:'Preahvihear', sans-serif ;
+    font-weight: 600;
+    font-size: 2ex;
+ bottom: 10px;
+    margin-left: 800px;
+    text-shadow: 0px 0px #00000041;
+  }
   .adoptButton{
     background-color: #628df9;
     position: relative;

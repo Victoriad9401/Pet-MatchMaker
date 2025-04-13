@@ -14,48 +14,51 @@ const Recommended = () => {
         const[pets, setPets] = useState([]);
         const[filteredPets, setFilteredPets] = useState([]);
         const[favorites, setFavorites] = useState([]);
-        const [loading, setLoading] = useState(true); 
+        const [loading, setLoading] = useState(true);
+        const [userPreferences, setUserPreferences] = useState({}); 
 
 //get user preferene from navigation state
         const location = useLocation();
-        const [userPreferences, setUserPreferences] = useState(location.state?.userPreferences || JSON.parse(localStorage.getItem('petQuizAnswers')) || {});
-       
         const navigate = useNavigate();
      
+//load the preferences first
+useEffect(() => {
+    const storedPrefernce = localStorage.getItem("petQuizAnswers");
+    if(storedPrefernce){
+        setUserPreferences(JSON.parse(storedPrefernce));
+    }
+    else if(location.state?.userPreferences){
+        setUserPreferences(location.state.userPreferences);
+    }
+    else {
+        console.warn("no user preferences available")
+    }
+}, [location.state]);
 
-        console.log("Current User preferences:", userPreferences);
-        
-        //Handles api
-        useEffect(() => {
-            const fetchPets = async ()=>{
-                try{
-                    setLoading(true);
-                    console.log("Fetching Pets with preferences:", userPreferences);
-                    const petsData = await fetchRankedPetProfiles(userPreferences);
-                    console.log(petsData);
-                    if(!petsData || petsData.length === 0){
-                        console.warn("API returned empty results");
-                    }
-                    setPets(petsData || []);
-                    setFilteredPets(petsData || []);
-                 }catch(error){
-                    console.error("Error Fetching Pets: ", {
-                        message: error.message,
-                        response: error.response?.data
-                    });
+//Fetch pets when user preferences changes
+
+   useEffect(() => {
+      const fetchPets = async ()=>{
+        try{
+            setLoading(true);
+            if (Object.keys(userPreferences).length>0){
+                console.log("Fetching Pets with preferences:", userPreferences);
+                const petsData = await fetchRankedPetProfiles(userPreferences);
+                console.log(petsData); 
+                setPets(petsData || []);
+                setFilteredPets(petsData || []);
+                }  
+             }catch(error){
+                    console.error("Error Fetching Pets: ", error);         
                  }finally{
                     setLoading(false);
                  }
             };
 
             //only fetch if we have a prefernce
-            if(Object.keys(userPreferences).length>0){
+            if(Object.keys(userPreferences).length > 0){
                 fetchPets();
-            }
-            else{
-                console.warn("No user preferences avaiable");
-                setLoading(false);
-            }       
+            }   
             }, [userPreferences]);
 
           
