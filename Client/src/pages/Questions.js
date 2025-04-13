@@ -111,18 +111,24 @@ const questions = [
 ];
 
 const getRankedProfiles = async(quizAnswers) => {
-    const response = await fetch('/api/rankProfiles',{
+
+    try{
+    const response = await fetch('/api/rankProfiles', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({answers:quizAnswers})
     });
+
     if(!response.ok){
-        throw new Error('Failed to fetch ranked profiles');
+       console.error("Failed to fetch profiles:", response.status);
+       return[];
     }
     const data = await response.json();
     return data.rankedProfiles;
+} catch(error){
+    console.error("Error fetching ranked profiles:", error);
+    return [];
+}
 };
 
 const Questions = () => {
@@ -238,9 +244,13 @@ const Questions = () => {
 
             //fetch ranked results from backend
             const rankedResults = await getRankedProfiles(answers); 
+            console.log("Ranked profiles receieved:", rankedResults);
+
             //save the ranked results within the localstorage
             localStorage.setItem('rankedProfiles', JSON.stringify(rankedResults)); 
+            console.log("Saved reanked profiles to localStorage");
 
+            console.log("Saved ranked profiles to localStorage");
             navigate("/Recommended", {state: {userPreferences: answers} }); //passes the asnwer here
         } catch (error) {
             console.error("Submission failed:", error);
