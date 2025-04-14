@@ -168,6 +168,7 @@ useEffect(() => {
                                      />
                                 ))}
                             </div>
+                            
 
                             {filteredPets.length > 3 && (
                                 <div>
@@ -181,6 +182,7 @@ useEffect(() => {
                                         />
                                 ))}
                          </div>
+                         
                     </div>
                  )}
             </div>

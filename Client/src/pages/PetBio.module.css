@@ -246,7 +246,7 @@
     font-family:'Preahvihear', sans-serif ;
     font-weight: 600;
     font-size: 2ex;
- bottom: 10px;
+    bottom: 10px;
     margin-left: 800px;
     text-shadow: 0px 0px #00000041;
   }
@@ -269,7 +269,7 @@
     background-color: #628df9;
     position: relative;
     right: -1100px;
-    bottom:240px;
+    bottom:219px;
     border-radius: 50px;
     font-size: 0.5ex;
     box-shadow: 6px 3px #929292a3;
@@ -292,12 +292,15 @@
     z-index: 10;
     cursor: pointer;
     color: #628df9;
-    
-    
-    
+      
 }
-.bbutton:hover{
-    color: #628df9;
+
+.bbutton button{
+  background: #3468ed;
+}
+.bbutton button:hover{
+   
+    background-color:#2da9e7 ;
 }
 
 .bbutton svg{

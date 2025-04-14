@@ -209,14 +209,26 @@
 
 .favoritesList {
     display: flex;
+    flex-wrap: nowrap;
     gap: 2rem;
-    overflow-x: hidden; /* Allows horizontal scrolling if needed */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
     padding: 1rem 0;
     width: 100%;
     max-width: 1400px;
     margin: 20px auto;
-    margin-top: 250px;
+    margin-top: 300px;
  
   }
+
+.favoritesList::-webkit-scrollbar{
+    height: 8px;
+    border-radius: 4px;
+}
+.favoritesList::-webkit-scrollbar-thumb{
+    background: #E48EEA;
+    border-radius: 4px;
+}
+
+ 
   
  

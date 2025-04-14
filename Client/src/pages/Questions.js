@@ -103,7 +103,7 @@ const questions = [
         options: ["Hiking", "Running", "Cuddling", "Napping", "Other"],
     },
     {
-        page: 3,
+        page: 4,
         question: "Is there anything else you’d like us to know about your future pet?",
         name: "additionalInfo",
         type: "textarea",
@@ -239,20 +239,29 @@ const Questions = () => {
     const handleSubmit = async () => {
         setIsLoading(true);
         try {
-            console.log("Submitting answers...", answers);
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const savedAnswers = JSON.parse(localStorage.getItem('savedQuizAnswers'));
+            if (savedAnswers && JSON.stringify(savedAnswers) === JSON.stringify(answers)) {
+                console.log("Same answers detected! Using cached pets...");
+                navigate("/Recommended", { state: { userPreferences: answers } });
+              } else {
+                console.log("New answers detected! Fetching new pets...");
+                const rankedResults = await getRankedProfiles(answers);
 
-            //fetch ranked results from backend
-            const rankedResults = await getRankedProfiles(answers); 
-            console.log("Ranked profiles receieved:", rankedResults);
+            // console.log("Submitting answers...", answers);
+            // await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // //fetch ranked results from backend
+            // const rankedResults = await getRankedProfiles(answers); 
+            // console.log("Ranked profiles receieved:", rankedResults);
 
             //save the ranked results within the localstorage
             localStorage.setItem('rankedProfiles', JSON.stringify(rankedResults)); 
-            console.log("Saved reanked profiles to localStorage");
-
-            console.log("Saved ranked profiles to localStorage");
+            localStorage.setItem('savedQuizAnswers', JSON.stringify(answers));
+         
             navigate("/Recommended", {state: {userPreferences: answers} }); //passes the asnwer here
-        } catch (error) {
+        } 
+    }
+    catch (error) {
             console.error("Submission failed:", error);
         } finally {
             setIsLoading(false);
@@ -295,6 +304,7 @@ const Questions = () => {
                                 <div className={styles.savedIndicator}> Previously Answered</div>
                             )}
                             {q.type === "checkbox" ? (
+                                
                                 q.options.map((option, i) => (
                                     <label key={i} style={{ display: "flex", alignItems: "center", gap: "5px", marginRight: "15px" }}>
                                         <input
