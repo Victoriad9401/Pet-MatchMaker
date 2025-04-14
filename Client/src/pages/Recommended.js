@@ -52,7 +52,7 @@ useEffect(() => {
             setLoading(true);
             if (Object.keys(userPreferences).length>0){
             // only fetch if not already loaded
-            if(pets.length ==0){
+            if(pets.length === 0){
                 
                 console.log("Fetching Pets with preferences:", userPreferences);
                 const petsData = await fetchRankedPetProfiles(userPreferences);
@@ -75,7 +75,7 @@ useEffect(() => {
             if(Object.keys(userPreferences).length > 0){
                 fetchPets();
             }   
-        }, [userPreferences]);
+        }, [userPreferences, pets.length]);
 
           
 
