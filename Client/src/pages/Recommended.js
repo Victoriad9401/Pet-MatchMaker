@@ -24,6 +24,8 @@ const Recommended = () => {
 //load the preferences first
 useEffect(() => {
     const storedPrefernce = localStorage.getItem("petQuizAnswers");
+    const storedRankedPets = localStorage.getItem("rankedProfiles"); //added this
+
     if(storedPrefernce){
         setUserPreferences(JSON.parse(storedPrefernce));
     }
@@ -32,6 +34,13 @@ useEffect(() => {
     }
     else {
         console.warn("no user preferences available")
+    }
+
+    if(storedRankedPets){
+        const parsedPets = JSON.parse(storedRankedPets);
+        setPets(parsedPets);
+        setFilteredPets(parsedPets);
+        setLoading(false); // no need to refresh
     }
 }, [location.state]);
 
@@ -42,12 +51,19 @@ useEffect(() => {
         try{
             setLoading(true);
             if (Object.keys(userPreferences).length>0){
+            // only fetch if not already loaded
+            if(pets.length ==0){
+                
                 console.log("Fetching Pets with preferences:", userPreferences);
                 const petsData = await fetchRankedPetProfiles(userPreferences);
                 console.log(petsData); 
                 setPets(petsData || []);
                 setFilteredPets(petsData || []);
+
+                //saves to localsstorage
+                localStorage.setItem('rankedProfiles', JSON.stringify(petsData));
                 }  
+              }
              }catch(error){
                     console.error("Error Fetching Pets: ", error);         
                  }finally{
@@ -59,7 +75,7 @@ useEffect(() => {
             if(Object.keys(userPreferences).length > 0){
                 fetchPets();
             }   
-            }, [userPreferences]);
+        }, [userPreferences]);
 
           
 

@@ -10,9 +10,21 @@ const PetBio = () => {
     
          const navigate = useNavigate();
          const{ state } = useLocation();
-         const[favorites, setFavorites] = useState([]);
-         const[isLoading, setIsloading] = useState(true);
+
+         const[favorites, setFavorites] = useState(() => {
+            try{
+                const stored = localStorage.getItem("favorites");
+                return stored? JSON.parse(stored) : [];
+            }
+            catch{
+                return [];
+            }
+         });
+        
+         const[isLoading, setIsLoading] = useState(true);
          const[cleanDescription, setCleanDescription] = useState("");
+         const[pet, setPet] = useState(null); // store pet in state
+
 
          useEffect(() => {
          const cleanPetDescription = (html) =>{
@@ -40,61 +52,67 @@ const PetBio = () => {
             return text;
         };
         
-       
-
-            if(!state?.pet){
-                navigate ("/Recommended");
+        //load favorites first
+        const storedFavorites = localStorage.getItem("favorites");
+        if (storedFavorites) {
+            try {
+                const parsedFavorites = JSON.parse(storedFavorites);
+                if (Array.isArray(parsedFavorites)) {
+                    setFavorites(parsedFavorites);
+                }
+            } catch (error) {
+                console.error("Failed to load favorites", error);
             }
-            else{
-                setIsloading(false);
+        }
+
+        //then load pet
+       
+        if (state?.pet) {
+                localStorage.setItem('currentPet', JSON.stringify(state.pet));
+                setPet(state.pet);
                 setCleanDescription(cleanPetDescription(state.pet.description));
-            }  
-        }, [state,navigate]);
-         
-
-         //load favorites from localstorage
-         useEffect(()=> {
-            const storedFavorites = localStorage.getItem("favorites");
-            if(storedFavorites){
-                try{
-                    const parsedFavorites = JSON.parse(storedFavorites);
-                    if(Array.isArray(parsedFavorites)){
-                        setFavorites(parsedFavorites);
+                setIsLoading(false);
+            } 
+            else {
+                    const storedPet = localStorage.getItem('currentPet');
+                    if (storedPet) {
+                        const parsedPet = JSON.parse(storedPet);
+                        setPet(parsedPet);
+                        setCleanDescription(cleanPetDescription(parsedPet.description));
+                        setIsLoading(false);
                     }
-                 } catch(error){
-                    console.error("Failed to load favorites from localStorage", error);
-                 }
+                    else{
+                navigate("/Recommended"); // No backup, send to Recommended
             }
-         }, []);
+        }
+    }, [state, navigate]);
 
-         //save favorites to localstorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+     }, [favorites]);
 
-         useEffect(() => {
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-         }, [favorites]);
-
-         if(!state?.pet|| isLoading){
-            return null;
-         }
-
-         const {pet} = state;
-
-       
-        
-
-
-      const handleAdopt = () =>  navigate("/EndingScreen", {state: {petType: pet.species}});
-      const handleBack = () =>  navigate("/Recommended");
-        
-
-      const toggleFavorite = (pet) => {
-        setFavorites(prev => prev.some(fav => fav.id === pet.id)
-            ? prev.filter(fav => fav.id !== pet.id)
-            : [...prev,pet]
-      );
+     const handleAdopt = () =>  navigate("/EndingScreen", {state: {petType: pet.species}});
+     const handleBack = () =>  navigate("/Recommended");
+         
+     
+     const isFavorite = (petToCheck) => {
+        if (!petToCheck || !petToCheck.id) return false;
+        return favorites.some((favPet) => favPet.id === petToCheck.id);
     };
 
-    //decode the html in description
+    const toggleFavorite = (petToToggle) => {
+        setFavorites((prev) =>
+            prev.some((fav) => fav.id === petToToggle.id)
+                ? prev.filter((fav) => fav.id !== petToToggle.id)
+                : [...prev, petToToggle]
+        );
+    };
+
+    if (!pet || isLoading) {
+        return null;
+    }
+
+
 
     
 
@@ -194,8 +212,8 @@ return(
                 </button>
 
                 {/*favorite button*/}
-            <button className={styles.favoriteButton} onClick={() => toggleFavorite (pet)}>
-                {favorites.some((favPet) => favPet.id === pet.id)?(
+            <button className={styles.favoriteButton} onClick={() => toggleFavorite(pet)}>
+                {isFavorite(pet) ?(
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

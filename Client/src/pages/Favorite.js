@@ -20,9 +20,9 @@ const Favorite =() =>{
 
 
     const removeFavorite = (petId) => {
-        const updatedFavorites = favoritePets.filter((pet) => pet.petfinder_id !== pet.petfinder_id);
+        const updatedFavorites = favoritePets.filter((pet) => pet.petfinder_id !== petId);
         setFavoritePets(updatedFavorites);
-        localStorage.setItem('favoritePets', JSON.stringify(updatedFavorites));
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     };
 
 // gets petdetail saved pets

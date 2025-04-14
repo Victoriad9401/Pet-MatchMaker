@@ -205,3 +205,18 @@
     font-family: 'Irish Grover', cursive;
     font-size: 4ex;
 }
+
+
+.favoritesList {
+    display: flex;
+    gap: 2rem;
+    overflow-x: hidden; /* Allows horizontal scrolling if needed */
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    margin-top: 250px;
+ 
+  }
+  
+ 
