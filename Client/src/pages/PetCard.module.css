@@ -104,14 +104,14 @@
 @media screen and (min-width: 1200px) {
     .ranked{
         border-color: #f59e0b;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .rankBadge{
         position: absolute;
         background-color: #f59e0b;
         top: 280px;
         margin-left: 110px;
-        margin-top: 10px;
+        margin-bottom: 50px;
         color: white;
         font-weight: bold;
         padding: 8px 12px;
