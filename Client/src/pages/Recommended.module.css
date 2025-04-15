@@ -338,8 +338,8 @@ position: relative;
     height: 50px;
     transform: scale(0.27);
     bottom: 10px;
-    margin-bottom: 640px;  
-    margin-left:  1350px;
+    margin-bottom: 631px;  
+    margin-left:  1390px;
     z-index:10 ; 
 }
 .heart{
@@ -348,7 +348,7 @@ position: relative;
     height: 50px;
     transform: scale(0.25);
     bottom: 10px;
-    margin-bottom: 645px;  
+    margin-bottom: 635px;  
     margin-left:  -1310px;
     z-index:10 ; 
     
@@ -359,7 +359,7 @@ position: relative;
     height: 50px;
     transform: scale(0.25);
     bottom: 10px;
-    margin-bottom: 637px;  
+    margin-bottom: 629px;  
     margin-left:  -1620px;
     z-index:10 ; 
     
@@ -370,7 +370,7 @@ position: relative;
     height: 50px;
     transform: scale(0.3);
     bottom: 10px;
-    margin-bottom: 650px;  
+    margin-bottom: 642px;  
     margin-left:  -1930px;
     z-index:10 ; 
     
@@ -448,7 +448,6 @@ margin-right: 20px;
   }
 
   .petcontainer, .petcontainers {
-    margin-bottom: 10px;
-  
+
   }
 }
