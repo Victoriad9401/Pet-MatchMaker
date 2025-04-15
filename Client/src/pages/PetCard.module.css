@@ -102,17 +102,4 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .rankBadge {
-        top: 220px; /* Adjust this closer to image */
-        margin-left: 130px; /* Tune this to center horizontally on image */
-        margin-top: 0px; /* Reset vertical push */
-      }
-    
-      .petImage {
-        margin-left: 80px; /* Optional: balance image positioning */
-      }
-    
-      .petName, .petBreed {
-        margin-left: 80px; /* Align name and breed to image */
-      }
 }
