@@ -18,7 +18,7 @@
 }
 .ranked{
     border-color: #f59e0b;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 .rankBadge{
@@ -104,7 +104,7 @@
 @media screen and (min-width: 1200px) {
     .ranked{
         border-color: #f59e0b;
-        margin-top: 10px;
+        margin-bottom: 50px;
     }
     .rankBadge{
         position: absolute;
