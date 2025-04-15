@@ -3,62 +3,67 @@ import styles from "./Recommended.module.css"
 import { Link, useNavigate } from "react-router-dom";
 import PetCard from "./PetCard";
 import { fetchPetProfiles } from "../api/petService";
+import { useLocation } from "react-router-dom";
 
 
 
-const Recommended = ({ userPreferences }) => {
+const Recommended = () => {
         const[pets, setPets] = useState([]);
         const[filteredPets, setFilteredPets] = useState([]);
-        const[filter, setFilter] = useState({age: "all", size: "all", breed: "all", gender:"all", animalType:"all"});
         const[favorites, setFavorites] = useState([]);
-        const[showFilterOptions, setShowFilterOptions] = useState(false);
-        const [loading, setLoading] = useState(true);
+        const [loading, setLoading] = useState(true); 
 
+//get user preferene from navigation state
+        const location = useLocation();
+        const [userPreferences, setUserPreferences] = useState(location.state?.userPreferences || JSON.parse(localStorage.getItem('petQuizAnswers')) || {});
+       
         const navigate = useNavigate();
-        const handleMoreInfo = (pet) =>{
-            navigate("/PetBio", {state: {pet} });
-        };
+     
 
+        console.log("Current User preferences:", userPreferences);
+        
 
+       
         //Handles api
         useEffect(() => {
             const fetchPets = async ()=>{
                 try{
                     setLoading(true);
+                    console.log("Fetching Pets with preferences:", userPreferences);
                     const petsData = await fetchPetProfiles(userPreferences);
                     console.log(petsData);
-                    setPets(petsData);
-                    setFilteredPets(petsData);
+                    if(!petsData || petsData.length === 0){
+                        console.warn("API returned empty results");
+                    }
+                    setPets(petsData || []);
+                    setFilteredPets(petsData || []);
                  }catch(error){
-                    console.error("Error Fetching Pets: ", error);
+                    console.error("Error Fetching Pets: ", {
+                        message: error.message,
+                        response: error.response?.data
+                    });
                  }finally{
                     setLoading(false);
                  }
             };
-            fetchPets();
+
+            //only fetch if we have a prefernce
+            if(Object.keys(userPreferences).length>0){
+                fetchPets();
+            }
+            else{
+                console.warn("No user preferences avaiable");
+                setLoading(false);
+            }       
             }, [userPreferences]);
 
-            const toggleFilters =() => {
-                setShowFilterOptions(prev => !prev);
+          
+
+            const handleMoreInfo = (pet) =>{
+                navigate("/PetBio", {state: {pet} });
             };
 
-            //handles favorite
-
-            useEffect(() => {
-                const savedFavorites = JSON.parse(localStorage.getItem("favoritePets")) || [];
-                setFavorites(savedFavorites);
-            }, []);
         
-            const toggleFavorite = (pet) => {
-                let updatedFavorites;
-                if (favorites.some((fav) => fav.petfinder_id === pet.petfinder_id)) {
-                    updatedFavorites = favorites.filter((fav) => fav.petfinder_id !== pet.petfinder_id);
-                } else {
-                    updatedFavorites = [...favorites, pet];
-                }
-                setFavorites(updatedFavorites);
-                localStorage.setItem("favoritePets", JSON.stringify(updatedFavorites));
-            };
 
 
     
@@ -139,8 +144,6 @@ const Recommended = ({ userPreferences }) => {
                                      key = {pet.petfinder_id}
                                      pet ={pet} 
                                      rank={index + 1}
-                                     isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id)}
-                                     toggleFavorite={toggleFavorite}
                                      onMoreInfo={handleMoreInfo}
                                      />
                                 ))}
@@ -154,8 +157,6 @@ const Recommended = ({ userPreferences }) => {
                                         key = {pet.petfinder_id} 
                                         pet={pet}
                                         isFavorite={favorites.some((fav) => fav.petfinder_id === pet.petfinder_id )}
-                                        onToggleFavorite={toggleFavorite}
-                                        onRemove={(petId) => toggleFavorite({id:petId})}
                                         onMoreInfo={handleMoreInfo}
                                         />
                                 ))}

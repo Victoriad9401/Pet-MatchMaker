@@ -1,24 +1,53 @@
 import React, {useEffect, useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import styles from "./PetBio.module.css";
-import { useLocation } from "react-router-dom";
 import PetDetails from "./PetDetails";
 
 
 
 const PetBio = () => {
+
+    
          const navigate = useNavigate();
          const{ state } = useLocation();
          const[favorites, setFavorites] = useState([]);
          const[isLoading, setIsloading] = useState(true);
+         const[cleanDescription, setCleanDescription] = useState("");
 
          useEffect(() => {
+         const cleanPetDescription = (html) =>{
+            if(!html) return "No bio avaiable";
+    
+            const div = document.createElement('div');
+            div.innerHTML = html;
+    
+            let text = div.textContent || div.innerText || "";
+    
+            text = text
+                .replace(/&amp;/g, '&')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&quot;/g, '"')
+                .replace(/&apos;/g, "'")
+                .replace(/&#39;/g, "'")
+                .replace(/&nbsp;/g, ' ');
+            
+            // Clean up multiple spaces and line breaks
+            text = text
+                .replace(/\s+/g, ' ')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
+            return text;
+        };
+        
+       
 
             if(!state?.pet){
                 navigate ("/Recommended");
             }
             else{
                 setIsloading(false);
+                setCleanDescription(cleanPetDescription(state.pet.description));
             }  
         }, [state,navigate]);
          
@@ -56,13 +85,7 @@ const PetBio = () => {
 
     //decode the html in description
 
-    const decodeHtml = (html) => {
-        if (typeof html !== "string") return "";
-        const div = document.createElement('div');
-        div.innerHTML = html;
-        return div.textContent || div.innerText || html;
-    };
-          
+    
 
 return(
 
@@ -135,13 +158,15 @@ return(
         </div>
 
         <div className={styles.percontainer}>
-        <h3> Personality </h3>
-        <p>{pet.tags || "Not available"}</p>
+        <h3> Pet Status </h3>
+        <p>{pet.status || "Not available"}</p>
         </div>
 
         <div className={styles.infocontainer}>
             <h3><strong>About {pet.name}: </strong></h3>
-            <p> {decodeHtml(pet.description) || "No bio available"} </p>
+           {cleanDescription.split('\n').map((paragraph, i)=> (
+            <p key={i}>{paragraph}</p>
+           ))}
             <button className={styles.adoptButton} onClick={handleAdopt}>
                     Adopt
                 </button>
