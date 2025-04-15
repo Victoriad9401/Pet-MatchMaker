@@ -161,3 +161,41 @@
 .bubble:nth-child(12)  { top: 30%; left: 62%; width: 40px; height: 40px; }
 .bubble:nth-child(13)  { top: 35%; left: 72%; width: 30px; height: 30px; }
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
+@media screen and (min-width: 1200px) {
+
+    
+    .whitepaw{
+        bottom: 90px;
+         margin-bottom:-2200px;  
+         margin-left:2100px;
+         transform: rotate(80deg);
+     }
+     .whitepaw2{
+         position: absolute;
+         top:1850px;
+         right: 1990px;
+          
+          transform: rotate(140deg);
+      }
+     
+      .pinkpaw{
+         position: absolute;
+         top: -130px;
+         right: 1900px;
+          margin-bottom: 10px;  
+          margin-left: 200px;
+          transform: rotate(10deg);
+      }
+      .pinkpaw2{
+          position: absolute;
+          top: -130px;
+         right: -2600px;
+         transform: rotate(-40deg);
+      
+     
+           
+           
+       }
+
+
+}
