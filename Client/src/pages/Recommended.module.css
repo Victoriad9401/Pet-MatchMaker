@@ -472,7 +472,7 @@ margin-right: 20px;
     width: 100%;
     max-width: 1400px;
     margin: 20px auto;
-    margin-top: 830px;
+    margin-top: 80s0px;
   
   }
   
@@ -480,6 +480,9 @@ margin-right: 20px;
   .petcontainers {
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
+  }
+  .petcontainers, .petcontainer{
+    margin-bottom: 50px;
   }
   
 
