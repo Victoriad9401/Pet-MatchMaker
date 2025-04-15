@@ -7,7 +7,7 @@
 }
 
 
-.favoriteBtn{
+/* .favoriteBtn{
   position: absolute;
   right: 1060px;
   top: 290px;
@@ -25,15 +25,15 @@
 }
 .favoriteBtn:hover{
     background-color: #4d78e6;
-}
+} */
 
 .petImage{
     position: absolute;
     width: 50%;
     height: 300px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    margin-left: 115px;
+    margin-top: 19px;
+    margin-left: 150px;
 
 }
 .petName{

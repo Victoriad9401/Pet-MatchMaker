@@ -305,16 +305,21 @@ position: relative;
   -webkit-overflow-scrolling: touch;
 }
 
-.threePetsLayout {
+.topThreeOnly{
   display: flex;
-  gap: 2rem;
+  gap: 2.8rem;
   overflow-x: hidden; /* Allows horizontal scrolling if needed */
   padding: 1rem 0;
   width: 100%;
   max-width: 1400px;
   margin: 20px auto;
-  margin-top: -500px;
+  margin-top: 530px;
+  margin-left: 10px;
+
+
 }
+
+
 
 @media screen and (min-width: 1200px) {
   .Recommended {
@@ -444,6 +449,7 @@ margin-right: 20px;
   }
 
   .filters {
+
    
   }
   .petcontainer {
@@ -454,7 +460,8 @@ margin-right: 20px;
     width: 100%;
     max-width: 1400px;
     margin: 20px auto;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-left: 10px;
   
   }
   
@@ -484,7 +491,19 @@ margin-right: 20px;
   .petcontainers, .petcontainer{
     margin-bottom: 10px;
   }
+  .topThreeOnly{
+    display: flex;
+    gap: 2.8rem;
+    overflow-x: hidden; /* Allows horizontal scrolling if needed */
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    margin-top: 530px;
+    margin-left: 10px;
   
+
+  }
 
  
 }

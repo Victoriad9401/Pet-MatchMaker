@@ -25,7 +25,7 @@ const PetDetails = ({pet, rank, isFavorite, onToggleFavorite}) => {
             <div className ={`{styles.petdetail} ${rank ? styles.ranked : ''}`}>
                 {/*Favorite Button*/}
 
-                <button
+                {/* <button
                     onClick={ handleToggleFavorite}
                     className={styles.favoriteBtn}
                     aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
@@ -33,7 +33,7 @@ const PetDetails = ({pet, rank, isFavorite, onToggleFavorite}) => {
                         <FaHeart className={isFavorite ? styles.favoriteActive : styles.favoriteInactive}/>
                     </button>
 
-             
+              */}
 
                 {/*Pet Image */} 
                 <img 

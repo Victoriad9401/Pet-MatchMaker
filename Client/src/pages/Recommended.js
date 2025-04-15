@@ -157,6 +157,20 @@ useEffect(() => {
 
                      {filteredPets.length > 0 ?(
                         <div>
+                        {/* Top 3 Pets only */}
+                        {filteredPets.length === 3 ? (
+                            <div className={styles.topThreeOnly}>
+                                {filteredPets.map((pet, index) => (
+                                    <PetCard
+                                        key={pet.petfinder_id}
+                                        pet={pet}
+                                        rank={index + 1}
+                                        onMoreInfo={handleMoreInfo}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                        <div>
                              {/*top 3 pets*/}
                              <div className={styles.petcontainers}>
                                 {filteredPets.slice(0, 3).map((pet, index) => (
@@ -171,7 +185,7 @@ useEffect(() => {
                             
 
                             {filteredPets.length > 3 && (
-                                <div>
+                             
                              <div className={styles.petcontainer}>
                                 {filteredPets.slice(3).map((pet) => (
                                     <PetCard 
@@ -182,7 +196,7 @@ useEffect(() => {
                                         />
                                 ))}
                          </div>
-                         
+                            )}
                     </div>
                  )}
             </div>
