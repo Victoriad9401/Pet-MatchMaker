@@ -1,4 +1,3 @@
-import {FaHeart} from "react-icons/fa"
 import { useState, useEffect } from "react";
 import styles from './PetDetails.module.css';
 
@@ -12,11 +11,11 @@ const PetDetails = ({pet, rank, isFavorite, onToggleFavorite}) => {
         setLocalIsFavorite(isFavorite);
     }, [isFavorite]);
 
-    const handleToggleFavorite = () => {
-        const newFavoriteState = !localIsFavorite;
-        setLocalIsFavorite(newFavoriteState);
-        onToggleFavorite(pet.petfinder_id, newFavoriteState);
-    };
+    // const handleToggleFavorite = () => {
+    //     const newFavoriteState = !localIsFavorite;
+    //     setLocalIsFavorite(newFavoriteState);
+    //     onToggleFavorite(pet.petfinder_id, newFavoriteState);
+    // };
   
   
 

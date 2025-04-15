@@ -310,7 +310,7 @@
     
 }
 
-@media screen and (min-width: 1200px) {
+@media (min-width: 2000px) {
   .paw{
     
     position: absolute;

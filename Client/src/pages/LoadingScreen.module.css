@@ -116,7 +116,7 @@
    transform: rotate(50deg);
    opacity: 0.2;
  }
- @media screen and (min-width: 1200px) {
+ @media (min-width: 2000px) {
     .whitepaw{
   
         position: absolute;
