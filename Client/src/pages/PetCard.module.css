@@ -106,5 +106,16 @@
         border-color: #f59e0b;
         margin-top: 10px;
     }
+    .rankBadge{
+        position: absolute;
+        background-color: #f59e0b;
+        top: 280px;
+        margin-left: 110px;
+        margin-top: 30px;
+        color: white;
+        font-weight: bold;
+        padding: 8px 12px;
+        border-radius: 99999px;
     
+    }
 }
