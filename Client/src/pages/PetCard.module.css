@@ -102,27 +102,5 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .ranked{
-        border-color: #f59e0b;
-        margin-bottom: -300px;
-    }
-    .rankBadge{
-        position: absolute;
-        background-color: #f59e0b;
-        top: 280px;
-        margin-left: 110px;
-        margin-bottom: -300px;
-        color: white;
-        font-weight: bold;
-        padding: 8px 12px;
-        border-radius: 99999px;
     
-    }
-    .petImage{
-    width: 40%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: -10px;
-    margin-left: 140px;
-}
 }
