@@ -472,7 +472,7 @@ margin-right: 20px;
     width: 100%;
     max-width: 1400px;
     margin: 20px auto;
-    margin-top: 900px;
+    margin-top: 840px;
   
   }
   
@@ -482,7 +482,7 @@ margin-right: 20px;
     -webkit-overflow-scrolling: touch;
   }
   .petcontainers, .petcontainer{
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
   
 
