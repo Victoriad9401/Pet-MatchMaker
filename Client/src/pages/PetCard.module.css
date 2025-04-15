@@ -100,3 +100,11 @@
 .infoBtn:hover, .adoptBtn:hover{
     background-color: #4d78e6;
 }
+
+@media screen and (min-width: 1200px) {
+    .ranked{
+        border-color: #f59e0b;
+        margin-bottom: 30px;
+    }
+    
+}
