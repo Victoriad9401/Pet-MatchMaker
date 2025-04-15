@@ -77,7 +77,7 @@ async function fetchPetFinderPets(){
 : And that if a new update comes later, the next rerfresh will update accordingly
 
 :Assumption 1: If there is a duplicate profile, the newer published profile has better data. 
-:Assumption 2: If there are duplicate profiles published at the same time, they should not have diffrent data. 
+:Assumption 2: If there are duplicate profiles published at the same time, they should have duplicate data. 
 */
 
 
@@ -119,7 +119,7 @@ async function refreshPetData() {
                     $26, $27, $28, $29, 
                     $30, DEFAULT
                 )
-                ON CONFLICT ON CONSTRAINT unique_name_org_breed DO UPDATE SET
+                ON CONFLICT (petfinder_id) DO UPDATE SET
                     organization_id = EXCLUDED.organization_id,
                     url = EXCLUDED.url,
                     type = EXCLUDED.type,
@@ -162,8 +162,13 @@ async function refreshPetData() {
                 ]
             );    
         } catch (error) {
-            console.error("Error inserting data into pets database ", error);
-        }
+            // Catch duplicate name org breed profiles that have a differnt petfinder Id. 
+            if (error.code === '23505' && error.constraint === 'unique_name_org_breed') {
+              console.warn(`Based on name-org-breed constraint, detected and skipped a duplicate profile: ${pet.name}`); 
+            } else {
+              console.error("Error inserting data into pets database ", error);
+            }
+          }
     }
     await removeExpiredData();
 }
@@ -174,6 +179,86 @@ async function fetchPetProfiles(){
     try{
         const petProfiles = await pool.query("SELECT * FROM pets");
         return petProfiles.rows;
+    }catch(error){
+        console.error("Error fetching stored pets", error);
+        throw error;
+    }
+}
+
+//Function to query for petProfiles, attempts to return atleast 3. 
+async function queryPetProfiles(typePet, age, gender, characteristics, breed){
+    let MIN_NUM_RESULTS = 3; // 
+    const typeFilter = (typePet === "No Preference" ? null : typePet);
+    let ageFilter = (age === "No Preference" ? null : age);
+    let genderFilter = (gender === "No Preference" ? null : gender);
+    const breedFilter = breed?.includes("No Preference") ? null : breed;
+    let houseTrainedFilter = characteristics?.includes("House-Trained") ? true : null; 
+    let childrenFilter = characteristics?.includes("Good with Children") ? true : null; 
+    let dogFilter = characteristics?.includes("Good with Dogs") ? true : null; 
+    let catFilter = characteristics?.includes("Good with Cats") ? true : null; 
+    let petProfiles;
+
+
+    try{
+
+        // Progressively cuts back filters until a match is found
+        for (let i = 0; i <= 5; i++){
+
+            console.log(`\n[Query Iteration Count ${i}]:`);
+
+            //To prevent risk of SQL injection, parameterize the query
+            petProfiles = await pool.query(`
+                SELECT * FROM pets
+                WHERE ($1::text IS NULL OR type = $1::text)
+                AND ($2::text IS NULL OR age = $2::text)
+                AND ($3::text IS NULL OR gender = $3::text)
+                AND (
+                    $4::text[] IS NULL 
+                    OR breed_primary = ANY($4::text[])
+                    OR breed_secondary = ANY($4::text[])
+                )
+                AND ($5::boolean IS NULL OR house_trained = $5::boolean)
+                AND ($6::boolean IS NULL OR good_with_children = $6::boolean)
+                AND ($7::boolean IS NULL OR good_with_dogs = $7::boolean)
+                AND ($8::boolean IS NULL OR good_with_cats = $8::boolean)            
+                `, [
+                    typeFilter,
+                    ageFilter,
+                    genderFilter,
+                    breedFilter,
+                    houseTrainedFilter,
+                    childrenFilter,
+                    dogFilter,
+                    catFilter,
+                ]);
+
+            if(petProfiles.rows.length >= MIN_NUM_RESULTS){
+                return petProfiles.rows;
+            }
+            //Reduce Parameters based on iteration
+            switch(i){
+                case 0:
+                    dogFilter = null;
+                    catFilter = null;
+                    break;
+                case 1:
+                    childrenFilter = null;
+                    break;
+                case 2:
+                    houseTrainedFilter = null;
+                    break;
+                case 3:
+                    genderFilter = null;
+                    break;
+                case 4:
+                    ageFilter = null;
+                    break;
+            }
+
+        }
+        //Returns whatever was found after all the cuts to parameters were made. 
+        return petProfiles.rows;
+        
     }catch(error){
         console.error("Error fetching stored pets", error);
         throw error;
@@ -193,4 +278,4 @@ async function removeExpiredData(){
     }
 }
 
-module.exports = { refreshPetData, fetchPetProfiles };
+module.exports = { refreshPetData, fetchPetProfiles, queryPetProfiles };

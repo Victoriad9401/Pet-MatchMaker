@@ -18,6 +18,7 @@
 }
 .ranked{
     border-color: #f59e0b;
+    margin-bottom: 10px;
 }
 
 .rankBadge{
@@ -73,19 +74,20 @@
 
 }
 .buttonGroup{
-    margin-top: 16px;
+    margin-top: 10px;
     margin-left: 50px;
     display: flex;
     justify-content: space-between;
 }
 
 .infoBtn, .adoptBtn{
-    padding: 10px 16px;
+    padding: 10px 20px;
     background-color: #83A7F5;
     color:white;
     border-radius: 20px;
     stroke: #5582F3;
     font-size: 1rem;
+    margin-right: 10px;
     cursor: pointer;
     border: none;
 

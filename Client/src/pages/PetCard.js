@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+//Remove above after dev
+
 import {FaHeart} from "react-icons/fa"
 import styles from './PetCard.module.css';
 import { useNavigate} from "react-router-dom";

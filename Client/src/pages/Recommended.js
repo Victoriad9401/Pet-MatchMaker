@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
+//Remove above after dev
+
 import React, {useState, useEffect} from "react";
 import styles from "./Recommended.module.css"
 import { Link, useNavigate } from "react-router-dom";
 import PetCard from "./PetCard";
-import { fetchPetProfiles } from "../api/petService";
+import { fetchRankedPetProfiles } from "../api/petService";
 import { useLocation } from "react-router-dom";
 
 
@@ -11,51 +14,68 @@ const Recommended = () => {
         const[pets, setPets] = useState([]);
         const[filteredPets, setFilteredPets] = useState([]);
         const[favorites, setFavorites] = useState([]);
-        const [loading, setLoading] = useState(true); 
+        const [loading, setLoading] = useState(true);
+        const [userPreferences, setUserPreferences] = useState({}); 
 
 //get user preferene from navigation state
         const location = useLocation();
-        const [userPreferences, setUserPreferences] = useState(location.state?.userPreferences || JSON.parse(localStorage.getItem('petQuizAnswers')) || {});
-       
         const navigate = useNavigate();
      
+//load the preferences first
+useEffect(() => {
+    const storedPrefernce = localStorage.getItem("petQuizAnswers");
+    const storedRankedPets = localStorage.getItem("rankedProfiles"); //added this
 
-        console.log("Current User preferences:", userPreferences);
-        
+    if(storedPrefernce){
+        setUserPreferences(JSON.parse(storedPrefernce));
+    }
+    else if(location.state?.userPreferences){
+        setUserPreferences(location.state.userPreferences);
+    }
+    else {
+        console.warn("no user preferences available")
+    }
 
-       
-        //Handles api
-        useEffect(() => {
-            const fetchPets = async ()=>{
-                try{
-                    setLoading(true);
-                    console.log("Fetching Pets with preferences:", userPreferences);
-                    const petsData = await fetchPetProfiles(userPreferences);
-                    console.log(petsData);
-                    if(!petsData || petsData.length === 0){
-                        console.warn("API returned empty results");
-                    }
-                    setPets(petsData || []);
-                    setFilteredPets(petsData || []);
-                 }catch(error){
-                    console.error("Error Fetching Pets: ", {
-                        message: error.message,
-                        response: error.response?.data
-                    });
+    if(storedRankedPets){
+        const parsedPets = JSON.parse(storedRankedPets);
+        setPets(parsedPets);
+        setFilteredPets(parsedPets);
+        setLoading(false); // no need to refresh
+    }
+}, [location.state]);
+
+//Fetch pets when user preferences changes
+
+   useEffect(() => {
+      const fetchPets = async ()=>{
+        try{
+            setLoading(true);
+            if (Object.keys(userPreferences).length>0){
+            // only fetch if not already loaded
+            if(pets.length === 0){
+                
+                console.log("Fetching Pets with preferences:", userPreferences);
+                const petsData = await fetchRankedPetProfiles(userPreferences);
+                console.log(petsData); 
+                setPets(petsData || []);
+                setFilteredPets(petsData || []);
+
+                //saves to localsstorage
+                localStorage.setItem('rankedProfiles', JSON.stringify(petsData));
+                }  
+              }
+             }catch(error){
+                    console.error("Error Fetching Pets: ", error);         
                  }finally{
                     setLoading(false);
                  }
             };
 
             //only fetch if we have a prefernce
-            if(Object.keys(userPreferences).length>0){
+            if(Object.keys(userPreferences).length > 0){
                 fetchPets();
-            }
-            else{
-                console.warn("No user preferences avaiable");
-                setLoading(false);
-            }       
-            }, [userPreferences]);
+            }   
+        }, [userPreferences, pets.length]);
 
           
 
@@ -148,6 +168,7 @@ const Recommended = () => {
                                      />
                                 ))}
                             </div>
+                            
 
                             {filteredPets.length > 3 && (
                                 <div>
@@ -161,6 +182,7 @@ const Recommended = () => {
                                         />
                                 ))}
                          </div>
+                         
                     </div>
                  )}
             </div>

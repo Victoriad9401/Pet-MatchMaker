@@ -10,15 +10,6 @@ CREATE TABLE users(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
-CREATE TABLE user_questionnaire(
-    id SERIAL PRIMARY KEY,
-    --fk
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    --flexible format, important because questionaire has branching and open-response
-    responses JSONB NOT NULL,
-    --This is meta data that could be useful
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 -- Constraint: pets belonging to the same organization, that have the same primary_breed, cannot have the same name (Or they will be seen as accidental duplicates)
 --           -Issue: If a pet profile duplicate was created, but the name or primary_breed is changed, the system will have.
@@ -68,7 +59,6 @@ CREATE TABLE pets(
     CONSTRAINT unique_name_org_breed UNIQUE (name, organization_id, breed_primary)
 );
 
--- I might need a table of pet breeds
 
 CREATE TABLE matches(
     id SERIAL PRIMARY KEY,

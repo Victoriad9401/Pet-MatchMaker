@@ -27,7 +27,7 @@ const questions = [
     //Need dynamic update
     {
         page: 2,
-        question: "Do you have a Breed preference for your pet?",
+        question: "Do you have a Breed preference for your future dog?",
         name: "breed",
         options: [
             "No Preference",
@@ -69,32 +69,22 @@ const questions = [
     //Temp hard code
     {
         page: 2,
-        question: "Do you have a Breed preference for your pet?",
+        question: "Do you have a Breed preference for your future cat?",
         name: "breed",
-        options: ["No Preference", "Domestic Shorthair", "Domestic Medium Hair"],
+        options: ["No Preference", "Domestic Short Hair", "Domestic Medium Hair"],
         type: "checkbox",
         dependsOn: { name: "typePet", value: ["Cat"] },
     },
 
-    // DOG BRANCH QUESTIONS
+    //
     {
         page: 2,
-        question: "Are there any characteristics that your ideal dog should have?",
-        name: "dogTraits",
+        question: "Are there any characteristics that your ideal pet should have?",
+        name: "characteristics",
         type: "checkbox",
-        options: ["No Preference", "House-Trained", "Crate-Trained", "Leash-Trained", "Hypoallergenic"],
-        dependsOn: { name: "typePet", value: "Dog" },
+        options: ["No Preference", "House-Trained", "Good with Children", "Good with Dogs", "Good with Cats"],
     },
 
-    // CAT BRANCH QUESTIONS
-    {
-        page: 2,
-        question: "Are there any characteristics that your ideal cat should have?",
-        name: "catTraits",
-        type: "checkbox",
-        options: ["No Preference", "House-Trained", "Hypoallergenic"],
-        dependsOn: { name: "typePet", value: "Cat" },
-    },
 
     // AI Context Questions
     {
@@ -113,13 +103,33 @@ const questions = [
         options: ["Hiking", "Running", "Cuddling", "Napping", "Other"],
     },
     {
-        page: 3,
+        page: 4,
         question: "Is there anything else you’d like us to know about your future pet?",
         name: "additionalInfo",
         type: "textarea",
     },
 ];
 
+const getRankedProfiles = async(quizAnswers) => {
+
+    try{
+    const response = await fetch('/api/rankProfiles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({answers:quizAnswers})
+    });
+
+    if(!response.ok){
+       console.error("Failed to fetch profiles:", response.status);
+       return[];
+    }
+    const data = await response.json();
+    return data.rankedProfiles;
+} catch(error){
+    console.error("Error fetching ranked profiles:", error);
+    return [];
+}
+};
 
 const Questions = () => {
     const navigate = useNavigate();
@@ -196,6 +206,7 @@ const Questions = () => {
     
     const clearSavedAnswers = () =>{
         localStorage.removeItem('petQuizAnswers');
+        localStorage.removeItem('rankedProfiles'); //added removal for the ranked profiles to redo
         setAnswers({});
         setHasLoadedSavedAnswers(false);
         setCurrentPage(1);
@@ -203,7 +214,12 @@ const Questions = () => {
 
     const handleTextareaChange = (e) => {
         const { name, value } = e.target;
-        setAnswers(prev => ({ ...prev, [name]: value }));
+
+        //Add character limit
+        const maxLength = 275;
+        if(value.length <= maxLength){
+            setAnswers(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleNext = () => {
@@ -223,10 +239,29 @@ const Questions = () => {
     const handleSubmit = async () => {
         setIsLoading(true);
         try {
-            console.log("Submitting answers...", answers);
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const savedAnswers = JSON.parse(localStorage.getItem('savedQuizAnswers'));
+            if (savedAnswers && JSON.stringify(savedAnswers) === JSON.stringify(answers)) {
+                console.log("Same answers detected! Using cached pets...");
+                navigate("/Recommended", { state: { userPreferences: answers } });
+              } else {
+                console.log("New answers detected! Fetching new pets...");
+                const rankedResults = await getRankedProfiles(answers);
+
+            // console.log("Submitting answers...", answers);
+            // await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // //fetch ranked results from backend
+            // const rankedResults = await getRankedProfiles(answers); 
+            // console.log("Ranked profiles receieved:", rankedResults);
+
+            //save the ranked results within the localstorage
+            localStorage.setItem('rankedProfiles', JSON.stringify(rankedResults)); 
+            localStorage.setItem('savedQuizAnswers', JSON.stringify(answers));
+         
             navigate("/Recommended", {state: {userPreferences: answers} }); //passes the asnwer here
-        } catch (error) {
+        } 
+    }
+    catch (error) {
             console.error("Submission failed:", error);
         } finally {
             setIsLoading(false);
@@ -269,23 +304,16 @@ const Questions = () => {
                                 <div className={styles.savedIndicator}> Previously Answered</div>
                             )}
                             {q.type === "checkbox" ? (
+                                
                                 q.options.map((option, i) => (
                                     <label key={i} style={{ display: "flex", alignItems: "center", gap: "5px", marginRight: "15px" }}>
                                         <input
-                                            type="checkbox"
-                                            name={q.name}
-                                            value={option}
-                                            checked={answers[q.name]?.includes(option) || false}
-                                            onChange={handleAnswerChange}
+                                            type="checkbox" name={q.name} value={option} checked={answers[q.name]?.includes(option) || false} onChange={handleAnswerChange}
                                         />
                                         {option}
                                         {option === "Other" && answers[q.name]?.includes("Other") && (
                                             <input
-                                                type="text"
-                                                name={q.name + "Other"}
-                                                value={answers[q.name + "Other"] || ""}
-                                                onChange={handleTextareaChange}
-                                                placeholder="Enter Response Here..."
+                                                type="text" name={q.name + "Other"} value={answers[q.name + "Other"] || ""} onChange={handleTextareaChange} placeholder="Enter Response Here..." maxLength={25}
                                                 style={{
                                                     marginLeft: "5px",
                                                     padding: "5px",
@@ -298,7 +326,7 @@ const Questions = () => {
                                 ))
 
                             ) : q.type === "textarea" ? (
-                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." />
+                                <textarea name={q.name} value={answers[q.name] || ""} onChange={handleTextareaChange} placeholder="Enter response here..." maxLength={275}/>
                             ) : (
                                 q.options.map((option, i) => (
                                     <label key={i}>
