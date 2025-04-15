@@ -118,4 +118,11 @@
         border-radius: 99999px;
     
     }
+    .petImage{
+        width: 40%;
+        height: 200px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        margin-left: 140px;
+    }
 }
