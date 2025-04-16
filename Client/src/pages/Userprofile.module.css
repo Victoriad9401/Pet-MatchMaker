@@ -293,7 +293,7 @@
     background-color: #97c5f1; /* Button background color on hover */
 }
 /* larger display*/
-@media (min-width: 2000px) {
+@media only screen and (min-width: 1200px){
 
   
     .quiz, .heart, .profile, .house {

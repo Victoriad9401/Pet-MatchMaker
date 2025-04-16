@@ -163,7 +163,7 @@ body {
 .formContainer button:hover {
     background-color: #527deb;
 }
-@media (min-width: 2000px){
+@media only screen and (min-width: 1200px){
     
     .rightSide{
         position: absolute;
