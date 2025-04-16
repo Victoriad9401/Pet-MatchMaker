@@ -322,15 +322,7 @@ position: relative;
 /*larger display*/
 
 @media (min-width: 2000px){
-  .Recommended {
-    
   
-  }
-
-  .containers {
-
- 
-  }
 
   .quiz, .heart, .profile, .house {
     margin-bottom: 700px;
@@ -448,10 +440,7 @@ margin-right: 20px;
   margin-right: 1500px;
   }
 
-  .filters {
 
-   
-  }
   .petcontainer {
     display: flex;
     gap: 2.8rem;
