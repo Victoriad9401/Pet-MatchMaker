@@ -321,7 +321,8 @@ position: relative;
 
 /*larger display*/
 
-@media (min-width: 2000px){
+
+@media (min-width: 1200px) {
   
 
   .quiz, .heart, .profile, .house {
