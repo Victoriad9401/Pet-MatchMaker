@@ -293,7 +293,7 @@
     background-color: #97c5f1; /* Button background color on hover */
 }
 /* larger display*/
-@media (min-width: 2000px) {
+@media only screen and (min-width: 1200px){
 
   
     .quiz, .heart, .profile, .house {
@@ -307,7 +307,7 @@
       height: 50px;
       transform: scale(0.27);
       bottom: 10px;
-      margin-bottom: 640px;  
+      margin-bottom: 665px; 
       margin-left:  1350px;
       z-index:10 ; 
   }
@@ -317,7 +317,7 @@
       height: 50px;
       transform: scale(0.25);
       bottom: 10px;
-      margin-bottom: 642px;  
+      margin-bottom: 670px;  
       margin-left:  -1310px;
       z-index:10 ; 
       
@@ -328,7 +328,7 @@
       height: 50px;
       transform: scale(0.25);
       bottom: 10px;
-      margin-bottom: 635px;  
+      margin-bottom: 665px;  
       margin-left:  -1620px;
       z-index:10 ; 
       
@@ -339,7 +339,7 @@
       height: 50px;
       transform: scale(0.3);
       bottom: 10px;
-      margin-bottom: 649px;  
+      margin-bottom: 670px;  
       margin-left:  -1930px;
       z-index:10 ; 
       
@@ -366,12 +366,12 @@
       height: 50px;
       transform: scale(0.4);
       bottom: 10px;
-      margin-bottom: 810px;  
+      margin-bottom: 830px;  
       margin-left:500px;
       z-index:1 ; 
   }
   .circlec{
-      margin-bottom: 810px; 
+      margin-bottom: 830px; 
       transform: scale(0.4);
   }
   
