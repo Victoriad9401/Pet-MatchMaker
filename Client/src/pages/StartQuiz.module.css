@@ -196,7 +196,7 @@
      
     }
   }
-  
+   /* larger screen */
   @media (min-width: 1601px) {
     .StartQuiz h1 {
       font-size: 7ex;
@@ -207,7 +207,7 @@
         margin-right: 1900px;   /* Increased from 1700px */
       }
       .upper2 {
-        margin-bottom: 1900px;  /* Increased from 1760px */
+        margin-bottom: 2000px;  /* Increased from 1760px */
         margin-right: -1400px;
       }
    

@@ -163,99 +163,56 @@ body {
 .formContainer button:hover {
     background-color: #527deb;
 }
-@media (min-width: 2500px) {
-  .formContainer {
-    transform: scale(1.5);
-    transform-origin: center;
-    max-width: 800px !important;
-  }
-  
-  .leftSide, .rightSide {
-    transform: scale(1.5);
-  }
-  
-  .QCat, .QDog {
-    width: 600px !important;
-  }
-  
-  .paw1, .paw2 {
-    width: 180px !important;
-  }
-}
+@media only screen and (min-width: 1601px) {
 
-@media (min-width: 3000px) {
-  .formContainer {
-    transform: scale(1.8);
-    max-width: 900px !important;
-  }
-  
-  .leftSide, .rightSide {
-    transform: scale(1.8);
-  }
-  .paw1 {
-    position: relative;
-    margin-top: 80px; /* Move up */
-     /* Move left */
-  }
-  
-  .QCat, .QDog {
-    width: 700px !important;
-  }
-  
-  .formContainer h1 {
-    font-size: 4rem !important;
-  }
-  
-  .formContainer input,
-  .formContainer button {
-    padding: 25px !important;
-    font-size: 1.5rem !important;
-  }
-}
 
-@media (min-width: 2000px) {
-    
+  
+  .leftSide {
+    position: absolute;
+    z-index: 1;
+    bottom: 0; /* Position at the bottom */
+    left: 0px;
+    margin-left: -20px;
+    margin-bottom: -30px;
+  }
+
+  .QCat{
+    width: 400px;
+    height: auto;
+  }
+
   .rightSide{
     position: absolute;
     top: 0; 
-    margin-left: 1550px;
-    margin-top: -70px;
+    margin-left: 980px;
+    margin-top: -65px;
   }
 
   .Qdog{
-    width: 500px;
+    width: 700px;
     height: auto;
-  
   }
 
-  
-  .PawContainer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-   }
-   
-   .paw1 {
-       position: absolute;
-       width: 120px; /* Adjust the size of the paw images */
-       height: 120px;
-       margin-top: -850px;
-       margin-left: 5px;
-       transform: rotate(270deg);
-   }
-
-   
-   .paw2 {
+  .paw1 {
     position: absolute;
     width: 120px; /* Adjust the size of the paw images */
     height: 120px;
-    margin-top: -300px;
-    margin-left: 1690px;
-    transform: rotate(10deg);    
-   }
+    margin-top: -100px;
+    margin-left: 1220px;
+    transform: rotate(10deg);
+}
+
+
+.paw2 {
+ position: absolute;
+    width: 120px; /* Adjust the size of the paw images */
+    height: 120px;
+   margin-top: -900px;
+   margin-left: -530px;
+   transform: rotate(290deg);
+
+    
+}
 
   
 }

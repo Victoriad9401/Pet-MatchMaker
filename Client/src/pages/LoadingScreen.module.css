@@ -155,29 +155,40 @@
 
 
  @media only screen and (min-width: 1601px) {
-    .whitepaw {
-      margin-left: 1600px;
-      margin-bottom: 400px;
-      transform: scale(1.2) rotate(60deg);
-    }
+    .whitepaw{
   
-    .whitepaw2 {
-      margin-left: -2000px;
-      margin-bottom: 200px;
-      transform: scale(1.1) rotate(150deg);
-    }
-  
-    .catpaw {
-      margin-left: 1600px;
-      margin-bottom: 50px;
-      transform: scale(1.2) rotate(-40deg);
-    }
-  
-    .catpaw2 {
-      margin-left: -2100px;
-      margin-bottom: 1200px;
-      transform: scale(1.1) rotate(50deg);
-    }
+        position: absolute;
+        bottom: 90px;
+        margin-bottom: 310px;
+        margin-left: 1200px;
+        transform: rotate(60deg);
+        opacity: 0.2;
+     }
+     .whitepaw2{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: 100px;
+         margin-left: -1600px;
+        transform: rotate(150deg);
+        opacity: 0.2;
+      }
+     
+      .catpaw{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: -10px;
+         margin-left: 1200px;
+        transform: rotate(-40deg);
+        opacity: 0.2;
+      }
+      .catpaw2{
+         position: absolute;
+         bottom: -790px;
+         margin-bottom: 1100px;
+         margin-left: -1650px;
+        transform: rotate(50deg);
+        opacity: 0.2;
+      }
   }
   
   @media only screen and (min-width: 2001px) {

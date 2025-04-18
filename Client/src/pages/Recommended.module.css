@@ -322,7 +322,7 @@ position: relative;
 /*larger display*/
 
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1601px)  {
   
 
   .quiz, .heart, .profile, .house {
