@@ -101,7 +101,7 @@
     background-color: #4d78e6;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1601px)  {
     .petCard{
         position: relative;
         border: 1px solid #2262c2;
