@@ -177,27 +177,44 @@
 .bubble:nth-child(13)  { top: 35%; left: 72%; width: 30px; height: 30px; }
 .bubble:nth-child(14)  { top: 35%; left: 92%; width: 50px; height: 50px; }
 
-@media only screen and (min-width: 1200px){
+
+
+/* For larger screens - PUSH CONTENT UPWARD */
+  @media (min-width: 1201px) {
+    .TakeQuizAgain h1 {
+      font-size: 8ex;
+     
+    }
+  }
+  
+  @media (min-width: 1601px) {
+    .TakeQuizAgain h1 {
+      font-size: 7ex;
+      
+    }
     .upper {
-        position: absolute;
-        transform: scale(0.5);
-        width: 20px; /* Adjust size as needed */
-        height: 20px;
-        margin-bottom: 1800px;  
-        margin-right: 1800px;
-        z-index: 1; 
-         /* Adjust size as needed */
+        margin-bottom: 1800px;  /* Increased from 1580px */
+        margin-right: 1900px;   /* Increased from 1700px */
+      }
+      .upper2 {
+        margin-bottom: 1900px;  /* Increased from 1760px */
+        margin-right: -1400px;
+      }
+   
+  }
+  
+  @media (min-width: 2001px) {
+    .TakeQuizAgain h1 {
+      font-size: 7ex;
+     
     }
-    
-    .upper2{
-        position: absolute;
-        transform: scale(0.5);
-        width: 10px; /* Adjust size as needed */
-        height: 10px;
-        margin-bottom: 2000px;  
-        margin-right: -1300px;
-        rotate: 35deg;
-        
-        z-index: 1; 
-    }
-}
+    .upper {
+        margin-bottom: 240vh;
+       
+        /* Slightly larger */
+      }
+      .upper2 {
+        margin-bottom: 300vh;
+      }
+   
+  }
