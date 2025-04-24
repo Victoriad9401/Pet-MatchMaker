@@ -4,9 +4,8 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY, 
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    -- Stores a hashed password
+    --Stores a hashed password
     password TEXT NOT NULL, 
-    --This is meta data that could be useful
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
@@ -20,30 +19,23 @@ CREATE TABLE pets(
     --Petfinder API's unique id. Software design princp: promote decoupling from external elements. This also is important since angels among us uploads dupliate profiles
     petfinder_id INTEGER UNIQUE NOT NULL, 
     organization_id VARCHAR(50), 
-    url TEXT, --Full Petfinder profile link
-
-    type VARCHAR(50), --example data "Cat"
-    species VARCHAR(50), --example data "Cat"
+    url TEXT,
+    type VARCHAR(50), 
+    species VARCHAR(50), 
     breed_primary VARCHAR(100),
     breed_secondary VARCHAR(100),
     mixed BOOLEAN,
-    
-
-    age VARCHAR(50), ----example data "Young"
-    gender VARCHAR(20), --example data "Female"
-    size VARCHAR(50), ----example data "Medium"
-    coat VARCHAR(50),----example data "Short"
-    name VARCHAR(100) NOT NULL, ----example data "Nebula"
+    age VARCHAR(50), 
+    gender VARCHAR(20),
+    size VARCHAR(50), 
+    coat VARCHAR(50),
+    name VARCHAR(100) NOT NULL,
     description Text,
-    -- Photo Urls
     photo_small TEXT,  
     photo_medium TEXT,  
     photo_large TEXT,  
     photo_full TEXT,  
-
-    status VARCHAR(50),  -- --example data "adoptable"
-    
-    --Attributes
+    status VARCHAR(50),
     spayed_neutered BOOLEAN,  
     house_trained BOOLEAN,  
     declawed BOOLEAN,  
@@ -53,19 +45,9 @@ CREATE TABLE pets(
     good_with_dogs BOOLEAN,  
     good_with_cats BOOLEAN, 
     tags JSONB, 
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Last time the data was updated
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     color_primary VARCHAR(50),
     color_secondary VARCHAR(50)
     CONSTRAINT unique_name_org_breed UNIQUE (name, organization_id, breed_primary)
 );
 
-
-CREATE TABLE matches(
-    id SERIAL PRIMARY KEY,
-    --fk
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    --fk
-    pet_id INTEGER REFERENCES pets(id) on DELETE CASCADE,
-    ranking_score DECIMAL(5, 2) NOT NULL,
-    matched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
